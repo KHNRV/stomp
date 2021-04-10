@@ -1,6 +1,6 @@
 import MaterialTable from "material-table";
 
-const ResultsTable = ({ theme, columns, data }) => {
+const ResultsTable = ({ columns, data }) => {
   return (
     <div className="results-table">
       <h2>Results Table</h2>
