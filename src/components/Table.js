@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MaterialTable from "material-table";
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { Autorenew } from "@material-ui/icons";
+// import { Autorenew } from "@material-ui/icons";
 
 // Dark mode
 // import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -125,12 +125,14 @@ const Table = () => {
 
   return (
     <div className="table">
+      <h2>Scoring Table</h2>
       <ThemeProvider theme={theme}>
         {/* <CssBaseline /> ----- FOR DARK MODE */}
         <MaterialTable
           title="Solo Jazz Newcomer"
           columns={columns}
           data={data}
+          style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
           localization={{
             body: {
               emptyDataSourceMessage:
@@ -142,13 +144,12 @@ const Table = () => {
           }}
           actions={[
             {
-              icon: 'add',
-              tooltip: 'Add User',
+              icon: "add",
+              tooltip: "Add User",
               isFreeAction: true,
-              onClick: (event) => alert("You want to add a new row")
-            }
+              onClick: (event) => alert("Create new participant"),
+            },
           ]}
-          
           options={{
             headerStyle: {
               backgroundColor: "#6B6A6A",
@@ -185,14 +186,20 @@ const Table = () => {
                 }, 1000);
               }),
           }}
+          /**
+           * rowData: bib,first_name,...,judge5,tableData
+           * columnDef: title,field,cellStyle,tableData
+           */
           cellEditable={{
             onCellEditApproved: (newValue, oldValue, rowData, columnDef) => {
               return new Promise((resolve, reject) => {
-                console.log("newValue: " + newValue);
-                console.log("oldValue: " + oldValue);
-                console.log("rowData: " + rowData.first_name);
-                console.log("columnDef: " + columnDef);
-                setTimeout(resolve, 1000);
+                // console.log("newValue: " + newValue);
+
+                const updatedData = [...data];
+                updatedData[rowData.tableData.id][columnDef.field] = newValue;
+                setData([...updatedData]);
+
+                setTimeout(resolve, 100);
               });
             },
           }}
