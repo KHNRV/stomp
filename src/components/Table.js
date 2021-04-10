@@ -1,85 +1,204 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
 
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { Autorenew } from "@material-ui/icons";
+
+// Dark mode
+// import useMediaQuery from "@material-ui/core/useMediaQuery";
+// import CssBaseline from "@material-ui/core/CssBaseline";
+
+// The scoring System
+const scoring = { 0: "no", 1: "maybe", 2: "yes" };
+
 const Table = () => {
   const [columns, setColumns] = useState([
-    { title: "Bib #", field: "bib" },
-    { title: "Name", field: "name" },
-    { title: "Surname", field: "surname" },
-    { title: "Judge 1", field: "judge1" },
-    { title: "Judge 2", field: "judge2" },
-    { title: "Judge 3", field: "judge3" },
-    { title: "Judge 4", field: "judge4" },
-    { title: "Judge 5", field: "judge5" },
+    {
+      title: "Bib #",
+      field: "bib",
+      cellStyle: {
+        backgroundColor: "#6B6A6A",
+        color: "#fff",
+      },
+    },
+    {
+      title: "First Name",
+      field: "first_name",
+      cellStyle: {
+        backgroundColor: "#C2C2C2",
+        color: "black",
+      },
+    },
+    {
+      title: "Last Name",
+      field: "last_name",
+      cellStyle: {
+        backgroundColor: "#C2C2C2",
+        color: "black",
+      },
+    },
+    { title: "Judge 1", field: "judge1", lookup: scoring },
+    { title: "Judge 2", field: "judge2", lookup: scoring },
+    { title: "Judge 3", field: "judge3", lookup: scoring },
+    { title: "Judge 4", field: "judge4", lookup: scoring },
+    { title: "Judge 5", field: "judge5", lookup: scoring },
   ]);
 
   const [data, setData] = useState([
     {
       bib: 101,
-      name: "Dora",
-      surname: "Dewing",
-      judge1: 'yes',
-      judge2: 'yes',
-      judge3: 'maybe',
-      judge4: 'yes',
-      judge5: 'no',
+      first_name: "Dora",
+      last_name: "Dewing",
+      judge1: 2,
+      judge2: 2,
+      judge3: 1,
+      judge4: 2,
+      judge5: 0,
     },
     {
       bib: 102,
-      name: "Sophie",
-      surname: "Minocchi",
-      judge1: 'no',
-      judge2: 'no',
-      judge3: 'maybe',
-      judge4: 'no',
-      judge5: 'yes',
+      first_name: "Sophie",
+      last_name: "Minocchi",
+      judge1: 0,
+      judge2: 0,
+      judge3: 1,
+      judge4: 0,
+      judge5: 2,
     },
     {
       bib: 103,
-      name: "Willette",
-      surname: "Romagosa",
-      judge1: 'yes',
-      judge2: 'no',
-      judge3: 'no',
-      judge4: 'yes',
-      judge5: 'yes',
+      first_name: "Willette",
+      last_name: "Romagosa",
+      judge1: 2,
+      judge2: 0,
+      judge3: 0,
+      judge4: 2,
+      judge5: 2,
     },
     {
       bib: 104,
-      name: "Camey",
-      surname: "Darree",
-      judge1: 'no',
-      judge2: 'no',
-      judge3: 'maybe',
-      judge4: 'yes',
-      judge5: 'yes',
+      first_name: "Camey",
+      last_name: "Darree",
+      judge1: 0,
+      judge2: 0,
+      judge3: 1,
+      judge4: 2,
+      judge5: 2,
     },
     {
       bib: 105,
-      name: "Dennet",
-      surname: "Reidshaw",
-      judge1: 'yes',
-      judge2: 'yes',
-      judge3: 'maybe',
-      judge4: 'maybe',
-      judge5: 'yes',
+      first_name: "Dennet",
+      last_name: "Reidshaw",
+      judge1: 2,
+      judge2: 2,
+      judge3: 1,
+      judge4: 1,
+      judge5: 2,
     },
   ]);
 
+  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)"); //If true dark mode gets applied
+
+  // const theme = React.useMemo(
+  //   () =>
+  //     createMuiTheme({
+  //       palette: {
+  //         type: prefersDarkMode ? "dark" : "light",
+  //       },
+  //     }),
+  //   [prefersDarkMode]
+  // );
+
+  const theme = createMuiTheme({
+    palette: {
+      text: {
+        primary: "black",
+      },
+      primary: {
+        main: "#D64933",
+      },
+      secondary: {
+        main: "#0C7C59",
+      },
+    },
+  });
+
   return (
-    <MaterialTable
-      title="Solo Jazz Newcomer"
-      columns={columns}
-      data={data}
-      cellEditable={{
-        onCellEditApproved: (newValue, oldValue, rowData, columnDef) => {
-          return new Promise((resolve, reject) => {
-            console.log("newValue: " + newValue);
-            setTimeout(resolve, 1000);
-          });
-        },
-      }}
-    />
+    <div className="table">
+      <ThemeProvider theme={theme}>
+        {/* <CssBaseline /> ----- FOR DARK MODE */}
+        <MaterialTable
+          title="Solo Jazz Newcomer"
+          columns={columns}
+          data={data}
+          localization={{
+            body: {
+              emptyDataSourceMessage:
+                "There is no information for this competition",
+              editRow: {
+                deleteText: "Delete this row?",
+              },
+            },
+          }}
+          actions={[
+            {
+              icon: 'add',
+              tooltip: 'Add User',
+              isFreeAction: true,
+              onClick: (event) => alert("You want to add a new row")
+            }
+          ]}
+          
+          options={{
+            headerStyle: {
+              backgroundColor: "#6B6A6A",
+              color: "#fff",
+            },
+            searchAutoFocus: true,
+
+            actionsColumnIndex: -1, // Puts actions to the right hand side
+            toolbarButtonAlignment: "left", // here is the option to change toolbar buttons' alignment
+
+            padding: "default",
+            paging: false,
+            exportButton: true,
+            fixedColumns: { left: 0, right: 0 },
+          }}
+          editable={{
+            onRowAdd: (newData) =>
+              new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  setData([...data, newData]);
+
+                  resolve();
+                }, 1000);
+              }),
+            onRowDelete: (oldData) =>
+              new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  const dataDelete = [...data];
+                  const index = oldData.tableData.id;
+                  dataDelete.splice(index, 1);
+                  setData([...dataDelete]);
+
+                  resolve();
+                }, 1000);
+              }),
+          }}
+          cellEditable={{
+            onCellEditApproved: (newValue, oldValue, rowData, columnDef) => {
+              return new Promise((resolve, reject) => {
+                console.log("newValue: " + newValue);
+                console.log("oldValue: " + oldValue);
+                console.log("rowData: " + rowData.first_name);
+                console.log("columnDef: " + columnDef);
+                setTimeout(resolve, 1000);
+              });
+            },
+          }}
+        />
+      </ThemeProvider>
+    </div>
   );
 };
 
