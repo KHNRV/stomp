@@ -5,23 +5,8 @@ import ScoringTable from "./components/ScoringTable";
 import ResultsTable from "./components/ResultsTable";
 
 import "./styles/app.scss";
-import { createMuiTheme } from "@material-ui/core/styles";
 
 function App() {
-  const theme = createMuiTheme({
-    palette: {
-      text: {
-        primary: "black",
-      },
-      primary: {
-        main: "#D64933",
-      },
-      secondary: {
-        main: "#0C7C59",
-      },
-    },
-  });
-
   const scoring = { 0: "no", 1: "maybe", 2: "yes" };
 
   const [columns, setColumns] = useState([
@@ -111,6 +96,7 @@ function App() {
   return (
     <div className="App">
       <h1>Stomp</h1>
+
       <Router>
         <div>
           <nav>
@@ -134,8 +120,6 @@ function App() {
                 setColumns={setColumns}
                 data={data}
                 setData={setData}
-                scoring={scoring}
-                theme={theme}
               />
             </Route>
             <Route path="/results">
@@ -144,8 +128,6 @@ function App() {
                 setColumns={setColumns}
                 data={data}
                 setData={setData}
-                scoring={scoring}
-                theme={theme}
               />
             </Route>
             <Route path="/"></Route>

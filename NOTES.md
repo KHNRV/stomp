@@ -26,3 +26,10 @@ Inside the return statement
         <CssBaseline /> ----- FOR DARK MODE */
           <MaterialTable>....
 ```
+
+
+
+          /**
+           * rowData: bib,first_name,...,judge5,tableData
+           * columnDef: title,field,cellStyle,tableData
+           */
