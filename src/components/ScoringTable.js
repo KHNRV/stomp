@@ -1,11 +1,11 @@
 // import React, { useState } from "react";
-import MaterialTable from "material-table";
+import {default as Scoring} from "material-table";
 
 const ScoringTable = ({ columns, data, setData }) => {
   return (
     <div className="scoring-table">
       <h2>Scoring Table</h2>
-      <MaterialTable
+      <Scoring
         title="Solo Jazz Newcomer"
         columns={columns}
         data={data}

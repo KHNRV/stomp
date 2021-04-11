@@ -1,10 +1,10 @@
-import MaterialTable from "material-table";
+import {default as Results} from "material-table";
 
 const ResultsTable = ({ columns, data }) => {
   return (
     <div className="results-table">
       <h2>Results Table</h2>
-      <MaterialTable
+      <Results
         title="Solo Jazz Newcomer"
         columns={columns}
         data={data}
