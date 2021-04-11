@@ -1,12 +1,15 @@
-import { default as Results } from "material-table";
+import MaterialTable from '@material-table/core';
+import { ExportCsv, ExportPdf } from '@material-table/exporters';
+
 import { compData, columns } from "../data";
+
 
 const ResultsTable = () => {
 
   return (
     <div className="results-table">
       <h2>Results Table</h2>
-      <Results
+      <MaterialTable
         title="Solo Jazz Newcomer"
         columns={columns}
         data={compData}
@@ -18,6 +21,14 @@ const ResultsTable = () => {
           },
         }}
         options={{
+          exportMenu: [{
+            label: 'Export PDF',
+            exportFunc: (cols, datas) => ExportPdf(cols, datas, `${'competition'}-results`)
+          }, {
+            label: 'Export CSV',
+            exportFunc: (cols, datas) => ExportCsv(cols, datas, 'myCsvFileName')
+          }],
+
           headerStyle: {
             backgroundColor: "#6B6A6A",
             color: "#fff",
@@ -28,7 +39,6 @@ const ResultsTable = () => {
 
           padding: "default",
           paging: false,
-          exportButton: true,
           fixedColumns: { left: 0, right: 0 },
         }}
       />

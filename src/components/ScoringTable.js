@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MaterialTable from "material-table";
+import MaterialTable from '@material-table/core';
 import { compData, columns } from "../data";
 
 const ScoringTable = () => {
