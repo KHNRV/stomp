@@ -1,11 +1,14 @@
-// import React, { useState } from "react";
-import {default as Scoring} from "material-table";
+import React, { useState } from "react";
+import MaterialTable from "material-table";
+import { compData, columns } from "../data";
 
-const ScoringTable = ({ columns, data, setData }) => {
+const ScoringTable = () => {
+  const [data, setData] = useState(compData);
+
   return (
     <div className="scoring-table">
       <h2>Scoring Table</h2>
-      <Scoring
+      <MaterialTable
         title="Solo Jazz Newcomer"
         columns={columns}
         data={data}
@@ -45,26 +48,28 @@ const ScoringTable = ({ columns, data, setData }) => {
                 index = e.oldData.tableData.id;
                 updatedData[index] = e.newData;
               });
-              setData(updatedData);
-              resolve();
+              setTimeout(() => {
+                setData(updatedData);
+                resolve();
+              }, 1000);
             }),
           onRowAdd: (newData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
                 setData([...data, newData]);
                 resolve();
-              }, 10);
+              }, 1000);
             }),
           onRowDelete: (oldData) =>
             new Promise((resolve, reject) => {
-              const dataDelete = [...data];
-              const index = oldData.tableData.id;
-              dataDelete.splice(index, 1);
               setTimeout(() => {
+                const dataDelete = [...data];
+                const index = oldData.tableData.id;
+                dataDelete.splice(index, 1);
                 setData([...dataDelete]);
 
                 resolve();
-              }, 10);
+              }, 1000);
             }),
         }}
         /**

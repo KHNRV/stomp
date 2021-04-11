@@ -1,13 +1,15 @@
-import {default as Results} from "material-table";
+import { default as Results } from "material-table";
+import { compData, columns } from "../data";
 
-const ResultsTable = ({ columns, data }) => {
+const ResultsTable = () => {
+
   return (
     <div className="results-table">
       <h2>Results Table</h2>
       <Results
         title="Solo Jazz Newcomer"
         columns={columns}
-        data={data}
+        data={compData}
         style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
         localization={{
           body: {
