@@ -21,13 +21,13 @@ function App() {
       <Router>
         <Stepper />
         <Switch>
-          <Route exact path="/competition/:id/">
+          <Route exact path="/competitions/:id/">
             <Competition data={data} setData={setData} columns={columns} setColumns={setColumns} />
           </Route>
-          <Route exact path="/competition/:id/scoring">
+          <Route exact path="/competitions/:id/scoring">
             <ScoringTable data={data} setData={setData} columns={columns} />
           </Route>
-          <Route exact path="/competition/:id/results">
+          <Route exact path="/competitions/:id/results">
             <ResultsTable data={data} columns={columns} />
           </Route>
           <Route path="/"></Route>
