@@ -1,66 +1,84 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import {
-  InputLabel,
-  FormControl,
-  Input,
-} from "@material-ui/core";
+import React, { useState } from "react";
+import JudgesNew from "./JudgesNew";
+import MaterialTable from "@material-table/core";
 
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "../theme";
 
 export default function Judges() {
-  const [open, setOpen] = React.useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const columns = [
+    { title: "First Name", field: "first_name" },
+    { title: "Last Name", field: "last_name" },
+    { title: "Email", field: "email" },
+    { title: "Phone", field: "phone" },
+  ];
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const [data, setData] = useState([
+    {
+      first_name: "Sylvia",
+      last_name: "Sykes",
+      email: "sylvia.sykes@hey.com",
+      phone: "(970) 682-3614",
+    },
+    {
+      first_name: "Annie",
+      last_name: "Trudeau",
+      email: "annie.trudeau@gmail.com",
+      phone: "(514) 334-5547",
+    },
+  ]);
 
   return (
-    <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Create a Judge
-      </Button>
-      <Dialog
-        fullScreen={fullScreen}
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
-      >
-        <DialogTitle id="responsive-dialog-title">
-          {"Create a Judge"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Please provide details of the Judge..
-          </DialogContentText>
-          <FormControl>
-            <InputLabel htmlFor="first_name">First Name</InputLabel>
-            <Input id="first_name" aria-describedby="first_name-helper-text" />
-            <InputLabel htmlFor="my-input">Email address</InputLabel>
-            <Input id="my-input" aria-describedby="my-helper-text" />
-          </FormControl>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Save
-          </Button>
-        </DialogActions>
-      </Dialog>
+    <div className="results-table">
+      <ThemeProvider theme={theme}>
+        <MaterialTable
+          columns={columns}
+          data={data}
+          style={{ padding: "0.5em", backgroundColor: "whitesmoke" }}
+          localization={{
+            body: {
+              emptyDataSourceMessage: "There are no Judges",
+            },
+          }}
+          options={{
+            search: false,
+            headerStyle: {
+              backgroundColor: "#dfad3e",
+              color: "#08253f",
+            },
+            toolbarButtonAlignment: "right",
+            padding: "dense",
+            paging: false,
+            fixedColumns: { left: 0, right: 0 },
+            actionsColumnIndex: -1,
+          }}
+          components={{
+            Toolbar: (props) => (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row-reverse",
+                  paddingBottom: "10px",
+                }}
+              >
+                <JudgesNew />
+              </div>
+            ),
+          }}
+          editable={{
+            onRowDelete: (oldData) =>
+              new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  const dataDelete = [...data];
+                  const index = oldData.tableData.id;
+                  dataDelete.splice(index, 1);
+                  setData([...dataDelete]);
+                  resolve();
+                }, 1000);
+              }),
+          }}
+        />
+      </ThemeProvider>
     </div>
   );
 }
