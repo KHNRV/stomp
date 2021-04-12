@@ -69,8 +69,8 @@ const Dashboard = () => {
           <Tabs
             value={value}
             onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
+            indicatorColor="secondary"
+            textColor="secondary"
             variant="fullWidth"
             aria-label="simple tabs example"
           >

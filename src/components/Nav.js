@@ -41,8 +41,8 @@ export default function Nav() {
           {true ? ( //FOR now set true false for logged in
             <Button
               href="/"
-              variant="contained"
-              color="tertiary"
+              // variant="outlined"              
+              color="dark"
               className={classes.button}
               endIcon={<Icon>dashboard</Icon>}
             >
