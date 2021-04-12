@@ -10,6 +10,8 @@ import Stepper from "./components/Stepper";
 
 import { compData, compCol } from "./data";
 
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "./theme";
 import "./styles/app.scss";
 
 function App() {
@@ -18,33 +20,35 @@ function App() {
 
   return (
     <div className="App">
-      <Nav></Nav>
-      <div className="main-components">
-        <Router>
-          <Switch>
-            <Route exact path="/competitions/:id/">
-              <CompetitionTable
-                data={data}
-                setData={setData}
-                columns={columns}
-                setColumns={setColumns}
-              />
-              <Stepper />
-            </Route>
-            <Route exact path="/competitions/:id/scoring">
-              <ScoringTable data={data} setData={setData} columns={columns} />
-              <Stepper />
-            </Route>
-            <Route exact path="/competitions/:id/results">
-              <ResultsTable data={data} columns={columns} />
-              <Stepper />
-            </Route>
-            <Route path="/">
-              <Dashboard />
-            </Route>
-          </Switch>
-        </Router>
-      </div>
+      <ThemeProvider theme={theme}>
+        <Nav></Nav>
+        <div className="main-components">
+          <Router>
+            <Switch>
+              <Route exact path="/competitions/:id/">
+                <CompetitionTable
+                  data={data}
+                  setData={setData}
+                  columns={columns}
+                  setColumns={setColumns}
+                />
+                <Stepper />
+              </Route>
+              <Route exact path="/competitions/:id/scoring">
+                <ScoringTable data={data} setData={setData} columns={columns} />
+                <Stepper />
+              </Route>
+              <Route exact path="/competitions/:id/results">
+                <ResultsTable data={data} columns={columns} />
+                <Stepper />
+              </Route>
+              <Route path="/">
+                <Dashboard />
+              </Route>
+            </Switch>
+          </Router>
+        </div>
+      </ThemeProvider>
     </div>
   );
 }
