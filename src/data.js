@@ -1,6 +1,6 @@
 const scoring = { 0: "no", 1: "maybe", 2: "yes" };
 
-export const columns = [
+export const compCol = [
   {
     title: "Bib #",
     field: "bib",
