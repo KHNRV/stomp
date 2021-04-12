@@ -3,23 +3,24 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import MaterialTable from "@material-table/core";
 
-const columns = [
-  {
-    title: "Competitions",
-    field: "competitions",
-  },
-  {
-    title: "No# of Participants",
-    field: "participants",
-    type: "numeric",
-  },
-];
-
 const Competitions = () => {
+  const columns = [
+    {
+      title: "Competitions",
+      field: "competitions",
+    },
+    {
+      title: "No# of Participants",
+      field: "participants",
+      type: "numeric",
+    },
+  ];
 
   const [comps, setComps] = useState([
     {
-      competitions: <NavLink to="/competitions/:id">Solo Jazz Newcomer</NavLink>,
+      competitions: (
+        <NavLink to="/competitions/:id">Solo Jazz Newcomer</NavLink>
+      ),
       participants: 5,
     },
   ]);
