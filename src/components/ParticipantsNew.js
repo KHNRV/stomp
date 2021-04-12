@@ -74,6 +74,16 @@ export default function ParticipantsNew() {
                   autoComplete="lname"
                 />
               </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  variant="outlined"
+                  fullWidth
+                  id="bib"
+                  label="Bib #"
+                  name="bib"
+                  autoComplete="bib"
+                />
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
