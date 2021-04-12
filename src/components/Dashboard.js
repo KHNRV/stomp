@@ -70,7 +70,7 @@ const Dashboard = () => {
             value={value}
             onChange={handleChange}
             indicatorColor="secondary"
-            textColor="secondary"
+            textColor="primary"
             variant="fullWidth"
             aria-label="simple tabs example"
           >
