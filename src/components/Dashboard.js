@@ -48,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "theme.palette.background.paper",
     alignItems: "center",
   },
+  title: {
+    flexGrow: 1,
+  },
   appBar: {
     maxWidth: "1500px",
     position: "-webkit-sticky",
