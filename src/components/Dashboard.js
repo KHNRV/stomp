@@ -40,13 +40,6 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-const a11yProps = (index) => {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-};
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -78,13 +71,9 @@ const Dashboard = () => {
             variant="fullWidth"
             aria-label="simple tabs example"
           >
-            <Tab
-              icon={<EmojiFlagsIcon />}
-              label="Competitions"
-              {...a11yProps(0)}
-            />
-            <Tab icon={<PersonIcon />} label="Participants" {...a11yProps(1)} />
-            <Tab icon={<GavelIcon />} label="Judges" {...a11yProps(2)} />
+            <Tab icon={<EmojiFlagsIcon />} label="Competitions" />
+            <Tab icon={<PersonIcon />} label="Participants" />
+            <Tab icon={<GavelIcon />} label="Judges" />
           </Tabs>
         </AppBar>
       </Box>
@@ -93,7 +82,72 @@ const Dashboard = () => {
         <Competitions />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Some Participants Here..
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
+        Some Participants Here..<br/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Some Judges Here..

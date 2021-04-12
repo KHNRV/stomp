@@ -26,21 +26,21 @@ function App() {
           <Router>
             <Switch>
               <Route exact path="/competitions/:id/">
+                <Stepper />
                 <CompetitionTable
                   data={data}
                   setData={setData}
                   columns={columns}
                   setColumns={setColumns}
                 />
-                <Stepper />
               </Route>
               <Route exact path="/competitions/:id/scoring">
-                <ScoringTable data={data} setData={setData} columns={columns} />
                 <Stepper />
+                <ScoringTable data={data} setData={setData} columns={columns} />
               </Route>
               <Route exact path="/competitions/:id/results">
-                <ResultsTable data={data} columns={columns} />
                 <Stepper />
+                <ResultsTable data={data} columns={columns} />
               </Route>
               <Route path="/">
                 <Dashboard />
