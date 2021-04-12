@@ -48,6 +48,8 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     maxWidth: "1500px",
+    position: "-webkit-sticky",
+    position: "sticky",
   },
 }));
 
@@ -60,8 +62,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <Box display="flex" justifyContent="center">
+    <Box display="flex" justifyContent="center">
+      <div className={classes.root}>
         <AppBar className={classes.appBar} position="sticky" color="default">
           <Tabs
             value={value}
@@ -76,83 +78,149 @@ const Dashboard = () => {
             <Tab icon={<GavelIcon />} label="Judges" />
           </Tabs>
         </AppBar>
-      </Box>
 
-      <TabPanel value={value} index={0}>
-        <Competitions />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-        Some Participants Here..<br/>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Some Judges Here..
-      </TabPanel>
-    </div>
+        <TabPanel value={value} index={0}>
+          <Competitions />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+          Some Participants Here..
+          <br />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          Some Judges Here..
+        </TabPanel>
+      </div>
+    </Box>
   );
 };
 export default Dashboard;
