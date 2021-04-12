@@ -50,8 +50,8 @@ export default function Nav() {
             </Button>
           ) : (
             <div className="user-notlogged">
-              <Button color="inherit">Login</Button>
-              <Button color="inherit">Sign up</Button>
+              <Button href="/login"color="inherit">Login</Button>
+              <Button href="/signup"color="inherit">Sign up</Button>
             </div>
           )}
         </Toolbar>
