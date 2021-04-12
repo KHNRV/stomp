@@ -6,7 +6,6 @@ import theme from "../theme";
 const CompetitionTable = ({ data, setData, columns, setColumns }) => {
   return (
     <div className="competition-table">
-      <h2>Competition Table</h2>
       <ThemeProvider theme={theme}>
         <MaterialTable
           title="Solo Jazz Newcomer"

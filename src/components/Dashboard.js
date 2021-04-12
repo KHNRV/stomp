@@ -88,11 +88,9 @@ const Dashboard = () => {
         <Competitions />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Some Participants Here..
         <Participants />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Some Judges Here..
         <Judges />
       </TabPanel>
     </div>

@@ -6,7 +6,6 @@ import theme from "../theme";
 const ScoringTable = ({ data, setData, columns }) => {
   return (
     <div className="scoring-table">
-      <h2>Scoring Table</h2>
       <ThemeProvider theme={theme}>
         <MaterialTable
           title="Solo Jazz Newcomer"

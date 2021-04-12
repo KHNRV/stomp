@@ -7,7 +7,6 @@ import theme from "../theme";
 const ResultsTable = ({ data, columns }) => {
   return (
     <div className="results-table">
-      <h2>Results Table</h2>
       <ThemeProvider theme={theme}>
         <MaterialTable
           title="Solo Jazz Newcomer"
