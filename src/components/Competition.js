@@ -3,8 +3,6 @@ import MaterialTable from "@material-table/core";
 
 // import { compData, columns } from "../data";
 
-import Modal from '@material-ui/core/Modal';
-
 
 const Competition = ({ data, columns, setColumns }) => {
 
