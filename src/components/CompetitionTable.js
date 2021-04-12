@@ -2,7 +2,7 @@ import MaterialTable from "@material-table/core";
 
 // import { compData, columns } from "../data";
 
-const Competition = ({ data, setData, columns, setColumns }) => {
+const CompetitionTable = ({ data, setData, columns, setColumns }) => {
   return (
     <div className="competition-table">
       <h2>Competition Table</h2>
@@ -37,7 +37,7 @@ const Competition = ({ data, setData, columns, setColumns }) => {
               ),
           },
           {
-            icon: "add_chart",
+            icon: "gavel",
             tooltip: "Add Judge",
             isFreeAction: true,
             onClick: (event, data) =>
@@ -93,4 +93,4 @@ const Competition = ({ data, setData, columns, setColumns }) => {
   );
 };
 
-export default Competition;
+export default CompetitionTable;

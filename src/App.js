@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Nav from "./components/Nav";
-import Competition from "./components/Competition";
+import Dashboard from "./components/Dashboard";
+import CompetitionTable from "./components/CompetitionTable";
 import ScoringTable from "./components/ScoringTable";
 import ResultsTable from "./components/ResultsTable";
 import Stepper from "./components/Stepper";
@@ -20,23 +21,27 @@ function App() {
       <Nav></Nav>
       <div className="main-components">
         <Router>
-          <Stepper />
           <Switch>
             <Route exact path="/competitions/:id/">
-              <Competition
+              <CompetitionTable
                 data={data}
                 setData={setData}
                 columns={columns}
                 setColumns={setColumns}
               />
+              <Stepper />
             </Route>
             <Route exact path="/competitions/:id/scoring">
               <ScoringTable data={data} setData={setData} columns={columns} />
+              <Stepper />
             </Route>
             <Route exact path="/competitions/:id/results">
               <ResultsTable data={data} columns={columns} />
+              <Stepper />
             </Route>
-            <Route path="/"></Route>
+            <Route path="/">
+              <Dashboard />
+            </Route>
           </Switch>
         </Router>
       </div>
