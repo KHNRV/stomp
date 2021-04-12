@@ -52,10 +52,10 @@ const Competition = ({ data, columns, setColumns }) => {
         options={{
           selection: true,
           search: false,
-          headerStyle: {
-            backgroundColor: "#6B6A6A",
-            color: "#fff",
-          },
+          // headerStyle: {
+          //   backgroundColor: "#6B6A6A",
+          //   color: "#fff",
+          // },
           toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
           padding: "default",
           paging: false,

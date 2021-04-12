@@ -4,26 +4,26 @@ export const compCol = [
   {
     title: "Bib #",
     field: "bib",
-    cellStyle: {
-      backgroundColor: "#6B6A6A",
-      color: "#fff",
-    },
+    // cellStyle: {
+    //   backgroundColor: "#6B6A6A",
+    //   color: "#fff",
+    // },
   },
   {
     title: "First Name",
     field: "first_name",
-    cellStyle: {
-      backgroundColor: "#C2C2C2",
-      color: "black",
-    },
+    // cellStyle: {
+    //   backgroundColor: "#C2C2C2",
+    //   color: "black",
+    // },
   },
   {
     title: "Last Name",
     field: "last_name",
-    cellStyle: {
-      backgroundColor: "#C2C2C2",
-      color: "black",
-    },
+    // cellStyle: {
+    //   backgroundColor: "#C2C2C2",
+    //   color: "black",
+    // },
   },
   { title: "Judge 1", field: "judge1", lookup: scoring },
   { title: "Judge 2", field: "judge2", lookup: scoring },

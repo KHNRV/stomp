@@ -23,10 +23,10 @@ const ScoringTable = ({ data, setData, columns }) => {
         }}
         options={{
           search: false,
-          headerStyle: {
-            backgroundColor: "#6B6A6A",
-            color: "#fff",
-          },
+          // headerStyle: {
+          //   backgroundColor: "#6B6A6A",
+          //   color: "#fff",
+          // },
           searchAutoFocus: true,
 
           actionsColumnIndex: -1, // Puts actions to the right hand side

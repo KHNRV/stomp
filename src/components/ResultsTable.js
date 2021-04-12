@@ -32,15 +32,15 @@ const ResultsTable = ({ data, columns }) => {
             },
           ],
 
-          headerStyle: {
-            backgroundColor: "#6B6A6A",
-            color: "#fff",
-          },
+          // headerStyle: {
+          //   backgroundColor: "#6B6A6A",
+          //   color: "#fff",
+          // },
           searchAutoFocus: true,
 
           toolbarButtonAlignment: "left", // here is the option to change toolbar buttons' alignment
 
-          padding: "default",
+          padding: "dense",
           paging: false,
           fixedColumns: { left: 0, right: 0 },
         }}
