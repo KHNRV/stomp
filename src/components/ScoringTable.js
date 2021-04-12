@@ -52,24 +52,6 @@ const ScoringTable = ({ data, setData, columns }) => {
                 resolve();
               }, 1000);
             }),
-          onRowAdd: (newData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                setData([...data, newData]);
-                resolve();
-              }, 1000);
-            }),
-          onRowDelete: (oldData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                const dataDelete = [...data];
-                const index = oldData.tableData.id;
-                dataDelete.splice(index, 1);
-                setData([...dataDelete]);
-
-                resolve();
-              }, 1000);
-            }),
         }}
       />
     </div>
