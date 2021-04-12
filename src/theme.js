@@ -17,6 +17,10 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: "'Poppins', sans-serif",
   },
+  appBar: {
+    maxWidth: '500px', 
+
+  },
 });
 
 export default theme;

@@ -51,6 +51,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: "theme.palette.background.paper",
+    alignItems: "center",
+  },
+  appBar: {
+    maxWidth: "1500px",
   },
 }));
 
@@ -64,24 +68,27 @@ const Dashboard = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="simple tabs example"
-        >
-          <Tab
-            icon={<EmojiFlagsIcon />}
-            label="Competitions"
-            {...a11yProps(0)}
-          />
-          <Tab icon={<PersonIcon />} label="Participants" {...a11yProps(1)} />
-          <Tab icon={<GavelIcon />} label="Judges" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
+      <Box display="flex" justifyContent="center">
+        <AppBar className={classes.appBar} position="sticky" color="default">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="simple tabs example"
+          >
+            <Tab
+              icon={<EmojiFlagsIcon />}
+              label="Competitions"
+              {...a11yProps(0)}
+            />
+            <Tab icon={<PersonIcon />} label="Participants" {...a11yProps(1)} />
+            <Tab icon={<GavelIcon />} label="Judges" {...a11yProps(2)} />
+          </Tabs>
+        </AppBar>
+      </Box>
+
       <TabPanel value={value} index={0}>
         <Competitions />
       </TabPanel>
