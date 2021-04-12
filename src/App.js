@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 import Nav from "./components/Nav";
 import Dashboard from "./components/Dashboard";
 import CompetitionTable from "./components/CompetitionTable";
@@ -21,9 +23,9 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Nav></Nav>
         <div className="main-components">
           <Router>
+            <Nav></Nav>
             <Switch>
               <Route exact path="/competitions/:id/">
                 <Stepper />
@@ -34,13 +36,19 @@ function App() {
                   setColumns={setColumns}
                 />
               </Route>
-              <Route exact path="/competitions/:id/scoring">
+              <Route path="/competitions/:id/scoring">
                 <Stepper />
                 <ScoringTable data={data} setData={setData} columns={columns} />
               </Route>
-              <Route exact path="/competitions/:id/results">
+              <Route path="/competitions/:id/results">
                 <Stepper />
                 <ResultsTable data={data} columns={columns} />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
               </Route>
               <Route path="/">
                 <Dashboard />
