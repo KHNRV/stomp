@@ -1,9 +1,12 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
 // CSS colors
-// $dark: "#08253f";
+// $dark: "#001427";
 // $blue: "#2980ba";
 // $yellow: "#dfad3e";
+// $red: "#bd4033";
+// $white: "#f5f5f5";
+// $purple: "#69385C"
 
 const theme = createMuiTheme({
   palette: {
@@ -12,6 +15,9 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: "#2980ba",
+    },
+    text: {
+      primary: "#001427"
     },
   },
   typography: {
