@@ -1,5 +1,5 @@
 import React from "react";
-import Competitions from "./Competitions";
+import DashboardCompetitions from "./DashboardCompetitions";
 import DashboardJudges from "./DashboardJudges";
 import DashboardParticipants from "./DashboardParticipants";
 
@@ -85,7 +85,7 @@ const Dashboard = () => {
       </Box>
 
       <TabPanel value={value} index={0}>
-        <Competitions />
+        <DashboardCompetitions />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <DashboardParticipants />

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import MaterialTable from "@material-table/core";
 
-const Competitions = () => {
+const DashboardCompetitions = () => {
   const columns = [
     {
       title: "Competitions",
@@ -63,4 +63,4 @@ const Competitions = () => {
   );
 };
 
-export default Competitions;
+export default DashboardCompetitions;
