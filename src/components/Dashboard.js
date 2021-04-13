@@ -1,7 +1,7 @@
 import React from "react";
 import Competitions from "./Competitions";
-import Judges from "./Judges";
-import Participants from "./Participants";
+import DashboardJudges from "./DashboardJudges";
+import DashboardParticipants from "./DashboardParticipants";
 
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
@@ -88,10 +88,10 @@ const Dashboard = () => {
         <Competitions />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Participants />
+        <DashboardParticipants />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Judges />
+        <DashboardJudges />
       </TabPanel>
     </div>
   );

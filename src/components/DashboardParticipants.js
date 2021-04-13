@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import JudgesNew from "./JudgesNew";
+import DashboardParticipantsNew from "./DashboardParticipantsNew";
 import MaterialTable from "@material-table/core";
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-export default function Judges() {
+export default function DashboardParticipants() {
   const columns = [
+    { title: "Bib #", field: "bib" },
     { title: "First Name", field: "first_name" },
     { title: "Last Name", field: "last_name" },
     { title: "Email", field: "email" },
@@ -15,16 +16,18 @@ export default function Judges() {
 
   const [data, setData] = useState([
     {
-      first_name: "Sylvia",
-      last_name: "Sykes",
-      email: "sylvia.sykes@hey.com",
-      phone: "(970) 682-3614",
+      bib: 101,
+      first_name: "Yam",
+      last_name: "Atkins",
+      email: "yam.atkins@gmail.com",
+      phone: "(599) 723-6865",
     },
     {
-      first_name: "Annie",
-      last_name: "Trudeau",
-      email: "annie.trudeau@gmail.com",
-      phone: "(514) 334-5547",
+      bib: 102,
+      first_name: "Oli",
+      last_name: "Atkins",
+      email: "oli.atkins@gmail.com",
+      phone: "(476) 431-6434",
     },
   ]);
 
@@ -37,7 +40,7 @@ export default function Judges() {
           style={{ padding: "0.5em", backgroundColor: "whitesmoke" }}
           localization={{
             body: {
-              emptyDataSourceMessage: "There are no Judges",
+              emptyDataSourceMessage: "There are no Participants",
             },
           }}
           options={{
@@ -61,7 +64,7 @@ export default function Judges() {
                   paddingBottom: "10px",
                 }}
               >
-                <JudgesNew />
+                <DashboardParticipantsNew />
               </div>
             ),
           }}
