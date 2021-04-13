@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -43,8 +45,8 @@ export default function Nav() {
 
             {true ? ( //FOR now set true false for logged in
               <Button
-                href="/"
-                // variant="outlined"
+                component={Link}
+                to="/"
                 color="dark"
                 className={classes.button}
                 endIcon={<Icon>dashboard</Icon>}
@@ -53,10 +55,10 @@ export default function Nav() {
               </Button>
             ) : (
               <div className="user-notlogged">
-                <Button href="/login" color="inherit">
+                <Button component={Link} to="/login" color="inherit">
                   Login
                 </Button>
-                <Button href="/signup" color="inherit">
+                <Button component={Link} to="/signup" color="inherit">
                   Sign up
                 </Button>
               </div>
