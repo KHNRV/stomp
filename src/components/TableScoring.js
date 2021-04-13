@@ -13,6 +13,11 @@ const TableScoring = ({ data, setData, columns }) => {
           columns={columns}
           data={data}
           style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
+          icons={{ 
+            Edit: () => <img height="32"src="/buttons/edit.svg" alt="edit" /> ,
+            Check: () => <img height="30"src="/buttons/save.svg" alt="save" /> ,
+            Clear: () => <img height="28"src="/buttons/cancel.svg" alt="cancel" /> ,
+        }}
           localization={{
             body: {
               addTooltip: "Add Entry",
@@ -50,6 +55,7 @@ const TableScoring = ({ data, setData, columns }) => {
                 setTimeout(() => {
                   setData(updatedData);
                   resolve();
+                  // reject(alert("hey"));
                 }, 1000);
               }),
           }}
