@@ -10,8 +10,8 @@ import Select from "@material-ui/core/Select";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
-    maxWidth: 300,
+    minWidth: 200,
+    maxWidth: 500,
   },
   chips: {
     display: "flex",
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ITEM_HEIGHT = 48;
+const ITEM_HEIGHT = 75;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
   PaperProps: {
