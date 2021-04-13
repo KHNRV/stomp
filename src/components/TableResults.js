@@ -4,15 +4,20 @@ import { ExportCsv, ExportPdf } from "@material-table/exporters";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const TableResults = ({ data, columns }) => {
-  // DBLOGIC
+import { data } from "../helpers/testdata";
+import getData from "../helpers/getData";
+
+// Feed in the data and the competition id
+let [compData, compCol] = getData(data, 0);
+
+const TableResults = () => {
   return (
     <div className="results-table">
       <ThemeProvider theme={theme}>
         <MaterialTable
           title="Solo Jazz Newcomer"
-          columns={columns}
-          data={data}
+          columns={compCol}
+          data={compData}
           style={{ padding: "0.5em", backgroundColor: "whitesmoke" }}
           localization={{
             body: {
