@@ -3,7 +3,7 @@ import MaterialTable from "@material-table/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const ScoringTable = ({ data, setData, columns }) => {
+const TableScoring = ({ data, setData, columns }) => {
   return (
     <div className="scoring-table">
       <ThemeProvider theme={theme}>
@@ -58,4 +58,4 @@ const ScoringTable = ({ data, setData, columns }) => {
   );
 };
 
-export default ScoringTable;
+export default TableScoring;

@@ -5,9 +5,9 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Nav from "./components/Nav";
 import Dashboard from "./components/Dashboard";
-import CompetitionTable from "./components/CompetitionTable";
-import ScoringTable from "./components/ScoringTable";
-import ResultsTable from "./components/ResultsTable";
+import TableCompetition from "./components/TableCompetition";
+import TableScoring from "./components/TableScoring";
+import TableResults from "./components/TableResults";
 import Stepper from "./components/Stepper";
 
 import { compData, compCol } from "./data";
@@ -29,7 +29,7 @@ function App() {
             <Switch>
               <Route exact path="/competitions/:id/">
                 <Stepper />
-                <CompetitionTable
+                <TableCompetition
                   data={data}
                   setData={setData}
                   columns={columns}
@@ -38,11 +38,11 @@ function App() {
               </Route>
               <Route path="/competitions/:id/scoring">
                 <Stepper />
-                <ScoringTable data={data} setData={setData} columns={columns} />
+                <TableScoring data={data} setData={setData} columns={columns} />
               </Route>
               <Route path="/competitions/:id/results">
                 <Stepper />
-                <ResultsTable data={data} columns={columns} />
+                <TableResults data={data} columns={columns} />
               </Route>
               <Route exact path="/login">
                 <Login />

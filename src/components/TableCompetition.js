@@ -3,7 +3,7 @@ import MaterialTable from "@material-table/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const CompetitionTable = ({ data, setData, columns, setColumns }) => {
+const TableCompetition = ({ data, setData, columns, setColumns }) => {
   return (
     <div className="competition-table">
       <ThemeProvider theme={theme}>
@@ -95,4 +95,4 @@ const CompetitionTable = ({ data, setData, columns, setColumns }) => {
   );
 };
 
-export default CompetitionTable;
+export default TableCompetition;

@@ -4,7 +4,7 @@ import { ExportCsv, ExportPdf } from "@material-table/exporters";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const ResultsTable = ({ data, columns }) => {
+const TableResults = ({ data, columns }) => {
   return (
     <div className="results-table">
       <ThemeProvider theme={theme}>
@@ -51,4 +51,4 @@ const ResultsTable = ({ data, columns }) => {
   );
 };
 
-export default ResultsTable;
+export default TableResults;
