@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import DashboardCompetitionsNew from "./DashboardCompetitionsNew";
 
-
 import { NavLink } from "react-router-dom";
 import MaterialTable from "@material-table/core";
 
 const DashboardCompetitions = () => {
+  // DBLOGIC
   const columns = [
     {
       title: "Competitions",
       field: "competitions",
     },
     {
+      title: "No# of Judges",
+      field: "judges",
+      type: "numeric",
+      align: "center",
+    },
+    {
       title: "No# of Participants",
       field: "participants",
       type: "numeric",
+      align: "center",
     },
   ];
 
@@ -23,6 +30,7 @@ const DashboardCompetitions = () => {
       competitions: (
         <NavLink to="/competitions/:id">Solo Jazz Newcomer</NavLink>
       ),
+      judges: 3,
       participants: 5,
     },
   ]);
@@ -35,8 +43,7 @@ const DashboardCompetitions = () => {
         style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
         localization={{
           body: {
-            emptyDataSourceMessage:
-              "There are no Competitions",
+            emptyDataSourceMessage: "There are no Competitions",
           },
         }}
         options={{

@@ -36,6 +36,7 @@ function App() {
                   setColumns={setColumns}
                 />
               </Route>
+              {/* DBLOGIC */}
               <Route path="/competitions/:id/scoring">
                 <TableStepper />
                 <TableScoring data={data} setData={setData} columns={columns} />

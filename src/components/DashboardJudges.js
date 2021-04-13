@@ -6,6 +6,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
 export default function DashboardJudges() {
+  // DBLOGIC
   const columns = [
     { title: "First Name", field: "first_name" },
     { title: "Last Name", field: "last_name" },

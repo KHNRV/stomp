@@ -98,6 +98,8 @@ export default function DashboardJudgesNew() {
             </Grid>
           </form>
         </DialogContent>
+
+        {/* DBLOGIC */}
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
             Cancel

@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
 const TableScoring = ({ data, setData, columns }) => {
+  // DBLOGIC
   return (
     <div className="scoring-table">
       <ThemeProvider theme={theme}>

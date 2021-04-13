@@ -98,6 +98,9 @@ export default function DashboardCompetitionsNew() {
             </Grid>
           </form>
         </DialogContent>
+
+        {/* DBLOGIC */}
+
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
             Cancel

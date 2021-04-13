@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
 const TableCompetition = ({ data, setData, columns, setColumns }) => {
+  // DBLOGIC
   return (
     <div className="competition-table">
       <ThemeProvider theme={theme}>

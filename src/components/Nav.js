@@ -39,6 +39,8 @@ export default function Nav() {
         </Box>
         <Grid container justify={"flex-end"}>
           <Toolbar>
+            {/* DBLOGIC */}
+
             {true ? ( //FOR now set true false for logged in
               <Button
                 href="/"
