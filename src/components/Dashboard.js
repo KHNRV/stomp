@@ -11,11 +11,6 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
-import GavelIcon from "@material-ui/icons/Gavel";
-import PersonIcon from "@material-ui/icons/Person";
-import EmojiFlagsIcon from "@material-ui/icons/EmojiFlags";
-// import { getDefaultNormalizer } from "@testing-library/dom";
-
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
@@ -77,9 +72,18 @@ const Dashboard = () => {
             variant="fullWidth"
             aria-label="simple tabs example"
           >
-            <Tab icon={<EmojiFlagsIcon />} label="Competitions" />
-            <Tab icon={<PersonIcon />} label="Participants" />
-            <Tab icon={<GavelIcon />} label="Judges" />
+            <Tab
+              icon={<img src="/buttons/competitions.svg" alt="competitions" />}
+              label="Competitions"
+            />
+            <Tab
+              icon={<img src="/buttons/participants.svg" alt="participants" />}
+              label="Participants"
+            />
+            <Tab
+              icon={<img src="/buttons/judges.svg" alt="judges" />}
+              label="Judges"
+            />
           </Tabs>
         </AppBar>
       </Box>

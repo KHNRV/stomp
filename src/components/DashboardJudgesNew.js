@@ -29,7 +29,7 @@ export default function DashboardJudgesNew() {
   return (
     <div>
       <Button
-        endIcon={<GavelIcon />}
+        endIcon={<img height="20"src="/buttons/judges-blue.svg" alt="judges" />}
         variant="outlined"
         color="primary"
         onClick={handleClickOpen}

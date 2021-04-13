@@ -8,10 +8,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
-import EmojiFlagsIcon from "@material-ui/icons/EmojiFlags";
-import BorderColorIcon from "@material-ui/icons/BorderColor";
-import HowToVoteIcon from '@material-ui/icons/HowToVote';
-
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
@@ -69,19 +65,25 @@ const TableStepper = () => {
           aria-label="simple tabs example"
         >
           <Tab
-            icon={<EmojiFlagsIcon />}
+            icon={
+              <img
+                height="50px"
+                src="/buttons/competition.svg"
+                alt="competition"
+              />
+            }
             label="Competition"
             component={Link}
             to="/competitions/:id"
           />
           <Tab
-            icon={<BorderColorIcon />}
+            icon={<img src="/buttons/scoring.svg" alt="scoring" />}
             label="Scoring"
             component={Link}
             to="/competitions/:id/scoring"
           />
           <Tab
-            icon={<HowToVoteIcon />}
+            icon={<img src="/buttons/results.svg" alt="results" />}
             label="Results"
             href="#basic-tabs"
             component={Link}

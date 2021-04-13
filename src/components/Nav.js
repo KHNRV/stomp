@@ -8,8 +8,6 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 
-import Icon from "@material-ui/core/Icon";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -21,12 +19,15 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appBar: {
+    minHeight: 90,
     display: "flex",
     flexDirection: "row",
+    alignItems: "center"
   },
   logo: {
-    position: "absolute",
-    marginLeft: "3em",
+    // position: "absolute",
+    margin: "0.5em",
+    marginLeft: "1.5em"
   },
 }));
 
@@ -49,7 +50,7 @@ export default function Nav() {
                 to="/"
                 color="dark"
                 className={classes.button}
-                endIcon={<Icon>dashboard</Icon>}
+                endIcon={<img src="/buttons/dashboard.svg" alt="dashboard" />}
               >
                 Dashboard
               </Button>
