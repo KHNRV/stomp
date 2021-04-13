@@ -47,7 +47,7 @@ export default function DashboardJudges() {
               color: "#08253f",
             },
             toolbarButtonAlignment: "right",
-            padding: "dense",
+            padding: "default",
             paging: false,
             fixedColumns: { left: 0, right: 0 },
             actionsColumnIndex: -1,

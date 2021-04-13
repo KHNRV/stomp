@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import DashboardCompetitionsNew from "./DashboardCompetitionsNew";
+
 
 import { NavLink } from "react-router-dom";
 import MaterialTable from "@material-table/core";
@@ -28,23 +30,35 @@ const DashboardCompetitions = () => {
   return (
     <div className="competitions">
       <MaterialTable
-        title=""
         columns={columns}
         data={comps}
         style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
         localization={{
           body: {
             emptyDataSourceMessage:
-              "There is no information for this competition",
+              "There are no Competitions",
           },
         }}
         options={{
           search: false,
-          toolbarButtonAlignment: "left", // here is the option to change toolbar buttons' alignment
-          padding: "dense",
+          toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
+          padding: "default",
           paging: false,
           actionsColumnIndex: -1,
           fixedColumns: { left: 0, right: 0 },
+        }}
+        components={{
+          Toolbar: (props) => (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row-reverse",
+                paddingBottom: "10px",
+              }}
+            >
+              <DashboardCompetitionsNew />
+            </div>
+          ),
         }}
         editable={{
           onRowDelete: (oldData) =>
