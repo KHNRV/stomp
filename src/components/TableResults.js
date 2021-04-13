@@ -4,11 +4,13 @@ import { ExportCsv, ExportPdf } from "@material-table/exporters";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-import { data } from "../helpers/testdata";
-import getData from "../helpers/getData";
 
+import { impData } from "../helpers/testdata";
+import getData from "../helpers/getData";
 // Feed in the data and the competition id
-let [compData, compCol] = getData(data, 0);
+let [compData, compCol] = getData(impData, 1);
+
+
 
 const TableResults = () => {
   return (

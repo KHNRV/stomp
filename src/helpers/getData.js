@@ -30,7 +30,6 @@ const getData = (data, compId) => {
           field: `j${judge.id}`,
           lookup: scoring,
         });
-        console.log(judge.first_name);
       }
     });
   });
@@ -46,14 +45,12 @@ const getData = (data, compId) => {
           first_name: participant.first_name,
           last_name: participant.last_name,
         });
-        console.log(participant.first_name);
       }
     });
   });
-  console.log(compData);
-  console.log(_scores);
+  // console.log(compData);
 
-  // Add Scores
+  // ADD SCORES TO THE DATA
   _scores.forEach((score) => {
     compData.forEach((participant) => {
       if (participant.id === score.participant_id) {
@@ -62,7 +59,7 @@ const getData = (data, compId) => {
     });
   });
 
-  console.log(compData);
+  // console.log(compData);
 
   return [compData, compCols];
 };
