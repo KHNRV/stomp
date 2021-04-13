@@ -48,6 +48,10 @@ const DashboardCompetitions = () => {
         }}
         options={{
           search: false,
+          headerStyle: {
+            backgroundColor: "#dfad3e",
+            color: "#08253f",
+          },
           toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
           padding: "default",
           paging: false,

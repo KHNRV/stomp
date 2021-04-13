@@ -1,16 +1,20 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-
+import SelectParticipants from "./SelectParticipants";
+import {
+  Grid,
+  TextField,
+  InputLabel,
+  MenuItem,
+  Select,
+  Dialog,
+  Button,
+  DialogActions,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  useMediaQuery,
+} from "@material-ui/core/";
 import EmojiFlagsIcon from "@material-ui/icons/EmojiFlags";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 
 export default function DashboardCompetitionsNew() {
@@ -51,49 +55,36 @@ export default function DashboardCompetitionsNew() {
           </DialogContentText>
           <form noValidate>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
-                  autoComplete="fname"
-                  name="firstName"
+                  name="name"
                   variant="outlined"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="name"
+                  label="Name"
                   autoFocus
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="lname"
-                />
-              </Grid>
               <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
+                <InputLabel id="demo-simple-select-label">
+                  Scoring System
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  // value={age}
+                  // onChange={handleChange}
+                >
+                  <MenuItem value={"Callback"}>Ten</MenuItem>
+                  <MenuItem value={"Ralative Placement"}>Twenty</MenuItem>
+                </Select>
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  fullWidth
-                  type="tel"
-                  id="phone"
-                  label="Phone"
-                  name="phone"
-                  autoComplete="phone"
-                />
+              <Grid item xs={6}>
+                <SelectParticipants />
+              </Grid>
+              <Grid item xs={6}>
+                <SelectParticipants />
               </Grid>
             </Grid>
           </form>
