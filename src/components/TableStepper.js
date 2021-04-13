@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Stepper = () => {
+const TableStepper = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -93,4 +93,4 @@ const Stepper = () => {
   );
 };
 
-export default Stepper;
+export default TableStepper;

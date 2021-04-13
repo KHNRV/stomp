@@ -8,7 +8,7 @@ import Dashboard from "./components/Dashboard";
 import TableCompetition from "./components/TableCompetition";
 import TableScoring from "./components/TableScoring";
 import TableResults from "./components/TableResults";
-import Stepper from "./components/Stepper";
+import TableStepper from "./components/TableStepper";
 
 import { compData, compCol } from "./data";
 
@@ -28,7 +28,7 @@ function App() {
             <Nav></Nav>
             <Switch>
               <Route exact path="/competitions/:id/">
-                <Stepper />
+                <TableStepper />
                 <TableCompetition
                   data={data}
                   setData={setData}
@@ -37,11 +37,11 @@ function App() {
                 />
               </Route>
               <Route path="/competitions/:id/scoring">
-                <Stepper />
+                <TableStepper />
                 <TableScoring data={data} setData={setData} columns={columns} />
               </Route>
               <Route path="/competitions/:id/results">
-                <Stepper />
+                <TableStepper />
                 <TableResults data={data} columns={columns} />
               </Route>
               <Route exact path="/login">
