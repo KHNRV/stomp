@@ -1,5 +1,4 @@
 import React from "react";
-import SelectParticipants from "./SelectParticipants";
 import {
   Grid,
   TextField,
@@ -76,16 +75,11 @@ export default function DashboardCompetitionsNew() {
                   // value={age}
                   // onChange={handleChange}
                 >
-                  <MenuItem value={"Callback"}>Ten</MenuItem>
-                  <MenuItem value={"Ralative Placement"}>Twenty</MenuItem>
+                  <MenuItem value={"Callback"}>Callback</MenuItem>
+                  <MenuItem value={"Ralative Placement"}>Relative Placement</MenuItem>
                 </Select>
               </Grid>
-              <Grid item xs={6}>
-                <SelectParticipants />
-              </Grid>
-              <Grid item xs={6}>
-                <SelectParticipants />
-              </Grid>
+
             </Grid>
           </form>
         </DialogContent>
