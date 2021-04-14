@@ -70,8 +70,8 @@ const TableScoring = (
                 });
                 setTimeout(() => {
                   // console.log(sendData(data))
-                  console.log(JSON.stringify(sendData( updatedData, compCol)));
-                  // setData(updatedData);
+                  // console.log(JSON.stringify(sendData( updatedData, compCol)));
+                  setData(updatedData);
                   resolve();
                   // reject(alert("hey"));
                 }, 1000);
