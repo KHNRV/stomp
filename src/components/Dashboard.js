@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import DashboardCompetitions from "./DashboardCompetitions";
 import DashboardJudges from "./DashboardJudges";
 import DashboardParticipants from "./DashboardParticipants";
@@ -70,33 +72,28 @@ const Dashboard = () => {
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth"
-            aria-label="simple tabs example"
           >
             <Tab
               icon={<img src="/buttons/competitions.svg" alt="competitions" />}
               label="Competitions"
+              component={Link}
+              to="/competitions"
             />
             <Tab
               icon={<img src="/buttons/participants.svg" alt="participants" />}
               label="Participants"
+              component={Link}
+              to="/participants"
             />
             <Tab
               icon={<img src="/buttons/judges.svg" alt="judges" />}
               label="Judges"
+              component={Link}
+              to="/judges"
             />
           </Tabs>
         </AppBar>
       </Box>
-
-      <TabPanel value={value} index={0}>
-        <DashboardCompetitions />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <DashboardParticipants />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <DashboardJudges />
-      </TabPanel>
     </div>
   );
 };

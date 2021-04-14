@@ -5,6 +5,9 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Nav from "./components/Nav";
 import Dashboard from "./components/Dashboard";
+import DashboardCompetitions from "./components/DashboardCompetitions";
+import DashboardParticipants from "./components/DashboardParticipants";
+import DashboardJudges from "./components/DashboardJudges";
 import TableCompetition from "./components/TableCompetition";
 import TableScoring from "./components/TableScoring";
 import TableResults from "./components/TableResults";
@@ -33,6 +36,18 @@ function App() {
           <Router>
             <Nav></Nav>
             <Switch>
+              <Route exact path="/competitions">
+                <Dashboard />
+                <DashboardCompetitions />
+              </Route>
+              <Route exact path="/participants">
+                <Dashboard />
+                <DashboardParticipants />
+              </Route>
+              <Route exact path="/judges">
+                <Dashboard />
+                <DashboardJudges />
+              </Route>
               <Route exact path="/competitions/:id/">
                 <TableStepper />
                 <TableCompetition

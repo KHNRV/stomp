@@ -44,7 +44,7 @@ const DashboardCompetitions = () => {
         <MaterialTable
           columns={columns}
           data={comps}
-          style={{ padding: "0.5em", backgroundColor: "#F7F7F7" }}
+          style={{ padding: "1.5em 0.5em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
               emptyDataSourceMessage: "There are no Competitions",

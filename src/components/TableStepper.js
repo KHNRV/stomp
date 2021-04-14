@@ -62,16 +62,9 @@ const TableStepper = () => {
           indicatorColor="primary"
           textColor="primary"
           variant="fullWidth"
-          aria-label="simple tabs example"
         >
           <Tab
-            icon={
-              <img
-                height="50px"
-                src="/buttons/competition.svg"
-                alt="competition"
-              />
-            }
+            icon={<img src="/buttons/competition.svg" alt="competition" />}
             label="Competition"
             component={Link}
             to="/competitions/:id"
