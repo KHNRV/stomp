@@ -4,7 +4,7 @@ import { ExportCsv, ExportPdf } from "@material-table/exporters";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const TableResults = ({ data, columns }) => {
+const TableResults = ({ data, columns, eventName }) => {
   return (
     <div className="data-table">
       <ThemeProvider theme={theme}>
@@ -24,7 +24,7 @@ const TableResults = ({ data, columns }) => {
           localization={{
             body: {
               emptyDataSourceMessage:
-                "There is no information for this competition",
+                "Please add Participants and Judges",
             },
           }}
           options={{
@@ -32,19 +32,18 @@ const TableResults = ({ data, columns }) => {
               {
                 label: "Export PDF",
                 exportFunc: (cols, datas) =>
-                  ExportPdf(cols, datas, `${"competition"}-results`),
+                  ExportPdf(cols, datas, `${eventName} - ${"Solo Jazz Newcomer"} Results`),
               },
               {
                 label: "Export CSV",
                 exportFunc: (cols, datas) =>
-                  ExportCsv(cols, datas, "myCsvFileName"),
+                  ExportCsv(cols, datas, "results"),
               },
             ],
             headerStyle: {
               backgroundColor: "#EDEDED",
               color: "#001427",
             },
-            searchAutoFocus: true,
             toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
             padding: "default",
             paging: false,

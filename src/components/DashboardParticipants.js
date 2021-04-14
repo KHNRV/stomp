@@ -13,7 +13,7 @@ export default function DashboardParticipants({
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const columns = [
-    { title: "Bib #", field: "bib"},
+    { title: "Bib #", field: "bib" },
     { title: "First Name", field: "first_name" },
     { title: "Last Name", field: "last_name" },
     { title: "Email", field: "email" },
@@ -47,7 +47,15 @@ export default function DashboardParticipants({
           style={{ padding: "1.5em 0em 0em 0em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
-              emptyDataSourceMessage: "There are no Participants",
+              emptyDataSourceMessage: "Please add a Participant",
+              editRow: {
+                deleteText: "Delete this Participant?",
+              },
+            },
+          }}
+          body={{
+            editRow: {
+              deleteText: "Delete Row?",
             },
           }}
           options={{
@@ -59,7 +67,6 @@ export default function DashboardParticipants({
             padding: "default",
             actionsColumnIndex: -1,
             actionsAlign: "center",
-
           }}
           actions={[
             {

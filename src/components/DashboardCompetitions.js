@@ -73,7 +73,10 @@ const DashboardCompetitions = ({ eventName }) => {
           style={{ padding: "1.5em 0em 0em 0em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
-              emptyDataSourceMessage: "There are no Competitions",
+              emptyDataSourceMessage: "Please add a Competition",
+              editRow: {
+                deleteText: "Delete this Competition?",
+              },
             },
           }}
           options={{

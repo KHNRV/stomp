@@ -73,7 +73,7 @@ function App() {
               </Route>
               <Route path="/competitions/:id/results">
                 <TableStepper />
-                <TableResults data={comp} columns={columns} />
+                <TableResults data={comp} columns={columns} eventName={impData.event_name}/>
               </Route>
               <Route exact path="/login">
                 <Login />

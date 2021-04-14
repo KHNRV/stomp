@@ -24,7 +24,7 @@ const TableScoring = ({ data, setData, columns }) => {
             body: {
               addTooltip: "Add Entry",
               emptyDataSourceMessage:
-                "There is no information for this competition",
+                "Please add Participants and Judges",
               editRow: {
                 deleteText: "Delete this entry?",
               },
@@ -32,7 +32,6 @@ const TableScoring = ({ data, setData, columns }) => {
           }}
           options={{
             search: false,
-            searchAutoFocus: true,
             actionsColumnIndex: -1, // Puts actions to the right hand side
             toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
             padding: "default",
