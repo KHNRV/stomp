@@ -28,13 +28,13 @@ const DashboardCompetitions = ({ eventName }) => {
       ),
     },
     {
-      title: "No# of Judges",
+      title: "Judges",
       field: "judges",
       type: "numeric",
       align: "center",
     },
     {
-      title: "No# of Participants",
+      title: "Participants",
       field: "participants",
       type: "numeric",
       align: "center",
