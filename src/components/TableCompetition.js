@@ -5,13 +5,18 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 import { Paper, Typography, Box, Button, Grid } from "@material-ui/core";
 
-const TableCompetition = ({ data, setData, columns, setColumns }) => {
+const TableCompetition = ({
+  partData,
+  setPartData,
+  judgeData,
+  setJudgeData,
+}) => {
   // DBLOGIC
   return (
     <ThemeProvider theme={theme}>
       <div className="competition-table">
         <Paper style={{ padding: 8 }} elevation={2}>
-          <form noValidate>
+          <form method="POST">
             <Box minHeight="20vh">
               <Box>
                 <Typography
@@ -19,7 +24,7 @@ const TableCompetition = ({ data, setData, columns, setColumns }) => {
                   variant="h6"
                 >
                   {/* DB LOGIC */}
-                  Who is in the {`${"Solo Jazz Newcomer"}`} Competition?
+                  Who is in the Competition?
                 </Typography>
               </Box>
               <Grid
@@ -33,23 +38,18 @@ const TableCompetition = ({ data, setData, columns, setColumns }) => {
               >
                 <Grid container direction="row" justify="space-between">
                   <SelectParticipants
-                    data={data}
-                    setData={setData}
-                    columns={columns}
-                    setColumns={setColumns}
+                    partData={partData}
                   />
-                  <SelectJudges
-                    data={data}
-                    setData={setData}
-                    columns={columns}
-                    setColumns={setColumns}
-                  />
+                  <SelectJudges judgeData={judgeData} />
                 </Grid>
                 <Button
                   style={{ marginTop: 20 }}
                   variant="outlined"
                   color="primary"
                   type="submit"
+                  // Apply below for the COMPETITION OBJECT
+                  // Here setPartData needs to be invoked for form submission
+                  // Here setJudgeData needs to be invoked for form submission
                 >
                   Save
                 </Button>
