@@ -26,8 +26,9 @@ let [compData, compCol] = getData(impData, 0);
 function App() {
   const [partData, setPartData] = useState(impData.participants);
   const [judgeData, setJudgeData] = useState(impData.judges);
-  const [data, setData] = useState(compData);
-  const [columns, setColumns] = useState(compCol);
+  const [comp, setComp] = useState(compData);
+  const columns = compCol;
+  // const [columns, setColumns] = useState(compCol);
 
   return (
     <div className="App">
@@ -38,11 +39,12 @@ function App() {
             <Switch>
               <Route exact path="/competitions">
                 <Dashboard />
-                <DashboardCompetitions />
+                <DashboardCompetitions eventName={impData.event_name} />
               </Route>
               <Route exact path="/participants">
                 <Dashboard />
                 <DashboardParticipants
+                  eventName={impData.event_name}
                   partData={partData}
                   setPartData={setPartData}
                 />
@@ -50,6 +52,7 @@ function App() {
               <Route exact path="/judges">
                 <Dashboard />
                 <DashboardJudges
+                  eventName={impData.event_name}
                   judgeData={judgeData}
                   setJudgeData={setJudgeData}
                 />
@@ -66,11 +69,11 @@ function App() {
               {/* DBLOGIC */}
               <Route path="/competitions/:id/scoring">
                 <TableStepper />
-                <TableScoring data={data} setData={setData} columns={columns} />
+                <TableScoring data={comp} setData={setComp} columns={columns} />
               </Route>
               <Route path="/competitions/:id/results">
                 <TableStepper />
-                <TableResults data={data} columns={columns} />
+                <TableResults data={comp} columns={columns} />
               </Route>
               <Route exact path="/login">
                 <Login />

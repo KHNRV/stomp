@@ -7,7 +7,7 @@ import MaterialTable from "@material-table/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const DashboardCompetitions = () => {
+const DashboardCompetitions = ({ eventName }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const columns = [
@@ -48,7 +48,7 @@ const DashboardCompetitions = () => {
       <DashboardCompetitionsNew open={modalIsOpen} setOpen={setModalIsOpen} />
       <ThemeProvider theme={theme}>
         <MaterialTable
-          title={"CSC 2021"}
+          title={eventName}
           columns={columns}
           data={comps}
           icons={{

@@ -5,7 +5,11 @@ import MaterialTable from "@material-table/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-export default function DashboardParticipants({ partData, setPartData }) {
+export default function DashboardParticipants({
+  eventName,
+  partData,
+  setPartData,
+}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const columns = [
@@ -25,7 +29,7 @@ export default function DashboardParticipants({ partData, setPartData }) {
           setPartData={setPartData}
         />
         <MaterialTable
-          title={"CSC 2021"}
+          title={eventName}
           columns={columns}
           data={partData}
           icons={{

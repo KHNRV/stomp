@@ -5,7 +5,11 @@ import MaterialTable from "@material-table/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-export default function DashboardJudges({ judgeData, setJudgeData }) {
+export default function DashboardJudges({
+  eventName,
+  judgeData,
+  setJudgeData,
+}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const columns = [
@@ -35,7 +39,7 @@ export default function DashboardJudges({ judgeData, setJudgeData }) {
       <ThemeProvider theme={theme}>
         <DashboardJudgesNew open={modalIsOpen} setOpen={setModalIsOpen} />
         <MaterialTable
-          title={"CSC 2021"}
+          title={eventName}
           columns={columns}
           data={judgeData}
           icons={{
