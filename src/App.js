@@ -42,7 +42,9 @@ function App() {
               </Route>
               <Route exact path="/participants">
                 <Dashboard />
-                <DashboardParticipants />
+                <DashboardParticipants 
+                partData={partData} setPartData={setPartData}
+                />
               </Route>
               <Route exact path="/judges">
                 <Dashboard />

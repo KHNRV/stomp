@@ -5,8 +5,10 @@ import MaterialTable from "@material-table/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-export default function DashboardParticipants() {
-  // DBLOGIC
+export default function DashboardParticipants({ partData, setPartData }) {
+  
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const columns = [
     { title: "Bib #", field: "bib" },
     { title: "First Name", field: "first_name" },
@@ -15,30 +17,18 @@ export default function DashboardParticipants() {
     { title: "Phone", field: "phone" },
   ];
 
-  const [data, setData] = useState([
-    {
-      bib: 101,
-      first_name: "Yam",
-      last_name: "Atkins",
-      email: "yam.atkins@gmail.com",
-      phone: "(599) 723-6865",
-    },
-    {
-      bib: 102,
-      first_name: "Oli",
-      last_name: "Atkins",
-      email: "oli.atkins@gmail.com",
-      phone: "(476) 431-6434",
-    },
-  ]);
-
   return (
     <div className="results-table">
       <ThemeProvider theme={theme}>
+        <DashboardParticipantsNew open={modalIsOpen} setOpen={setModalIsOpen} />
         <MaterialTable
+          title={"CSC 2021"}
           columns={columns}
-          data={data}
+          data={partData}
           icons={{
+            Search: () => (
+              <img height="25" src="/buttons/search.svg" alt="search" />
+            ),
             Delete: () => (
               <img height="25" src="/buttons/delete.svg" alt="delete" />
             ),
@@ -54,7 +44,7 @@ export default function DashboardParticipants() {
             },
           }}
           options={{
-            search: false,
+            search: true,
             headerStyle: {
               backgroundColor: "#E0E0E0",
               color: "#001427",
@@ -65,27 +55,22 @@ export default function DashboardParticipants() {
             fixedColumns: { left: 0, right: 0 },
             actionsColumnIndex: -1,
           }}
-          components={{
-            Toolbar: (props) => (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row-reverse",
-                  paddingBottom: "10px",
-                }}
-              >
-                <DashboardParticipantsNew />
-              </div>
-            ),
-          }}
+          actions={[
+            {
+              icon: () => <img height="25" src="/buttons/add.svg" alt="add" />,
+              tooltip: "Add Participant",
+              isFreeAction: true,
+              onClick: () => setModalIsOpen(true),
+            },
+          ]}
           editable={{
             onRowDelete: (oldData) =>
               new Promise((resolve, reject) => {
                 setTimeout(() => {
-                  const dataDelete = [...data];
+                  const dataDelete = [...partData];
                   const index = oldData.tableData.id;
                   dataDelete.splice(index, 1);
-                  setData([...dataDelete]);
+                  setPartData([...dataDelete]);
                   resolve();
                 }, 1000);
               }),
