@@ -1,10 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import DashboardCompetitions from "./DashboardCompetitions";
-import DashboardJudges from "./DashboardJudges";
-import DashboardParticipants from "./DashboardParticipants";
-
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";

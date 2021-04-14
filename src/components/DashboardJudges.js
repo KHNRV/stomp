@@ -35,6 +35,15 @@ export default function DashboardJudges() {
         <MaterialTable
           columns={columns}
           data={data}
+          icons={{
+            Delete: () => (
+              <img height="25" src="/buttons/delete.svg" alt="delete" />
+            ),
+            Check: () => <img height="25" src="/buttons/save.svg" alt="save" />,
+            Clear: () => (
+              <img height="25" src="/buttons/cancel.svg" alt="cancel" />
+            ),
+          }}
           style={{ padding: "1.5em 0.5em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {

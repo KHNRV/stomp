@@ -28,7 +28,7 @@ export default function DashboardParticipantsNew() {
   return (
     <div>
       <Button
-        endIcon={<img height="20"src="/buttons/participants.svg" alt="participants" />}
+        endIcon={<img height="25"src="/buttons/participants.svg" alt="participants" />}
         variant="outlined"
         color="primary"
         onClick={handleClickOpen}

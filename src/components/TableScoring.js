@@ -14,10 +14,10 @@ const TableScoring = ({ data, setData, columns }) => {
           data={data}
           style={{ padding: "0.5em", backgroundColor: "#F7F7F7" }}
           icons={{
-            Edit: () => <img height="32" src="/buttons/edit.svg" alt="edit" />,
-            Check: () => <img height="30" src="/buttons/save.svg" alt="save" />,
+            Edit: () => <img height="30" src="/buttons/edit.svg" alt="edit" />,
+            Check: () => <img height="25" src="/buttons/save.svg" alt="save" />,
             Clear: () => (
-              <img height="28" src="/buttons/cancel.svg" alt="cancel" />
+              <img height="25" src="/buttons/cancel.svg" alt="cancel" />
             ),
           }}
           localization={{

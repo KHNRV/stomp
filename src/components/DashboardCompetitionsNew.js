@@ -31,7 +31,7 @@ export default function DashboardCompetitionsNew() {
   return (
     <div>
       <Button
-        endIcon={<img height="20"src="/buttons/competition.svg" alt="competition" />}
+        endIcon={<img height="25"src="/buttons/competition.svg" alt="competition" />}
         variant="outlined"
         color="primary"
         onClick={handleClickOpen}
