@@ -4,22 +4,14 @@ import { ExportCsv, ExportPdf } from "@material-table/exporters";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-
-import { impData } from "../helpers/testdata";
-import getData from "../helpers/getData";
-// Feed in the data and the competition id
-let [compData, compCol] = getData(impData, 1);
-
-
-
-const TableResults = () => {
+const TableResults = ({ data, columns }) => {
   return (
     <div className="results-table">
       <ThemeProvider theme={theme}>
         <MaterialTable
           title="Solo Jazz Newcomer"
-          columns={compCol}
-          data={compData}
+          columns={columns}
+          data={data}
           style={{ padding: "0.5em", backgroundColor: "whitesmoke" }}
           localization={{
             body: {

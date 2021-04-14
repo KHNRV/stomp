@@ -10,11 +10,15 @@ import TableScoring from "./components/TableScoring";
 import TableResults from "./components/TableResults";
 import TableStepper from "./components/TableStepper";
 
-import { compData, compCol } from "./data";
+import { impData } from "./helpers/testdata";
+import getData from "./helpers/getData";
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
 import "./styles/app.scss";
+
+// Feed in the the whole data and competition id
+let [compData, compCol] = getData(impData, 1);
 
 function App() {
   const [data, setData] = useState(compData);
@@ -29,12 +33,7 @@ function App() {
             <Switch>
               <Route exact path="/competitions/:id/">
                 <TableStepper />
-                <TableCompetition
-                  data={data}
-                  setData={setData}
-                  columns={columns}
-                  setColumns={setColumns}
-                />
+                <TableCompetition />
               </Route>
               {/* DBLOGIC */}
               <Route path="/competitions/:id/scoring">
