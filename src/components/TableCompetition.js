@@ -30,16 +30,12 @@ const TableCompetition = ({
               <Grid
                 container
                 spacing={0}
-                direction="row"
-                alignItems="center"
                 alignContent="space-between"
                 justify="center"
                 style={{ minHeight: "15vh", padding: 20 }}
               >
-                <Grid container direction="row" justify="space-between">
-                  <SelectParticipants
-                    partData={partData}
-                  />
+                <Grid container direction="row" justify="center">
+                  <SelectParticipants partData={partData} />
                   <SelectJudges judgeData={judgeData} />
                 </Grid>
                 <Button

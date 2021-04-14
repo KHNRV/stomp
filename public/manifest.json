@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Stomp",
+  "name": "Stomp - Dance Event Management",
   "icons": [
     {
       "src": "favicon.ico",

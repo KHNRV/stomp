@@ -38,7 +38,7 @@ export default function Nav() {
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} color="primary" position="static">
-        <Box mr={2}>
+        <Box component={Link} to="/" mr={2}>
           <img className={classes.logo} height="50px" src="/logo.png" alt="" />
         </Box>
         <Grid container justify={"flex-end"}>
