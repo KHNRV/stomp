@@ -53,7 +53,7 @@ const DashboardCompetitions = ({ eventName }) => {
           data={comps}
           icons={{
             Search: () => (
-              <img height="25" src="/buttons/search.svg" alt="search" />
+              <img height="20" src="/buttons/search.svg" alt="search" />
             ),
             Delete: () => (
               <img height="25" src="/buttons/delete.svg" alt="delete" />

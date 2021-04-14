@@ -14,7 +14,7 @@ const TableResults = ({ data, columns }) => {
           data={data}
           icons={{
             Search: () => (
-              <img height="25" src="/buttons/search.svg" alt="search" />
+              <img height="20" src="/buttons/search.svg" alt="search" />
             ),
             Export: () => (
               <img height="25" src="/buttons/export.svg" alt="export" />
