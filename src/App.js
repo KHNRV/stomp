@@ -42,13 +42,17 @@ function App() {
               </Route>
               <Route exact path="/participants">
                 <Dashboard />
-                <DashboardParticipants 
-                partData={partData} setPartData={setPartData}
+                <DashboardParticipants
+                  partData={partData}
+                  setPartData={setPartData}
                 />
               </Route>
               <Route exact path="/judges">
                 <Dashboard />
-                <DashboardJudges />
+                <DashboardJudges
+                  judgeData={judgeData}
+                  setJudgeData={setJudgeData}
+                />
               </Route>
               <Route exact path="/competitions/:id/">
                 <TableStepper />

@@ -6,9 +6,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
 export default function DashboardJudges({ judgeData, setJudgeData }) {
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
 
   const columns = [
     { title: "First Name", field: "first_name" },
@@ -35,12 +33,11 @@ export default function DashboardJudges({ judgeData, setJudgeData }) {
   return (
     <div className="results-table">
       <ThemeProvider theme={theme}>
-      <DashboardJudgesNew open={modalIsOpen} setOpen={setModalIsOpen}/>
+        <DashboardJudgesNew open={modalIsOpen} setOpen={setModalIsOpen} />
         <MaterialTable
-                  title={"CSC 2021"}
-
+          title={"CSC 2021"}
           columns={columns}
-          data={data}
+          data={judgeData}
           icons={{
             Search: () => (
               <img height="25" src="/buttons/search.svg" alt="search" />
@@ -73,7 +70,7 @@ export default function DashboardJudges({ judgeData, setJudgeData }) {
           actions={[
             {
               icon: () => <img height="25" src="/buttons/add.svg" alt="add" />,
-              tooltip: "Add Participant",
+              tooltip: "Add Judge",
               isFreeAction: true,
               onClick: () => setModalIsOpen(true),
             },
@@ -82,10 +79,10 @@ export default function DashboardJudges({ judgeData, setJudgeData }) {
             onRowDelete: (oldData) =>
               new Promise((resolve, reject) => {
                 setTimeout(() => {
-                  const dataDelete = [...data];
+                  const dataDelete = [...judgeData];
                   const index = oldData.tableData.id;
                   dataDelete.splice(index, 1);
-                  setData([...dataDelete]);
+                  setJudgeData([...dataDelete]);
                   resolve();
                 }, 1000);
               }),

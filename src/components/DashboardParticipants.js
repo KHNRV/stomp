@@ -20,7 +20,7 @@ export default function DashboardParticipants({ partData, setPartData }) {
   return (
     <div className="results-table">
       <ThemeProvider theme={theme}>
-        <DashboardParticipantsNew open={modalIsOpen} setOpen={setModalIsOpen} />
+        <DashboardParticipantsNew open={modalIsOpen} setOpen={setModalIsOpen} setPartData={setPartData}/>
         <MaterialTable
           title={"CSC 2021"}
           columns={columns}

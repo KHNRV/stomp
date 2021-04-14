@@ -12,7 +12,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 
-export default function DashboardParticipantsNew({open, setOpen}) {
+export default function DashboardParticipantsNew({
+  open,
+  setOpen,
+  setPartData,
+}) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -22,11 +26,7 @@ export default function DashboardParticipantsNew({open, setOpen}) {
 
   return (
     <div>
-      <Dialog
-        fullScreen={fullScreen}
-        open={open}
-        onClose={handleClose}
-      >
+      <Dialog fullScreen={fullScreen} open={open} onClose={handleClose}>
         <DialogTitle id="responsive-dialog-title">
           {"Create a Participant"}
         </DialogTitle>
