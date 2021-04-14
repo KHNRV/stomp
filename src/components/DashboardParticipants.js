@@ -38,7 +38,7 @@ export default function DashboardParticipants() {
         <MaterialTable
           columns={columns}
           data={data}
-          style={{ padding: "0.5em", backgroundColor: "whitesmoke" }}
+          style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
           localization={{
             body: {
               emptyDataSourceMessage: "There are no Participants",

@@ -12,7 +12,7 @@ const TableResults = ({ data, columns }) => {
           title="Solo Jazz Newcomer"
           columns={columns}
           data={data}
-          style={{ padding: "0.5em", backgroundColor: "whitesmoke" }}
+          style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
           localization={{
             body: {
               emptyDataSourceMessage:
