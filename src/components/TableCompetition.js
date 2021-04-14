@@ -43,7 +43,6 @@ const TableCompetition = ({
                 </Grid>
                 <Button
                   style={{ marginTop: 20 }}
-                  variant="outlined"
                   color="primary"
                   type="submit"
                   // Apply below for the COMPETITION OBJECT
