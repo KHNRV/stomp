@@ -44,7 +44,7 @@ const DashboardCompetitions = () => {
         <MaterialTable
           columns={columns}
           data={comps}
-          style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
+          style={{ padding: "0.5em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
               emptyDataSourceMessage: "There are no Competitions",
@@ -53,8 +53,8 @@ const DashboardCompetitions = () => {
           options={{
             search: false,
             headerStyle: {
-              backgroundColor: "#dfad3e",
-              color: "#08253f",
+              backgroundColor: "#C2C2C2",
+              color: "#001427",
             },
             toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
             padding: "default",

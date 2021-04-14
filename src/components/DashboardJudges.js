@@ -35,7 +35,7 @@ export default function DashboardJudges() {
         <MaterialTable
           columns={columns}
           data={data}
-          style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
+          style={{ padding: "0.5em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
               emptyDataSourceMessage: "There are no Judges",

@@ -59,7 +59,7 @@ const TableStepper = () => {
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="secondary"
+          indicatorColor="primary"
           textColor="primary"
           variant="fullWidth"
           aria-label="simple tabs example"

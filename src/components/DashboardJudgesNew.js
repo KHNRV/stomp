@@ -28,7 +28,7 @@ export default function DashboardJudgesNew() {
   return (
     <div>
       <Button
-        endIcon={<img height="20"src="/buttons/judges-blue.svg" alt="judges" />}
+        endIcon={<img height="20"src="/buttons/judges.svg" alt="judges" />}
         variant="outlined"
         color="primary"
         onClick={handleClickOpen}

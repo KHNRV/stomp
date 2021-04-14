@@ -4,11 +4,11 @@ $dark: "#08253f";
 $blue: "#2980ba";
 $yellow: "#dfad3e";
 $red: "#bd4033";
-$white: "#f5f5f5";
+$white: "#F7F7F7";
 $purple: "#69385C";
 
 body {
-  background-color: $white;
+  background-color: "$white";
 }
 
 .main-components {

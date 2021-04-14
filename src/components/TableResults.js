@@ -12,7 +12,15 @@ const TableResults = ({ data, columns }) => {
           title="Solo Jazz Newcomer"
           columns={columns}
           data={data}
-          style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
+          icons={{
+            Search: () => (
+              <img height="25" src="/buttons/search.svg" alt="edit" />
+            ),
+            Export: () => (
+              <img height="28" src="/buttons/export.svg" alt="export" />
+            ),
+          }}
+          style={{ padding: "0.5em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
               emptyDataSourceMessage:
@@ -32,10 +40,9 @@ const TableResults = ({ data, columns }) => {
                   ExportCsv(cols, datas, "myCsvFileName"),
               },
             ],
-
             headerStyle: {
-              backgroundColor: "#dfad3e",
-              color: "#08253f",
+              backgroundColor: "#C2C2C2",
+              color: "#001427",
             },
             searchAutoFocus: true,
 

@@ -12,7 +12,7 @@ const TableScoring = ({ data, setData, columns }) => {
           title="Solo Jazz Newcomer"
           columns={columns}
           data={data}
-          style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
+          style={{ padding: "0.5em", backgroundColor: "#F7F7F7" }}
           icons={{
             Edit: () => <img height="32" src="/buttons/edit.svg" alt="edit" />,
             Check: () => <img height="30" src="/buttons/save.svg" alt="save" />,
@@ -39,8 +39,8 @@ const TableScoring = ({ data, setData, columns }) => {
             paging: false,
             fixedColumns: { left: 0, right: 0 },
             headerStyle: {
-              backgroundColor: "#dfad3e",
-              color: "#08253f",
+              backgroundColor: "#C2C2C2",
+              color: "#001427",
             },
           }}
           editable={{

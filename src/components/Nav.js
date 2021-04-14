@@ -36,9 +36,9 @@ export default function Nav() {
 
   return (
     <div className={classes.root}>
-      <AppBar className={classes.appBar} color="secondary" position="static">
+      <AppBar className={classes.appBar} color="primary" position="static">
         <Box mr={2}>
-          <img className={classes.logo} height="55px" src="/logo.png" alt="" />
+          <img className={classes.logo} height="35px" src="/logo.png" alt="" />
         </Box>
         <Grid container justify={"flex-end"}>
           <Toolbar>
@@ -48,9 +48,9 @@ export default function Nav() {
               <Button
                 component={Link}
                 to="/"
-                color="dark"
+                color="secondary"
                 className={classes.button}
-                endIcon={<img src="/buttons/dashboard.svg" alt="dashboard" />}
+                endIcon={<img height="35px" src="/buttons/dashboard.svg" alt="dashboard" />}
               >
                 Dashboard
               </Button>

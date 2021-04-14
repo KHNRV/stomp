@@ -11,10 +11,10 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#2980ba",
+      main: "#1f1f1f",
     },
     secondary: {
-      main: "#dfad3e",
+      main: "#F7F7F7",
     },
     text: {
       primary: "#001427",
@@ -22,6 +22,7 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: "'Poppins', sans-serif",
+    fontSize: 15,
   },
   appBar: {
     maxWidth: "500px",
