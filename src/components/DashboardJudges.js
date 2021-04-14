@@ -20,7 +20,7 @@ export default function DashboardJudges({
   ];
 
   return (
-    <div className="results-table">
+    <div className="data-table">
       <ThemeProvider theme={theme}>
         <DashboardJudgesNew open={modalIsOpen} setOpen={setModalIsOpen} />
         <MaterialTable
@@ -39,7 +39,7 @@ export default function DashboardJudges({
               <img height="25" src="/buttons/cancel.svg" alt="cancel" />
             ),
           }}
-          style={{ padding: "1.5em 0.5em", backgroundColor: "#F7F7F7" }}
+          style={{ padding: "1.5em 0em 0em 0em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
               emptyDataSourceMessage: "There are no Judges",
@@ -52,7 +52,6 @@ export default function DashboardJudges({
             },
             toolbarButtonAlignment: "right",
             padding: "default",
-            paging: false,
             fixedColumns: { left: 0, right: 0 },
             actionsColumnIndex: -1,
           }}

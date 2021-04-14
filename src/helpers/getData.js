@@ -8,9 +8,9 @@
 const getData = (data, compId) => {
   const scoring = { 0: "no", 1: "maybe", 2: "yes" };
 
-  const _competitors = data.competitions[compId].participants;
-  const _judges = data.competitions[compId].judges;
-  const _scores = data.competitions[compId].scores;
+  const competitiorsData = data.competitions[compId].participants;
+  const judgesData = data.competitions[compId].judges;
+  const scoresData = data.competitions[compId].scores;
 
   const compData = [];
 
@@ -24,7 +24,7 @@ const getData = (data, compId) => {
   ];
 
   // TO CREATE COLUMNS
-  _judges.forEach((judgeId) => {
+  judgesData.forEach((judgeId) => {
     data.judges.forEach((judge) => {
       if (judge.id === judgeId) {
         compCols.push({
@@ -35,10 +35,9 @@ const getData = (data, compId) => {
       }
     });
   });
-  // console.log(compCols)
 
   // TO CREATE DATA FOR EACH PARTICPANT NOT INCLUDING THE SCORE
-  _competitors.forEach((participantId) => {
+  competitiorsData.forEach((participantId) => {
     data.participants.forEach((participant) => {
       if (participant.id === participantId) {
         compData.push({
@@ -53,7 +52,7 @@ const getData = (data, compId) => {
   // console.log(compData);
 
   // ADD SCORES TO THE DATA
-  _scores.forEach((score) => {
+  scoresData.forEach((score) => {
     compData.forEach((participant) => {
       if (participant.id === score.participant_id) {
         participant[`j${score.judge_id}`] = score.value;

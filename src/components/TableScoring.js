@@ -6,13 +6,13 @@ import sendData from "../helpers/sendData";
 
 const TableScoring = ({ data, setData, columns }) => {
   return (
-    <div className="scoring-table">
+    <div className="data-table">
       <ThemeProvider theme={theme}>
         <MaterialTable
           title="Solo Jazz Newcomer"
           columns={columns}
           data={data}
-          style={{ padding: "1.5em 0.5em", backgroundColor: "#F7F7F7" }}
+          style={{ padding: "1.5em 0em 0em 0em", backgroundColor: "#F7F7F7" }}
           icons={{
             Edit: () => <img height="28" src="/buttons/edit.svg" alt="edit" />,
             Check: () => <img height="25" src="/buttons/save.svg" alt="save" />,

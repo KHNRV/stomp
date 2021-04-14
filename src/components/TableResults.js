@@ -6,7 +6,7 @@ import theme from "../theme";
 
 const TableResults = ({ data, columns }) => {
   return (
-    <div className="results-table">
+    <div className="data-table">
       <ThemeProvider theme={theme}>
         <MaterialTable
           title="Solo Jazz Newcomer"
@@ -20,7 +20,7 @@ const TableResults = ({ data, columns }) => {
               <img height="28" src="/buttons/export.svg" alt="export" />
             ),
           }}
-          style={{ padding: "1.5em 0.5em", backgroundColor: "#F7F7F7" }}
+          style={{ padding: "1.5em 0em 0em 0em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
               emptyDataSourceMessage:

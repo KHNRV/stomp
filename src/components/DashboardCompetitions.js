@@ -44,7 +44,7 @@ const DashboardCompetitions = ({ eventName }) => {
   ]);
 
   return (
-    <div className="results-table">
+    <div className="data-table">
       <DashboardCompetitionsNew open={modalIsOpen} setOpen={setModalIsOpen} />
       <ThemeProvider theme={theme}>
         <MaterialTable
@@ -63,7 +63,7 @@ const DashboardCompetitions = ({ eventName }) => {
               <img height="25" src="/buttons/cancel.svg" alt="cancel" />
             ),
           }}
-          style={{ padding: "1.5em 0.5em", backgroundColor: "#F7F7F7" }}
+          style={{ padding: "1.5em 0em 0em 0em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
               emptyDataSourceMessage: "There are no Competitions",
@@ -76,7 +76,6 @@ const DashboardCompetitions = ({ eventName }) => {
             },
             toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
             padding: "default",
-            paging: false,
             actionsColumnIndex: -1,
             fixedColumns: { left: 0, right: 0 },
           }}

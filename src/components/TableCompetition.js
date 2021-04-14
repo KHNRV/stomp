@@ -14,7 +14,7 @@ const TableCompetition = ({
   // DBLOGIC
   return (
     <ThemeProvider theme={theme}>
-      <div className="competition-table">
+      <div className="data-table">
         <Paper
           style={{ backgroundColor: "#F7F7F7", padding: 20 }}
           elevation={2}

@@ -13,7 +13,7 @@ export default function DashboardParticipants({
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const columns = [
-    { title: "Bib #", field: "bib" },
+    { title: "Bib #", field: "bib"},
     { title: "First Name", field: "first_name" },
     { title: "Last Name", field: "last_name" },
     { title: "Email", field: "email" },
@@ -21,7 +21,7 @@ export default function DashboardParticipants({
   ];
 
   return (
-    <div className="results-table">
+    <div className="data-table">
       <ThemeProvider theme={theme}>
         <DashboardParticipantsNew
           open={modalIsOpen}
@@ -44,7 +44,7 @@ export default function DashboardParticipants({
               <img height="25" src="/buttons/cancel.svg" alt="cancel" />
             ),
           }}
-          style={{ padding: "1.5em 0.5em", backgroundColor: "#F7F7F7" }}
+          style={{ padding: "1.5em 0em 0em 0em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
               emptyDataSourceMessage: "There are no Participants",
@@ -57,9 +57,9 @@ export default function DashboardParticipants({
             },
             toolbarButtonAlignment: "right",
             padding: "default",
-            paging: false,
-            fixedColumns: { left: 0, right: 0 },
             actionsColumnIndex: -1,
+            actionsAlign: "center",
+
           }}
           actions={[
             {
