@@ -1,0 +1,8 @@
+.competitions-list {
+  color: $dark;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

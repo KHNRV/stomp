@@ -1,19 +1,8 @@
-// Colors
-// For components to change color search for the hex value ("#c7a42e") and replace.
-$dark: "#08253f";
-$blue: "#2980ba";
-$yellow: "#dfad3e";
-$red: "#bd4033";
-$white: "#F7F7F7";
-$purple: "#69385C";
-
-// font-family: 'Denk One', sans-serif;
-// font-family: 'Poppins', sans-serif;
-// font-family: 'Yantramanav', sans-serif;
+$dark: #1f1f1f;
+$white: #F7F7F7;
 
 body {
-  background-color: "$white";
-
+  background-color: $white;
 }
 
 .main-components {
@@ -42,6 +31,7 @@ body {
   border: transparent;
 }
 
+@import "./competitions-list";
 @import "./competition-table";
 @import "./scoring-table";
 @import "./results-table";

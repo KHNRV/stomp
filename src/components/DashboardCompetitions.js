@@ -13,6 +13,7 @@ const DashboardCompetitions = () => {
     {
       title: "Competitions",
       field: "competitions",
+      render: rowData=> <NavLink className="competitions-list" to={rowData.path}>{rowData.compName}</NavLink>
     },
     {
       title: "No# of Judges",
@@ -30,9 +31,8 @@ const DashboardCompetitions = () => {
 
   const [comps, setComps] = useState([
     {
-      competitions: (
-        <NavLink to="/competitions/:id">Solo Jazz Newcomer</NavLink>
-      ),
+      path: "/competitions/:id",
+      compName: "Solo Jazz Newcomer",
       judges: 3,
       participants: 5,
     },

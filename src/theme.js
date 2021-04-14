@@ -1,17 +1,5 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
-// CSS colors
-// $dark: "#001427";
-// $blue: "#2980ba";
-// $yellow: "#dfad3e";
-// $red: "#bd4033";
-// $white: "#f5f5f5";
-// $purple: "#69385C"
-
-// font-family: 'Denk One', sans-serif;
-// font-family: 'Poppins', sans-serif;
-// font-family: 'Yantramanav', sans-serif;
-
 const theme = createMuiTheme({
   palette: {
     primary: {
