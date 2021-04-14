@@ -19,21 +19,6 @@ export default function DashboardJudges({
     { title: "Phone", field: "phone" },
   ];
 
-  const [data, setData] = useState([
-    {
-      first_name: "Sylvia",
-      last_name: "Sykes",
-      email: "sylvia.sykes@hey.com",
-      phone: "(970) 682-3614",
-    },
-    {
-      first_name: "Annie",
-      last_name: "Trudeau",
-      email: "annie.trudeau@gmail.com",
-      phone: "(514) 334-5547",
-    },
-  ]);
-
   return (
     <div className="results-table">
       <ThemeProvider theme={theme}>
