@@ -20,7 +20,7 @@ const TableResults = ({ data, columns }) => {
               <img height="25" src="/buttons/export.svg" alt="export" />
             ),
           }}
-          style={{ padding: "0.5em", backgroundColor: "#F7F7F7" }}
+          style={{ padding: "1.5em 0.5em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
               emptyDataSourceMessage:
