@@ -15,7 +15,10 @@ const TableCompetition = ({
   return (
     <ThemeProvider theme={theme}>
       <div className="competition-table">
-        <Paper style={{ backgroundColor: "#F7F7F7", padding: 20 }} elevation={2}>
+        <Paper
+          style={{ backgroundColor: "#F7F7F7", padding: 20 }}
+          elevation={2}
+        >
           <form method="POST">
             <Box minHeight="20vh">
               <Box>

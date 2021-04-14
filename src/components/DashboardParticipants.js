@@ -6,7 +6,6 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
 export default function DashboardParticipants({ partData, setPartData }) {
-  
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const columns = [
@@ -20,7 +19,11 @@ export default function DashboardParticipants({ partData, setPartData }) {
   return (
     <div className="results-table">
       <ThemeProvider theme={theme}>
-        <DashboardParticipantsNew open={modalIsOpen} setOpen={setModalIsOpen} setPartData={setPartData}/>
+        <DashboardParticipantsNew
+          open={modalIsOpen}
+          setOpen={setModalIsOpen}
+          setPartData={setPartData}
+        />
         <MaterialTable
           title={"CSC 2021"}
           columns={columns}

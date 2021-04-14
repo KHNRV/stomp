@@ -14,13 +14,13 @@ const getData = (data, compId) => {
 
   const compData = [];
 
-  // BY DEFAULT THIS WILL BE SHOWN ON THE TABLE COLUMNS, 
+  // BY DEFAULT THIS WILL BE SHOWN ON THE TABLE COLUMNS,
   // WETHER THERE IS DATA OR NOT
   const compCols = [
     { title: "ID", field: "participant_id", hidden: true },
-    { title: "Bib #", field: "bib", editable: 'never' },
-    { title: "First Name", field: "first_name", editable: 'never' },
-    { title: "Last Name", field: "last_name", editable: 'never' },
+    { title: "Bib #", field: "bib", editable: "never" },
+    { title: "First Name", field: "first_name", editable: "never" },
+    { title: "Last Name", field: "last_name", editable: "never" },
   ];
 
   // TO CREATE COLUMNS

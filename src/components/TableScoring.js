@@ -57,7 +57,7 @@ const TableScoring = ({ data, setData, columns }) => {
                 setTimeout(() => {
                   // USE SENDDATA TO CONVERT BACK TO WHOLE DATA TO SEND TO DB
                   // console.log(JSON.stringify(sendData( updatedData, compCol)));
-                  console.log(updatedData)
+                  console.log(updatedData);
                   setData(updatedData);
                   resolve();
                 }, 1000);

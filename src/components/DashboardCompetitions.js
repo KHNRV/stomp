@@ -8,14 +8,17 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
 const DashboardCompetitions = () => {
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const columns = [
     {
       title: "Competitions",
       field: "competitions",
-      render: rowData=> <NavLink className="competitions-list" to={rowData.path}>{rowData.compName}</NavLink>
+      render: (rowData) => (
+        <NavLink className="competitions-list" to={rowData.path}>
+          {rowData.compName}
+        </NavLink>
+      ),
     },
     {
       title: "No# of Judges",
@@ -45,7 +48,7 @@ const DashboardCompetitions = () => {
       <DashboardCompetitionsNew open={modalIsOpen} setOpen={setModalIsOpen} />
       <ThemeProvider theme={theme}>
         <MaterialTable
-        title={"CSC 2021"}
+          title={"CSC 2021"}
           columns={columns}
           data={comps}
           icons={{
