@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -38,7 +38,7 @@ export default function SignUp() {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+        <img height="30" src="/buttons/lock.svg" alt="signup" />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign up

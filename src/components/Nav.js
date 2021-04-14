@@ -22,16 +22,14 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 90,
     display: "flex",
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
   },
   logo: {
     // position: "absolute",
     margin: "0.5em",
-    marginLeft: "1.5em"
+    marginLeft: "1.5em",
   },
-  button: {
-
-  }
+  button: {},
 }));
 
 export default function Nav() {
@@ -51,9 +49,15 @@ export default function Nav() {
               <Button
                 component={Link}
                 to="/"
-                color="secondary"
+                color="inherit"
                 className={classes.button}
-                endIcon={<img height="30px" src="/buttons/dashboard.svg" alt="dashboard" />}
+                endIcon={
+                  <img
+                    height="30px"
+                    src="/buttons/dashboard.svg"
+                    alt="dashboard"
+                  />
+                }
               >
                 Dashboard
               </Button>
