@@ -1,5 +1,13 @@
-.data-table{
+.data-table {
   margin: auto;
   width: 90vw;
   max-width: 1500px;
+}
+
+@media (max-width: $breakpoint) {
+  .data-table {
+    margin: none;
+    width: 100vw;
+    max-width: 100vw;
+  }
 }

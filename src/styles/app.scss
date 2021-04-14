@@ -1,6 +1,9 @@
 $dark: #1f1f1f;
 $white: #F7F7F7;
 
+// Media queries
+$breakpoint: 768px;
+
 body {
   background-color: $white;
 }
