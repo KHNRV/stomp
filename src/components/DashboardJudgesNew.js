@@ -12,14 +12,9 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 
-export default function DashboardJudgesNew() {
-  const [open, setOpen] = React.useState(false);
+export default function DashboardJudgesNew({ open, setOpen }) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -27,14 +22,6 @@ export default function DashboardJudgesNew() {
 
   return (
     <div>
-      <Button
-        endIcon={<img height="25"src="/buttons/judges.svg" alt="judges" />}
-        variant="outlined"
-        color="primary"
-        onClick={handleClickOpen}
-      >
-        Create a Judge
-      </Button>
       <Dialog
         fullScreen={fullScreen}
         open={open}

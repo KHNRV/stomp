@@ -5,8 +5,11 @@ import MaterialTable from "@material-table/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-export default function DashboardJudges() {
-  // DBLOGIC
+export default function DashboardJudges({ judgeData, setJudgeData }) {
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+
   const columns = [
     { title: "First Name", field: "first_name" },
     { title: "Last Name", field: "last_name" },
@@ -32,10 +35,16 @@ export default function DashboardJudges() {
   return (
     <div className="results-table">
       <ThemeProvider theme={theme}>
+      <DashboardJudgesNew open={modalIsOpen} setOpen={setModalIsOpen}/>
         <MaterialTable
+                  title={"CSC 2021"}
+
           columns={columns}
           data={data}
           icons={{
+            Search: () => (
+              <img height="25" src="/buttons/search.svg" alt="search" />
+            ),
             Delete: () => (
               <img height="25" src="/buttons/delete.svg" alt="delete" />
             ),
@@ -51,7 +60,6 @@ export default function DashboardJudges() {
             },
           }}
           options={{
-            search: false,
             headerStyle: {
               backgroundColor: "#E0E0E0",
               color: "#001427",
@@ -62,19 +70,14 @@ export default function DashboardJudges() {
             fixedColumns: { left: 0, right: 0 },
             actionsColumnIndex: -1,
           }}
-          components={{
-            Toolbar: (props) => (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row-reverse",
-                  paddingBottom: "10px",
-                }}
-              >
-                <DashboardJudgesNew />
-              </div>
-            ),
-          }}
+          actions={[
+            {
+              icon: () => <img height="25" src="/buttons/add.svg" alt="add" />,
+              tooltip: "Add Participant",
+              isFreeAction: true,
+              onClick: () => setModalIsOpen(true),
+            },
+          ]}
           editable={{
             onRowDelete: (oldData) =>
               new Promise((resolve, reject) => {

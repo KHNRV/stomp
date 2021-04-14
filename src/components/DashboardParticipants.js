@@ -44,7 +44,6 @@ export default function DashboardParticipants({ partData, setPartData }) {
             },
           }}
           options={{
-            search: true,
             headerStyle: {
               backgroundColor: "#E0E0E0",
               color: "#001427",
