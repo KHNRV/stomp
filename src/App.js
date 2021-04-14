@@ -21,6 +21,8 @@ import "./styles/app.scss";
 let [compData, compCol] = getData(impData, 1);
 
 function App() {
+  const [partData, setPartData] = useState(impData.participants);
+  const [judgeData, setJudgeData] = useState(impData.judges);
   const [data, setData] = useState(compData);
   const [columns, setColumns] = useState(compCol);
 
@@ -33,7 +35,12 @@ function App() {
             <Switch>
               <Route exact path="/competitions/:id/">
                 <TableStepper />
-                <TableCompetition />
+                <TableCompetition
+                  partData={partData}
+                  setPartData={setPartData}
+                  judgeData={judgeData}
+                  setJudgeData={setJudgeData}
+                />
               </Route>
               {/* DBLOGIC */}
               <Route path="/competitions/:id/scoring">
