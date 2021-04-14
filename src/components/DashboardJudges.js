@@ -47,7 +47,7 @@ export default function DashboardJudges({
           }}
           options={{
             headerStyle: {
-              backgroundColor: "#E0E0E0",
+              backgroundColor: "#EDEDED",
               color: "#001427",
             },
             toolbarButtonAlignment: "right",

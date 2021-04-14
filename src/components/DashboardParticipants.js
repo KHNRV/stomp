@@ -52,7 +52,7 @@ export default function DashboardParticipants({
           }}
           options={{
             headerStyle: {
-              backgroundColor: "#E0E0E0",
+              backgroundColor: "#EDEDED",
               color: "#001427",
             },
             toolbarButtonAlignment: "right",

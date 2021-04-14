@@ -39,7 +39,7 @@ const TableScoring = ({ data, setData, columns }) => {
             paging: false,
             fixedColumns: { left: 0, right: 0 },
             headerStyle: {
-              backgroundColor: "#E0E0E0",
+              backgroundColor: "#EDEDED",
               color: "#001427",
             },
           }}

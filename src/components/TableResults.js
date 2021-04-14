@@ -41,7 +41,7 @@ const TableResults = ({ data, columns }) => {
               },
             ],
             headerStyle: {
-              backgroundColor: "#E0E0E0",
+              backgroundColor: "#EDEDED",
               color: "#001427",
             },
             searchAutoFocus: true,

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 import DashboardCompetitionsNew from "./DashboardCompetitionsNew";
 
 import { NavLink } from "react-router-dom";
@@ -9,6 +11,11 @@ import theme from "../theme";
 
 const DashboardCompetitions = ({ eventName }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const history = useHistory();
+
+  function handleClick() {
+    history.push("/competitions/:id");
+  }
 
   const columns = [
     {
@@ -71,7 +78,7 @@ const DashboardCompetitions = ({ eventName }) => {
           }}
           options={{
             headerStyle: {
-              backgroundColor: "#E0E0E0",
+              backgroundColor: "#EDEDED",
               color: "#001427",
             },
             toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
@@ -87,6 +94,7 @@ const DashboardCompetitions = ({ eventName }) => {
               onClick: () => setModalIsOpen(true),
             },
           ]}
+          onRowClick={handleClick}
           editable={{
             onRowDelete: (oldData) =>
               new Promise((resolve, reject) => {
