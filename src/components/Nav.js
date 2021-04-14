@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     margin: "0.5em",
     marginLeft: "1.5em"
   },
+  button: {
+
+  }
 }));
 
 export default function Nav() {
@@ -38,7 +41,7 @@ export default function Nav() {
     <div className={classes.root}>
       <AppBar className={classes.appBar} color="primary" position="static">
         <Box mr={2}>
-          <img className={classes.logo} height="35px" src="/logo.png" alt="" />
+          <img className={classes.logo} height="50px" src="/logo.png" alt="" />
         </Box>
         <Grid container justify={"flex-end"}>
           <Toolbar>
@@ -50,7 +53,7 @@ export default function Nav() {
                 to="/"
                 color="secondary"
                 className={classes.button}
-                endIcon={<img height="35px" src="/buttons/dashboard.svg" alt="dashboard" />}
+                endIcon={<img height="30px" src="/buttons/dashboard.svg" alt="dashboard" />}
               >
                 Dashboard
               </Button>

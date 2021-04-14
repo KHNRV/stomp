@@ -41,14 +41,14 @@ const TableResults = ({ data, columns }) => {
               },
             ],
             headerStyle: {
-              backgroundColor: "#C2C2C2",
+              backgroundColor: "#E0E0E0",
               color: "#001427",
             },
             searchAutoFocus: true,
 
             toolbarButtonAlignment: "left", // here is the option to change toolbar buttons' alignment
 
-            padding: "dense",
+            padding: "default",
             paging: false,
             fixedColumns: { left: 0, right: 0 },
           }}

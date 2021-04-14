@@ -39,7 +39,7 @@ const TableScoring = ({ data, setData, columns }) => {
             paging: false,
             fixedColumns: { left: 0, right: 0 },
             headerStyle: {
-              backgroundColor: "#C2C2C2",
+              backgroundColor: "#E0E0E0",
               color: "#001427",
             },
           }}
@@ -57,6 +57,7 @@ const TableScoring = ({ data, setData, columns }) => {
                 setTimeout(() => {
                   // USE SENDDATA TO CONVERT BACK TO WHOLE DATA TO SEND TO DB
                   // console.log(JSON.stringify(sendData( updatedData, compCol)));
+                  console.log(updatedData)
                   setData(updatedData);
                   resolve();
                 }, 1000);

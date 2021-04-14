@@ -18,7 +18,7 @@ import theme from "./theme";
 import "./styles/app.scss";
 
 // Feed in the the whole data and competition id
-let [compData, compCol] = getData(impData, 1);
+let [compData, compCol] = getData(impData, 0);
 
 function App() {
   const [partData, setPartData] = useState(impData.participants);

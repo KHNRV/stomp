@@ -47,7 +47,7 @@ export default function DashboardParticipants() {
           options={{
             search: false,
             headerStyle: {
-              backgroundColor: "#C2C2C2",
+              backgroundColor: "#E0E0E0",
               color: "#001427",
             },
             toolbarButtonAlignment: "right",
