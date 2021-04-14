@@ -14,7 +14,7 @@ const TableScoring = ({ data, setData, columns }) => {
           data={data}
           style={{ padding: "1.5em 0.5em", backgroundColor: "#F7F7F7" }}
           icons={{
-            Edit: () => <img height="30" src="/buttons/edit.svg" alt="edit" />,
+            Edit: () => <img height="28" src="/buttons/edit.svg" alt="edit" />,
             Check: () => <img height="25" src="/buttons/save.svg" alt="save" />,
             Clear: () => (
               <img height="25" src="/buttons/cancel.svg" alt="cancel" />

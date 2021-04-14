@@ -17,7 +17,7 @@ const TableResults = ({ data, columns }) => {
               <img height="20" src="/buttons/search.svg" alt="search" />
             ),
             Export: () => (
-              <img height="25" src="/buttons/export.svg" alt="export" />
+              <img height="28" src="/buttons/export.svg" alt="export" />
             ),
           }}
           style={{ padding: "1.5em 0.5em", backgroundColor: "#F7F7F7" }}
@@ -45,9 +45,7 @@ const TableResults = ({ data, columns }) => {
               color: "#001427",
             },
             searchAutoFocus: true,
-
-            toolbarButtonAlignment: "left", // here is the option to change toolbar buttons' alignment
-
+            toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
             padding: "default",
             paging: false,
             fixedColumns: { left: 0, right: 0 },
