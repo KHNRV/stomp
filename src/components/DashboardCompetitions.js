@@ -8,7 +8,9 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
 const DashboardCompetitions = () => {
-  // DBLOGIC
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const columns = [
     {
       title: "Competitions",
@@ -40,11 +42,16 @@ const DashboardCompetitions = () => {
 
   return (
     <div className="results-table">
+      <DashboardCompetitionsNew open={modalIsOpen} setOpen={setModalIsOpen} />
       <ThemeProvider theme={theme}>
         <MaterialTable
+        title={"CSC 2021"}
           columns={columns}
           data={comps}
           icons={{
+            Search: () => (
+              <img height="25" src="/buttons/search.svg" alt="search" />
+            ),
             Delete: () => (
               <img height="25" src="/buttons/delete.svg" alt="delete" />
             ),
@@ -60,7 +67,6 @@ const DashboardCompetitions = () => {
             },
           }}
           options={{
-            search: false,
             headerStyle: {
               backgroundColor: "#E0E0E0",
               color: "#001427",
@@ -71,19 +77,14 @@ const DashboardCompetitions = () => {
             actionsColumnIndex: -1,
             fixedColumns: { left: 0, right: 0 },
           }}
-          components={{
-            Toolbar: (props) => (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row-reverse",
-                  paddingBottom: "10px",
-                }}
-              >
-                <DashboardCompetitionsNew />
-              </div>
-            ),
-          }}
+          actions={[
+            {
+              icon: () => <img height="25" src="/buttons/add.svg" alt="add" />,
+              tooltip: "Add Competition",
+              isFreeAction: true,
+              onClick: () => setModalIsOpen(true),
+            },
+          ]}
           editable={{
             onRowDelete: (oldData) =>
               new Promise((resolve, reject) => {

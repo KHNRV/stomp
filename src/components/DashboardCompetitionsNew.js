@@ -15,14 +15,9 @@ import {
 } from "@material-ui/core/";
 import { useTheme } from "@material-ui/core/styles";
 
-export default function DashboardCompetitionsNew() {
-  const [open, setOpen] = React.useState(false);
+export default function DashboardCompetitionsNew({ open, setOpen }) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -30,20 +25,7 @@ export default function DashboardCompetitionsNew() {
 
   return (
     <div>
-      <Button
-        endIcon={<img height="25"src="/buttons/competition.svg" alt="competition" />}
-        variant="outlined"
-        color="primary"
-        onClick={handleClickOpen}
-      >
-        Create a Competition
-      </Button>
-      <Dialog
-        fullScreen={fullScreen}
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
-      >
+      <Dialog fullScreen={fullScreen} open={open} onClose={handleClose}>
         <DialogTitle id="responsive-dialog-title">
           {"Create a Competition"}
         </DialogTitle>
@@ -75,10 +57,11 @@ export default function DashboardCompetitionsNew() {
                   // onChange={handleChange}
                 >
                   <MenuItem value={"Callback"}>Callback</MenuItem>
-                  <MenuItem value={"Ralative Placement"}>Relative Placement</MenuItem>
+                  <MenuItem value={"Ralative Placement"}>
+                    Relative Placement
+                  </MenuItem>
                 </Select>
               </Grid>
-
             </Grid>
           </form>
         </DialogContent>
