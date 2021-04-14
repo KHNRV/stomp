@@ -18,9 +18,9 @@ const getData = (data, compId) => {
   // WETHER THERE IS DATA OR NOT
   const compCols = [
     { title: "ID", field: "participant_id", hidden: true },
-    { title: "Bib #", field: "bib" },
-    { title: "First Name", field: "first_name" },
-    { title: "Last Name", field: "last_name" },
+    { title: "Bib #", field: "bib", editable: 'never' },
+    { title: "First Name", field: "first_name", editable: 'never' },
+    { title: "Last Name", field: "last_name", editable: 'never' },
   ];
 
   // TO CREATE COLUMNS
@@ -29,7 +29,7 @@ const getData = (data, compId) => {
       if (judge.id === judgeId) {
         compCols.push({
           title: `${judge.first_name} ${judge.last_name}`,
-          field: `j${judge.id}`,
+          field: `${judge.id}`,
           lookup: scoring,
         });
       }

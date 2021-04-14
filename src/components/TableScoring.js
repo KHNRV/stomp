@@ -1,23 +1,39 @@
+import React, { useState } from 'react'
+
 import MaterialTable from "@material-table/core";
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
+import sendData from "../helpers/sendData";
 
-const TableScoring = ({ data, setData, columns }) => {
-  // DBLOGIC
+// Import Data
+import { impData } from "../helpers/testdata";
+import getData from "../helpers/getData";
+// Feed in the data and the competition id
+let [compData, compCol] = getData(impData, 1);
+
+
+const TableScoring = (
+  // {data, setData, columns}
+  ) => {
+
+    const [data, setData] = useState(compData)
+
   return (
     <div className="scoring-table">
       <ThemeProvider theme={theme}>
         <MaterialTable
           title="Solo Jazz Newcomer"
-          columns={columns}
+          columns={compCol}
           data={data}
           style={{ padding: "0.5em", backgroundColor: "#F8F8F8" }}
-          icons={{ 
-            Edit: () => <img height="32"src="/buttons/edit.svg" alt="edit" /> ,
-            Check: () => <img height="30"src="/buttons/save.svg" alt="save" /> ,
-            Clear: () => <img height="28"src="/buttons/cancel.svg" alt="cancel" /> ,
-        }}
+          icons={{
+            Edit: () => <img height="32" src="/buttons/edit.svg" alt="edit" />,
+            Check: () => <img height="30" src="/buttons/save.svg" alt="save" />,
+            Clear: () => (
+              <img height="28" src="/buttons/cancel.svg" alt="cancel" />
+            ),
+          }}
           localization={{
             body: {
               addTooltip: "Add Entry",
@@ -45,7 +61,7 @@ const TableScoring = ({ data, setData, columns }) => {
             onBulkUpdate: (changes) =>
               new Promise((resolve, reject) => {
                 const change = Object.values(changes);
-                const updatedData = [...data];
+                const updatedData = [...compData];
                 let index;
                 change.map((e) => {
                   index = e.oldData.tableData.id;
@@ -53,7 +69,9 @@ const TableScoring = ({ data, setData, columns }) => {
                   return null;
                 });
                 setTimeout(() => {
-                  setData(updatedData);
+                  // console.log(sendData(data))
+                  console.log(JSON.stringify(sendData( updatedData, compCol)));
+                  // setData(updatedData);
                   resolve();
                   // reject(alert("hey"));
                 }, 1000);
