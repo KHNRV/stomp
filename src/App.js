@@ -20,16 +20,18 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
 import "./styles/app.scss";
 import useApplicationData from "./hooks/useApplicationData";
+import dataInterfaces from "./helpers/dataInterfaces";
 
 // Feed in the the whole data and competition id
 let [compData, compCol] = getData(impData, 0);
 
 function App() {
   const { state, db } = useApplicationData();
+  const { read, write } = dataInterfaces();
+
   const [partData, setPartData] = useState(impData.participants);
   const [judgeData, setJudgeData] = useState(impData.judges);
   const [comp, setComp] = useState(compData);
-  const [data, setData] = useState();
   const columns = compCol;
   // const [columns, setColumns] = useState(compCol);
 
@@ -42,30 +44,34 @@ function App() {
             <Switch>
               <Route exact path="/competitions">
                 <Dashboard />
-                <DashboardCompetitions eventName={impData.event_name} />
+                <DashboardCompetitions
+                  eventName={state.event_name}
+                  compData={read.competitions(state)}
+                />
               </Route>
               <Route exact path="/participants">
                 <Dashboard />
                 <DashboardParticipants
-                  eventName={impData.event_name}
-                  partData={partData}
+                  eventName={state.event_name}
+                  partData={read.participants(state)}
                   setPartData={setPartData}
                 />
               </Route>
               <Route exact path="/judges">
                 <Dashboard />
                 <DashboardJudges
-                  eventName={impData.event_name}
-                  judgeData={judgeData}
+                  eventName={state.event_name}
+                  judgeData={read.judges(state)}
                   setJudgeData={setJudgeData}
                 />
               </Route>
               <Route exact path="/competitions/:id/">
                 <TableStepper />
                 <TableCompetition
-                  partData={partData}
+                  // compData={(competition_id) => read.competition(state, competition_id)}
+                  partData={state.participants}
                   setPartData={setPartData}
-                  judgeData={judgeData}
+                  judgeData={state.judges}
                   setJudgeData={setJudgeData}
                 />
               </Route>
@@ -79,7 +85,7 @@ function App() {
                 <TableResults
                   data={comp}
                   columns={columns}
-                  eventName={impData.event_name}
+                  eventName={state.event_name}
                 />
               </Route>
               <Route exact path="/login">
