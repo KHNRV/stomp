@@ -2,6 +2,7 @@
   "name": "stomp",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@material-table/core": "^2.3.29",
     "@material-table/exporters": "^1.0.7",
