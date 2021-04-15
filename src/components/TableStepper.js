@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import PropTypes from "prop-types";
@@ -46,41 +46,48 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TableStepper = () => {
+  const location = useLocation().pathname.split("/").slice(-1)[0];
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [activeTab, setActiveTab] = React.useState(
+    isNaN(parseInt(location)) ? location : "competition"
+  );
+  const { id } = useParams();
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = (event, newActiveTab) => {
+    setActiveTab(newActiveTab);
   };
 
   return (
     <Box display="flex" justifyContent="center">
       <AppBar className={classes.appBar} position="sticky" color="default">
         <Tabs
-          value={value}
+          value={activeTab}
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
           variant="fullWidth"
         >
           <Tab
+            value={"competition"}
             icon={<img src="/buttons/competition.svg" alt="competition" />}
             label="Competition"
             component={Link}
-            to="/competitions/:id"
+            to={`/competitions/${id}`}
           />
           <Tab
+            value={"scoring"}
             icon={<img src="/buttons/scoring.svg" alt="scoring" />}
             label="Scoring"
             component={Link}
-            to="/competitions/:id/scoring"
+            to={`/competitions/${id}/scoring`}
           />
           <Tab
+            value={"results"}
             icon={<img src="/buttons/results.svg" alt="results" />}
             label="Results"
             href="#basic-tabs"
             component={Link}
-            to="/competitions/:id/results"
+            to={`/competitions/${id}/results`}
           />
         </Tabs>
       </AppBar>
