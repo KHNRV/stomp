@@ -12,14 +12,6 @@ export default function DashboardParticipants({
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const columns = [
-    { title: "Bib #", field: "bib" },
-    { title: "First Name", field: "first_name" },
-    { title: "Last Name", field: "last_name" },
-    { title: "Email", field: "email" },
-    { title: "Phone", field: "phone" },
-  ];
-
   return (
     <div className="data-table">
       <ThemeProvider theme={theme}>
@@ -30,8 +22,8 @@ export default function DashboardParticipants({
         />
         <MaterialTable
           title={eventName}
-          columns={columns}
-          data={partData}
+          columns={partData.columns}
+          data={partData.rows}
           icons={{
             Search: () => (
               <img height="20" src="/buttons/search.svg" alt="search" />

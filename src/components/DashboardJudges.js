@@ -12,21 +12,14 @@ export default function DashboardJudges({
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const columns = [
-    { title: "First Name", field: "first_name" },
-    { title: "Last Name", field: "last_name" },
-    { title: "Email", field: "email" },
-    { title: "Phone", field: "phone" },
-  ];
-
   return (
     <div className="data-table">
       <ThemeProvider theme={theme}>
         <DashboardJudgesNew open={modalIsOpen} setOpen={setModalIsOpen} />
         <MaterialTable
           title={eventName}
-          columns={columns}
-          data={judgeData}
+          columns={judgeData.columns}
+          data={judgeData.rows}
           icons={{
             Search: () => (
               <img height="20" src="/buttons/search.svg" alt="search" />

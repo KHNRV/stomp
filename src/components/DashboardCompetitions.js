@@ -3,52 +3,18 @@ import { useHistory } from "react-router-dom";
 
 import DashboardCompetitionsNew from "./DashboardCompetitionsNew";
 
-import { NavLink } from "react-router-dom";
 import MaterialTable from "@material-table/core";
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const DashboardCompetitions = ({ eventName }) => {
+const DashboardCompetitions = ({ eventName, compData }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const history = useHistory();
 
-  function handleClick() {
-    history.push("/competitions/:id");
+  function handleClick(competition_id) {
+    history.push(`/competitions/${competition_id}`);
   }
-
-  const columns = [
-    {
-      title: "Competitions",
-      field: "competitions",
-      render: (rowData) => (
-        <NavLink className="competitions-list" to={rowData.path}>
-          {rowData.compName}
-        </NavLink>
-      ),
-    },
-    {
-      title: "Judges",
-      field: "judges",
-      type: "numeric",
-      align: "center",
-    },
-    {
-      title: "Participants",
-      field: "participants",
-      type: "numeric",
-      align: "center",
-    },
-  ];
-
-  const [comps, setComps] = useState([
-    {
-      path: "/competitions/:id",
-      compName: "Solo Jazz Newcomer",
-      judges: 3,
-      participants: 5,
-    },
-  ]);
 
   return (
     <div className="data-table">
@@ -56,8 +22,8 @@ const DashboardCompetitions = ({ eventName }) => {
       <ThemeProvider theme={theme}>
         <MaterialTable
           title={eventName}
-          columns={columns}
-          data={comps}
+          columns={compData.columns}
+          data={compData.rows}
           icons={{
             Search: () => (
               <img height="20" src="/buttons/search.svg" alt="search" />
@@ -97,19 +63,21 @@ const DashboardCompetitions = ({ eventName }) => {
               onClick: () => setModalIsOpen(true),
             },
           ]}
-          onRowClick={handleClick}
-          editable={{
-            onRowDelete: (oldData) =>
-              new Promise((resolve, reject) => {
-                setTimeout(() => {
-                  const dataDelete = [...comps];
-                  const index = oldData.tableData.id;
-                  dataDelete.splice(index, 1);
-                  setComps([...dataDelete]);
-                  resolve();
-                }, 1000);
-              }),
-          }}
+          onRowClick={(event, competition) => handleClick(competition.id)}
+          editable={
+            {
+              // onRowDelete: (oldData) =>
+              //   new Promise((resolve, reject) => {
+              //     setTimeout(() => {
+              //       const dataDelete = [...comps];
+              //       const index = oldData.tableData.id;
+              //       dataDelete.splice(index, 1);
+              //       setComps([...dataDelete]);
+              //       resolve();
+              //     }, 1000);
+              //   }),
+            }
+          }
         />
       </ThemeProvider>
     </div>
