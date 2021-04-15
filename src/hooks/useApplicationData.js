@@ -20,7 +20,6 @@ export default function useApplicationData() {
         axios.get(`/api/events/${state.event_code}/competitions`)
       ),
     ]).then((all) => {
-      console.log(all);
       setState((prev) => ({
         ...prev,
         ...all[0].data,
