@@ -19,14 +19,17 @@ import getData from "./helpers/getData";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
 import "./styles/app.scss";
+import useApplicationData from "./hooks/useApplicationData";
 
 // Feed in the the whole data and competition id
 let [compData, compCol] = getData(impData, 0);
 
 function App() {
+  const { state, db } = useApplicationData();
   const [partData, setPartData] = useState(impData.participants);
   const [judgeData, setJudgeData] = useState(impData.judges);
   const [comp, setComp] = useState(compData);
+  const [data, setData] = useState();
   const columns = compCol;
   // const [columns, setColumns] = useState(compCol);
 
@@ -73,7 +76,11 @@ function App() {
               </Route>
               <Route path="/competitions/:id/results">
                 <TableStepper />
-                <TableResults data={comp} columns={columns} eventName={impData.event_name}/>
+                <TableResults
+                  data={comp}
+                  columns={columns}
+                  eventName={impData.event_name}
+                />
               </Route>
               <Route exact path="/login">
                 <Login />
