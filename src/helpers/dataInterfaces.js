@@ -1,4 +1,3 @@
-
 export default function dataInterfaces(state, db) {
   return {
     read: {
@@ -140,12 +139,23 @@ export default function dataInterfaces(state, db) {
           createForm(formData) {
             //
           },
+        },
+      },
+    },
+    update: {
+      competition: {
+        from: {
           registerForm(formData) {},
           scoresTable(tableData) {},
         },
       },
     },
-    update: {},
-    destroy: {}
+    destroy: {
+      participant(participant) {
+        return db.destroy.participant(participant)
+      },
+      judge(id) {},
+      competition(id) {},
+    },
   };
 }

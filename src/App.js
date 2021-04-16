@@ -54,6 +54,7 @@ function App() {
                   eventName={action.read.state.event_name}
                   partData={action.read.participants()}
                   setPartData={setPartData}
+                  action={action}
                 />
               </Route>
               <Route exact path="/judges">

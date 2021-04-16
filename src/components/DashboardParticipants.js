@@ -9,6 +9,7 @@ export default function DashboardParticipants({
   eventName,
   partData,
   setPartData,
+  action,
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -69,16 +70,8 @@ export default function DashboardParticipants({
             },
           ]}
           editable={{
-            onRowDelete: (oldData) =>
-              new Promise((resolve, reject) => {
-                setTimeout(() => {
-                  const dataDelete = [...partData];
-                  const index = oldData.tableData.id;
-                  dataDelete.splice(index, 1);
-                  setPartData([...dataDelete]);
-                  resolve();
-                }, 1000);
-              }),
+            onRowDelete: (participant) =>
+              action.destroy.participant(participant),
           }}
         />
       </ThemeProvider>
