@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import TextField from "@material-ui/core/TextField";
@@ -11,41 +11,61 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
+import { logDOM } from "@testing-library/dom";
 
 export default function DashboardParticipantsNew({
   open,
   setOpen,
   setPartData,
+  action,
 }) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const [formData, setFormData] = useState({});
 
-  const handleClose = () => {
+  const handleCancel = () => {
     setOpen(false);
+  };
+
+  const handleSave = () => {
+    action.create
+      .participant(formData)
+      .then(setFormData({}))
+      .then(() => setOpen(false));
+  };
+
+  const handleFormData = (prev, event) => {
+    const update = { ...prev };
+    update[event.target.name] = event.target.value;
+    console.log(update);
+    return update;
   };
 
   return (
     <div>
-      <Dialog fullScreen={fullScreen} open={open} onClose={handleClose}>
-        <DialogTitle id="responsive-dialog-title">
-          {"Create a Participant"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Please provide details of the Participant..
-          </DialogContentText>
-          <form noValidate>
+      <form>
+        <Dialog fullScreen={fullScreen} open={open} onClose={handleCancel}>
+          <DialogTitle id="responsive-dialog-title">
+            {"Create a Participant"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Please provide details of the Participant..
+            </DialogContentText>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
-                  name="firstName"
+                  name="first_name"
                   variant="outlined"
                   required
                   fullWidth
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={(event) =>
+                    setFormData((prev) => handleFormData(prev, event))
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -55,8 +75,11 @@ export default function DashboardParticipantsNew({
                   fullWidth
                   id="lastName"
                   label="Last Name"
-                  name="lastName"
+                  name="last_name"
                   autoComplete="lname"
+                  onChange={(event) =>
+                    setFormData((prev) => handleFormData(prev, event))
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -67,6 +90,9 @@ export default function DashboardParticipantsNew({
                   label="Bib #"
                   name="bib"
                   autoComplete="bib"
+                  onChange={(event) =>
+                    setFormData((prev) => handleFormData(prev, event))
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -77,6 +103,9 @@ export default function DashboardParticipantsNew({
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(event) =>
+                    setFormData((prev) => handleFormData(prev, event))
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -88,21 +117,24 @@ export default function DashboardParticipantsNew({
                   label="Phone"
                   name="phone"
                   autoComplete="phone"
+                  onChange={(event) =>
+                    setFormData((prev) => handleFormData(prev, event))
+                  }
                 />
               </Grid>
             </Grid>
-          </form>
-        </DialogContent>
-        {/* DBLOGIC */}
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Save
-          </Button>
-        </DialogActions>
-      </Dialog>
+          </DialogContent>
+          {/* DBLOGIC */}
+          <DialogActions>
+            <Button autoFocus onClick={handleCancel} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={() => handleSave()} color="primary" autoFocus>
+              Save
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </form>
     </div>
   );
 }

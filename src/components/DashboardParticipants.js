@@ -20,6 +20,7 @@ export default function DashboardParticipants({
           open={modalIsOpen}
           setOpen={setModalIsOpen}
           setPartData={setPartData}
+          action={action}
         />
         <MaterialTable
           title={eventName}
