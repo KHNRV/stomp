@@ -24,6 +24,7 @@ export default function DashboardParticipantsNew({
   const [formData, setFormData] = useState({});
 
   const handleCancel = () => {
+    setFormData({})
     setOpen(false);
   };
 

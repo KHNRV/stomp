@@ -18,6 +18,7 @@ export default function DashboardJudgesNew({ open, setOpen, action }) {
   const [formData, setFormData] = useState({});
 
   const handleCancel = () => {
+    setFormData({})
     setOpen(false);
   };
 
