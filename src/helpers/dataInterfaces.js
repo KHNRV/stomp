@@ -1,7 +1,18 @@
+import scoringSystems from "./scoringSystems";
+
 export default function dataInterfaces(state, db) {
+  const scoring = scoringSystems(state);
   return {
     read: {
       state,
+      scoring: {
+        list() {
+          return Object.values(scoring).map(({ id, name }) => ({
+            id,
+            name,
+          }));
+        },
+      },
       participants() {
         return {
           columns: [
@@ -133,10 +144,10 @@ export default function dataInterfaces(state, db) {
     },
     create: {
       participant(participant) {
-        return db.create.participant(participant)
+        return db.create.participant(participant);
       },
       judge(judge) {
-        return db.create.judge(judge)
+        return db.create.judge(judge);
       },
       competition: {
         from: {
@@ -156,13 +167,13 @@ export default function dataInterfaces(state, db) {
     },
     destroy: {
       participant(participant) {
-        return db.destroy.participant(participant)
+        return db.destroy.participant(participant);
       },
       judge(judge) {
-        return db.destroy.judge(judge)
+        return db.destroy.judge(judge);
       },
       competition(competition) {
-        return db.destroy.competition(competition)
+        return db.destroy.competition(competition);
       },
     },
   };
