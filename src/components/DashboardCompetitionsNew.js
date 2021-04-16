@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Autocomplete } from "@material-ui/lab";
-
 import {
   Grid,
   TextField,
@@ -21,7 +20,7 @@ export default function DashboardCompetitionsNew({ open, setOpen, action }) {
   const [formData, setFormData] = useState({});
 
   const handleCancel = () => {
-    setFormData({})
+    setFormData({});
     setOpen(false);
   };
 
@@ -63,7 +62,9 @@ export default function DashboardCompetitionsNew({ open, setOpen, action }) {
                   label="Name"
                   autoFocus
                   onChange={(event) =>
-                    setFormData((prev) => handleFormData(prev, event.target.value, "name"))
+                    setFormData((prev) =>
+                      handleFormData(prev, event.target.value, "name")
+                    )
                   }
                 />
               </Grid>
@@ -75,7 +76,6 @@ export default function DashboardCompetitionsNew({ open, setOpen, action }) {
                   id="scoring_system"
                   options={action.read.scoring.list()}
                   getOptionLabel={(option) => option.name}
-                  // defaultValue={action.read.scoring.list()[0]}
                   autoComplete={true}
                   autoHighlight={true}
                   filterSelectedOptions={true}
@@ -83,16 +83,19 @@ export default function DashboardCompetitionsNew({ open, setOpen, action }) {
                     <TextField {...params} variant="standard" />
                   )}
                   onChange={(event, value) =>
-                    setFormData((prev) => handleFormData(prev, value && value.id, "scoring_system_id"))
+                    setFormData((prev) =>
+                      handleFormData(
+                        prev,
+                        value && value.id,
+                        "scoring_system_id"
+                      )
+                    )
                   }
                 />
               </Grid>
             </Grid>
           </form>
         </DialogContent>
-
-        {/* DBLOGIC */}
-
         <DialogActions>
           <Button autoFocus onClick={handleCancel} color="primary">
             Cancel

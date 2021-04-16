@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-import DashboardParticipantsNew from "./DashboardParticipantsNew";
 import MaterialTable from "@material-table/core";
-
+import DashboardParticipantsNew from "./DashboardParticipantsNew";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-export default function DashboardParticipants({
-  eventName,
-  partData,
-  setPartData,
-  action,
-}) {
+export default function DashboardParticipants({ action }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
@@ -19,13 +13,12 @@ export default function DashboardParticipants({
         <DashboardParticipantsNew
           open={modalIsOpen}
           setOpen={setModalIsOpen}
-          setPartData={setPartData}
           action={action}
         />
         <MaterialTable
-          title={eventName}
-          columns={partData.columns}
-          data={partData.rows}
+          title={action.read.state.event_name}
+          columns={action.read.participants.for.dashboard().columns}
+          data={action.read.participants.for.dashboard().rows}
           icons={{
             Search: () => (
               <img height="20" src="/buttons/search.svg" alt="search" />

@@ -1,15 +1,17 @@
 import MaterialTable from "@material-table/core";
+import { useParams } from "react-router";
 import { ExportCsv, ExportPdf } from "@material-table/exporters";
-
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const TableResults = ({ data, columns, eventName }) => {
+const TableResults = ({ data, columns, eventName, action }) => {
+  let { id } = useParams();
+
   return (
     <div className="data-table">
       <ThemeProvider theme={theme}>
         <MaterialTable
-          title="Solo Jazz Newcomer"
+          title={action.read.competitions.where.id(parseInt(id)).name}
           columns={columns}
           data={data}
           icons={{
@@ -23,8 +25,7 @@ const TableResults = ({ data, columns, eventName }) => {
           style={{ padding: "1.5em 0em 0em 0em", backgroundColor: "#F7F7F7" }}
           localization={{
             body: {
-              emptyDataSourceMessage:
-                "Please add Participants and Judges",
+              emptyDataSourceMessage: "Please add Participants and Judges",
             },
           }}
           options={{
@@ -32,12 +33,15 @@ const TableResults = ({ data, columns, eventName }) => {
               {
                 label: "Export PDF",
                 exportFunc: (cols, datas) =>
-                  ExportPdf(cols, datas, `${eventName} - ${"Solo Jazz Newcomer"} Results`),
+                  ExportPdf(
+                    cols,
+                    datas,
+                    `${eventName} - ${"Solo Jazz Newcomer"} Results`
+                  ),
               },
               {
                 label: "Export CSV",
-                exportFunc: (cols, datas) =>
-                  ExportCsv(cols, datas, "results"),
+                exportFunc: (cols, datas) => ExportCsv(cols, datas, "results"),
               },
             ],
             headerStyle: {

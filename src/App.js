@@ -20,7 +20,6 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
 import "./styles/app.scss";
 import useApplicationData from "./hooks/useApplicationData";
-import dataInterfaces from "./helpers/dataInterfaces";
 
 // Feed in the the whole data and competition id
 let [compData, compCol] = getData(impData, 0);
@@ -28,11 +27,8 @@ let [compData, compCol] = getData(impData, 0);
 function App() {
   const action = useApplicationData();
 
-  const [partData, setPartData] = useState(impData.participants);
-  const [judgeData, setJudgeData] = useState(impData.judges);
   const [comp, setComp] = useState(compData);
   const columns = compCol;
-  // const [columns, setColumns] = useState(compCol);
 
   return (
     <div className="App">
@@ -43,29 +39,15 @@ function App() {
             <Switch>
               <Route exact path="/competitions">
                 <Dashboard />
-                <DashboardCompetitions
-                  eventName={action.read.state.event_name}
-                  compData={action.read.competitions.for.competitionsTable()}
-                  action={action}
-                />
+                <DashboardCompetitions action={action} />
               </Route>
               <Route exact path="/participants">
                 <Dashboard />
-                <DashboardParticipants
-                  eventName={action.read.state.event_name}
-                  partData={action.read.participants.for.dashboard()}
-                  setPartData={setPartData}
-                  action={action}
-                />
+                <DashboardParticipants action={action} />
               </Route>
               <Route exact path="/judges">
                 <Dashboard />
-                <DashboardJudges
-                  eventName={action.read.state.event_name}
-                  judgeData={action.read.judges.for.dashboard()}
-                  setJudgeData={setJudgeData}
-                  action={action}
-                />
+                <DashboardJudges action={action} />
               </Route>
               <Route exact path="/competitions/:id/">
                 <TableStepper />
@@ -73,7 +55,6 @@ function App() {
                   <TableCompetition action={action} />
                 )}
               </Route>
-              {/* DBLOGIC */}
               <Route path="/competitions/:id/scoring">
                 <TableStepper />
                 {!action.read.state.competitions.length ? null : (
@@ -82,11 +63,7 @@ function App() {
               </Route>
               <Route path="/competitions/:id/results">
                 <TableStepper />
-                <TableResults
-                  data={comp}
-                  columns={columns}
-                  eventName={action.read.state.event_name}
-                />
+                <TableResults data={comp} columns={columns} action={action} />
               </Route>
               <Route exact path="/login">
                 <Login />

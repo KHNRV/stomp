@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-
-import DashboardCompetitionsNew from "./DashboardCompetitionsNew";
-
 import MaterialTable from "@material-table/core";
-
+import DashboardCompetitionsNew from "./DashboardCompetitionsNew";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
@@ -18,12 +15,16 @@ const DashboardCompetitions = ({ eventName, compData, action }) => {
 
   return (
     <div className="data-table">
-      <DashboardCompetitionsNew open={modalIsOpen} setOpen={setModalIsOpen} action={action} />
+      <DashboardCompetitionsNew
+        open={modalIsOpen}
+        setOpen={setModalIsOpen}
+        action={action}
+      />
       <ThemeProvider theme={theme}>
         <MaterialTable
-          title={eventName}
-          columns={compData.columns}
-          data={compData.rows}
+          title={action.read.state.event_name}
+          columns={action.read.competitions.for.competitionsTable().columns}
+          data={action.read.competitions.for.competitionsTable().rows}
           icons={{
             Search: () => (
               <img height="20" src="/buttons/search.svg" alt="search" />
@@ -65,7 +66,8 @@ const DashboardCompetitions = ({ eventName, compData, action }) => {
           ]}
           onRowClick={(event, competition) => handleClick(competition.id)}
           editable={{
-            onRowDelete: (competition) => action.destroy.competition(competition),
+            onRowDelete: (competition) =>
+              action.destroy.competition(competition),
           }}
         />
       </ThemeProvider>

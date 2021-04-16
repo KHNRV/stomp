@@ -1,10 +1,8 @@
+import { useState } from "react";
+import { useParams } from "react-router";
 import MaterialTable from "@material-table/core";
-
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
-import sendData from "../helpers/sendData";
-import { useParams } from "react-router";
-import { useState } from "react";
 
 const TableScoring = ({ action }) => {
   const { id } = useParams();

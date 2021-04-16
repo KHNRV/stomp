@@ -1,26 +1,24 @@
 import React, { useState } from "react";
-import DashboardJudgesNew from "./DashboardJudgesNew";
 import MaterialTable from "@material-table/core";
-
+import DashboardJudgesNew from "./DashboardJudgesNew";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-export default function DashboardJudges({
-  eventName,
-  judgeData,
-  setJudgeData,
-  action
-}) {
+export default function DashboardJudges({ action }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <div className="data-table">
       <ThemeProvider theme={theme}>
-        <DashboardJudgesNew open={modalIsOpen} setOpen={setModalIsOpen} action={action} />
+        <DashboardJudgesNew
+          open={modalIsOpen}
+          setOpen={setModalIsOpen}
+          action={action}
+        />
         <MaterialTable
-          title={eventName}
-          columns={judgeData.columns}
-          data={judgeData.rows}
+          title={action.read.state.event_name}
+          columns={action.read.judges.for.dashboard().columns}
+          data={action.read.judges.for.dashboard().rows}
           icons={{
             Search: () => (
               <img height="20" src="/buttons/search.svg" alt="search" />
@@ -62,7 +60,6 @@ export default function DashboardJudges({
           ]}
           editable={{
             onRowDelete: (judge) => action.destroy.judge(judge),
-             
           }}
         />
       </ThemeProvider>

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Grid,
+  TextField,
+  useMediaQuery,
+} from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 
 export default function DashboardJudgesNew({ open, setOpen, action }) {
@@ -18,7 +18,7 @@ export default function DashboardJudgesNew({ open, setOpen, action }) {
   const [formData, setFormData] = useState({});
 
   const handleCancel = () => {
-    setFormData({})
+    setFormData({});
     setOpen(false);
   };
 
@@ -114,8 +114,6 @@ export default function DashboardJudgesNew({ open, setOpen, action }) {
             </Grid>
           </form>
         </DialogContent>
-
-        {/* DBLOGIC */}
         <DialogActions>
           <Button autoFocus onClick={handleCancel} color="primary">
             Cancel

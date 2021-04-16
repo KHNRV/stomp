@@ -1,12 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { AppBar, Box, Button, Grid, Toolbar } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   logo: {
-    // position: "absolute",
     margin: "0.5em",
     marginLeft: "1.5em",
   },
@@ -43,8 +37,6 @@ export default function Nav() {
         </Box>
         <Grid container justify={"flex-end"}>
           <Toolbar>
-            {/* DBLOGIC */}
-
             {true ? ( //FOR now set true false for logged in
               <Button
                 component={Link}
