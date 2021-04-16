@@ -72,8 +72,15 @@ function App() {
                 <Signup />
               </Route>
               <Route path="/">
+              <Dashboard />
+
                 <h1>My Events</h1>
-                <Link to="/competitions">{action.read.state.event_name}</Link>
+                <p>Here comes Dashboard with stats</p>
+                <ul>
+                  <li>No of participants</li>
+                  <li>No of competitons</li>
+                  <li>No of etc..</li>
+                </ul>
               </Route>
             </Switch>
           </Router>
