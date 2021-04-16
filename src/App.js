@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -72,7 +72,8 @@ function App() {
                 <Signup />
               </Route>
               <Route path="/">
-                <Dashboard />
+                <h1>My Events</h1>
+                <Link to="/competitions">{action.read.state.event_name}</Link>
               </Route>
             </Switch>
           </Router>
