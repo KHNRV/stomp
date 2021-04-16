@@ -98,7 +98,7 @@ export default function DashboardCompetitionsNew({ open, setOpen, action }) {
           <Button autoFocus onClick={handleCancel} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleCancel} color="primary" autoFocus>
+          <Button onClick={() => handleSave()} color="primary" autoFocus>
             Save
           </Button>
         </DialogActions>
