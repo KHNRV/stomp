@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
@@ -52,36 +52,39 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const location = useLocation().pathname.slice(1);
+  const [activeTab, setActiveTab] = useState(location);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = (event, newActiveTab) => {
+    setActiveTab(newActiveTab);
   };
-
   return (
     <div className={classes.root}>
       <Box display="flex" justifyContent="center">
         <AppBar className={classes.appBar} position="sticky" color="default">
           <Tabs
-            value={value}
+            value={activeTab}
             onChange={handleChange}
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth"
           >
             <Tab
+              value={"competitions"}
               icon={<img src="/buttons/competitions.svg" alt="competitions" />}
               label="Competitions"
               component={Link}
               to="/competitions"
             />
             <Tab
+              value={"participants"}
               icon={<img src="/buttons/participants.svg" alt="participants" />}
               label="Participants"
               component={Link}
               to="/participants"
             />
             <Tab
+              value={"judges"}
               icon={<img src="/buttons/judges.svg" alt="judges" />}
               label="Judges"
               component={Link}
