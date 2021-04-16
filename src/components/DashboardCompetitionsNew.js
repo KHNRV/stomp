@@ -21,22 +21,23 @@ export default function DashboardCompetitionsNew({ open, setOpen, action }) {
   const [formData, setFormData] = useState({});
 
   const handleCancel = () => {
+    setFormData({})
     setOpen(false);
   };
 
   const handleSave = () => {
-    if (formData.first_name && formData.last_name) {
+    if (formData.name && formData.scoring_system_id) {
       action.create
-        .judge(formData)
+        .competition(formData)
         .then(setFormData({}))
         .then(() => setOpen(false));
     }
   };
 
-  const handleFormData = (prev, event) => {
+  const handleFormData = (prev, value, key) => {
     const update = { ...prev };
-    update[event.target.name] = event.target.value;
-    console.log(update);
+    update[key] = value;
+    console.log(value);
     return update;
   };
 
@@ -62,7 +63,7 @@ export default function DashboardCompetitionsNew({ open, setOpen, action }) {
                   label="Name"
                   autoFocus
                   onChange={(event) =>
-                    setFormData((prev) => handleFormData(prev, event))
+                    setFormData((prev) => handleFormData(prev, event.target.value, "name"))
                   }
                 />
               </Grid>
@@ -71,21 +72,19 @@ export default function DashboardCompetitionsNew({ open, setOpen, action }) {
                   Scoring System
                 </InputLabel>
                 <Autocomplete
-                  
-                  id="judges"
+                  id="scoring_system"
                   options={action.read.scoring.list()}
                   getOptionLabel={(option) => option.name}
-                  defaultValue={action.read.scoring.list()[0]}
+                  // defaultValue={action.read.scoring.list()[0]}
                   autoComplete={true}
                   autoHighlight={true}
                   filterSelectedOptions={true}
                   renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      variant="standard"
-                      placeholder="Select Scoring System"
-                    />
+                    <TextField {...params} variant="standard" />
                   )}
+                  onChange={(event, value) =>
+                    setFormData((prev) => handleFormData(prev, value && value.id, "scoring_system_id"))
+                  }
                 />
               </Grid>
             </Grid>
