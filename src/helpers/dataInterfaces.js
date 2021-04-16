@@ -135,7 +135,9 @@ export default function dataInterfaces(state, db) {
       participant(participant) {
         return db.create.participant(participant)
       },
-      judge(formData) {},
+      judge(judge) {
+        return db.create.judge(judge)
+      },
       competition: {
         from: {
           createForm(formData) {

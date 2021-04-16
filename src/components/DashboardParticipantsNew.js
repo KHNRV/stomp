@@ -28,10 +28,12 @@ export default function DashboardParticipantsNew({
   };
 
   const handleSave = () => {
-    action.create
-      .participant(formData)
-      .then(setFormData({}))
-      .then(() => setOpen(false));
+    if (formData.first_name && formData.last_name) {
+      action.create
+        .participant(formData)
+        .then(setFormData({}))
+        .then(() => setOpen(false));
+    }
   };
 
   const handleFormData = (prev, event) => {

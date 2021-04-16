@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import TextField from "@material-ui/core/TextField";
@@ -12,12 +12,29 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 
-export default function DashboardJudgesNew({ open, setOpen }) {
+export default function DashboardJudgesNew({ open, setOpen, action }) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const [formData, setFormData] = useState({});
 
-  const handleClose = () => {
+  const handleCancel = () => {
     setOpen(false);
+  };
+
+  const handleSave = () => {
+    if (formData.first_name && formData.last_name) {
+      action.create
+        .judge(formData)
+        .then(setFormData({}))
+        .then(() => setOpen(false));
+    }
+  };
+
+  const handleFormData = (prev, event) => {
+    const update = { ...prev };
+    update[event.target.name] = event.target.value;
+    console.log(update);
+    return update;
   };
 
   return (
@@ -25,7 +42,7 @@ export default function DashboardJudgesNew({ open, setOpen }) {
       <Dialog
         fullScreen={fullScreen}
         open={open}
-        onClose={handleClose}
+        onClose={handleCancel}
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
@@ -35,18 +52,21 @@ export default function DashboardJudgesNew({ open, setOpen }) {
           <DialogContentText>
             Please provide details of the Judge..
           </DialogContentText>
-          <form noValidate>
+          <form>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
-                  name="firstName"
+                  name="first_name"
                   variant="outlined"
                   required
                   fullWidth
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={(event) =>
+                    setFormData((prev) => handleFormData(prev, event))
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -56,8 +76,11 @@ export default function DashboardJudgesNew({ open, setOpen }) {
                   fullWidth
                   id="lastName"
                   label="Last Name"
-                  name="lastName"
+                  name="last_name"
                   autoComplete="lname"
+                  onChange={(event) =>
+                    setFormData((prev) => handleFormData(prev, event))
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -68,6 +91,9 @@ export default function DashboardJudgesNew({ open, setOpen }) {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(event) =>
+                    setFormData((prev) => handleFormData(prev, event))
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -79,6 +105,9 @@ export default function DashboardJudgesNew({ open, setOpen }) {
                   label="Phone"
                   name="phone"
                   autoComplete="phone"
+                  onChange={(event) =>
+                    setFormData((prev) => handleFormData(prev, event))
+                  }
                 />
               </Grid>
             </Grid>
@@ -87,10 +116,10 @@ export default function DashboardJudgesNew({ open, setOpen }) {
 
         {/* DBLOGIC */}
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button autoFocus onClick={handleCancel} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={() => handleSave()} color="primary" autoFocus>
             Save
           </Button>
         </DialogActions>

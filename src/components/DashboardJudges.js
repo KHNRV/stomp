@@ -16,7 +16,7 @@ export default function DashboardJudges({
   return (
     <div className="data-table">
       <ThemeProvider theme={theme}>
-        <DashboardJudgesNew open={modalIsOpen} setOpen={setModalIsOpen} />
+        <DashboardJudgesNew open={modalIsOpen} setOpen={setModalIsOpen} action={action} />
         <MaterialTable
           title={eventName}
           columns={judgeData.columns}
