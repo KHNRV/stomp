@@ -8,7 +8,7 @@ import MaterialTable from "@material-table/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const DashboardCompetitions = ({ eventName, compData }) => {
+const DashboardCompetitions = ({ eventName, compData, action }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const history = useHistory();
 
@@ -64,20 +64,9 @@ const DashboardCompetitions = ({ eventName, compData }) => {
             },
           ]}
           onRowClick={(event, competition) => handleClick(competition.id)}
-          editable={
-            {
-              // onRowDelete: (oldData) =>
-              //   new Promise((resolve, reject) => {
-              //     setTimeout(() => {
-              //       const dataDelete = [...comps];
-              //       const index = oldData.tableData.id;
-              //       dataDelete.splice(index, 1);
-              //       setComps([...dataDelete]);
-              //       resolve();
-              //     }, 1000);
-              //   }),
-            }
-          }
+          editable={{
+            onRowDelete: (competition) => action.destroy.competition(competition),
+          }}
         />
       </ThemeProvider>
     </div>

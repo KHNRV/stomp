@@ -157,7 +157,9 @@ export default function dataInterfaces(state, db) {
       judge(judge) {
         return db.destroy.judge(judge)
       },
-      competition(competition) {},
+      competition(competition) {
+        return db.destroy.competition(competition)
+      },
     },
   };
 }

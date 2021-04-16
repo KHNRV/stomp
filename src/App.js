@@ -46,6 +46,7 @@ function App() {
                 <DashboardCompetitions
                   eventName={action.read.state.event_name}
                   compData={action.read.competitions.for.competitionsTable()}
+                  action={action}
                 />
               </Route>
               <Route exact path="/participants">
