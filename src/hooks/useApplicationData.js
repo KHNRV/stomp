@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import dataInterfaces from "../helpers/dataInterfaces";
 
 export default function useApplicationData() {
   const [state, setState] = useState({
@@ -106,5 +107,5 @@ export default function useApplicationData() {
     },
   };
 
-  return { state, db };
+  return dataInterfaces(state, db) ;
 }

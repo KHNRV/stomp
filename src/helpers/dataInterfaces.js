@@ -1,7 +1,9 @@
-export default function dataInterfaces() {
+
+export default function dataInterfaces(state, db) {
   return {
     read: {
-      participants(state) {
+      state,
+      participants() {
         return {
           columns: [
             { title: "id", field: "id", hidden: true },
@@ -14,7 +16,7 @@ export default function dataInterfaces() {
           rows: [...state.participants],
         };
       },
-      judges(state) {
+      judges() {
         return {
           columns: [
             { title: "id", field: "id", hidden: true },
@@ -28,7 +30,7 @@ export default function dataInterfaces() {
       },
       competitions: {
         for: {
-          scoresTable(state, competition_id) {
+          scoresTable(competition_id) {
             const result = {
               columns: [
                 { title: "id", field: "id", hidden: true },
@@ -76,7 +78,7 @@ export default function dataInterfaces() {
 
             return result;
           },
-          competitionsTable(state) {
+          competitionsTable() {
             const result = {
               columns: [
                 { title: "id", field: "id", hidden: true },
@@ -116,7 +118,7 @@ export default function dataInterfaces() {
 
             return result;
           },
-          registerForm(state, competition_id) {
+          registerForm(competition_id) {
             const competition = state.competitions.find(
               (competition) => competition.id === competition_id
             );
@@ -126,11 +128,11 @@ export default function dataInterfaces() {
               judge_ids: competition.judges,
             };
           },
-          resultsTable(state) {},
+          resultsTable() {},
         },
       },
     },
-    write: {
+    create: {
       participant(formData) {},
       judge(formData) {},
       competition: {
@@ -143,5 +145,7 @@ export default function dataInterfaces() {
         },
       },
     },
+    update: {},
+    destroy: {}
   };
 }

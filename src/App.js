@@ -26,9 +26,7 @@ import dataInterfaces from "./helpers/dataInterfaces";
 let [compData, compCol] = getData(impData, 0);
 
 function App() {
-  const { state, db } = useApplicationData();
-
-  const { read, write } = dataInterfaces();
+  const action = useApplicationData();
 
   const [partData, setPartData] = useState(impData.participants);
   const [judgeData, setJudgeData] = useState(impData.judges);
@@ -46,35 +44,35 @@ function App() {
               <Route exact path="/competitions">
                 <Dashboard />
                 <DashboardCompetitions
-                  eventName={state.event_name}
-                  compData={read.competitions.for.competitionsTable(state)}
+                  eventName={action.read.state.event_name}
+                  compData={action.read.competitions.for.competitionsTable()}
                 />
               </Route>
               <Route exact path="/participants">
                 <Dashboard />
                 <DashboardParticipants
-                  eventName={state.event_name}
-                  partData={read.participants(state)}
+                  eventName={action.read.state.event_name}
+                  partData={action.read.participants()}
                   setPartData={setPartData}
                 />
               </Route>
               <Route exact path="/judges">
                 <Dashboard />
                 <DashboardJudges
-                  eventName={state.event_name}
-                  judgeData={read.judges(state)}
+                  eventName={action.read.state.event_name}
+                  judgeData={action.read.judges()}
                   setJudgeData={setJudgeData}
                 />
               </Route>
               <Route exact path="/competitions/:id/">
                 <TableStepper />
-                {!state.competitions.length ? null : (
+                {!action.read.state.competitions.length ? null : (
                   <TableCompetition
-                    partData={state.participants}
+                    partData={action.read.state.participants}
                     setPartData={setPartData}
-                    judgeData={state.judges}
+                    judgeData={action.read.state.judges}
                     compData={(competition_id) =>
-                      read.competitions.for.registerForm(state, competition_id)
+                      action.read.competitions.for.registerForm(competition_id)
                     }
                     setJudgeData={setJudgeData}
                   />
@@ -83,10 +81,10 @@ function App() {
               {/* DBLOGIC */}
               <Route path="/competitions/:id/scoring">
                 <TableStepper />
-                {!state.competitions.length ? null : (
+                {!action.read.state.competitions.length ? null : (
                   <TableScoring
                     data={(competition_id) =>
-                      read.competitions.for.scoresTable(state, competition_id)
+                      action.read.competitions.for.scoresTable(competition_id)
                     }
                     setData={setComp}
                   />
@@ -97,7 +95,7 @@ function App() {
                 <TableResults
                   data={comp}
                   columns={columns}
-                  eventName={state.event_name}
+                  eventName={action.read.state.event_name}
                 />
               </Route>
               <Route exact path="/login">
