@@ -6,7 +6,7 @@ export default function scoringSystems(state) {
       execute() {},
     },
     2: {
-      id: 1,
+      id: 2,
       name: "Relative Placement",
       execute() {},
     },
