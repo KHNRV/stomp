@@ -4,18 +4,40 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 import sendData from "../helpers/sendData";
 import { useParams } from "react-router";
+import { useState } from "react";
 
-const TableScoring = ({ data, setData, columns }) => {
-
+const TableScoring = ({ action }) => {
   const { id } = useParams();
+
+  const [tableData, setTableData] = useState(
+    action.read.competitions.for.scoresTable(parseInt(id))
+  );
+
+  function handleBulkUpdate(changes) {
+    const update = { ...tableData };
+    update.rows = update.rows.map((row) => {
+      const id = row.tableData.id;
+      if (changes[id]) {
+        return changes[id].newData;
+      }
+      return row;
+    });
+
+    return action.update
+      .competition(parseInt(id))
+      .from.scoresTable(update)
+      .then(() =>
+        setTableData(action.read.competitions.for.scoresTable(parseInt(id)))
+      );
+  }
 
   return (
     <div className="data-table">
       <ThemeProvider theme={theme}>
         <MaterialTable
-          title="Solo Jazz Newcomer"
-          columns={data(parseInt(id)).columns}
-          data={data(parseInt(id)).rows}
+          title={action.read.competitions.where.id(parseInt(id)).name}
+          columns={tableData.columns}
+          data={tableData.rows}
           style={{ padding: "1.5em 0em 0em 0em", backgroundColor: "#F7F7F7" }}
           icons={{
             Edit: () => <img height="28" src="/buttons/edit.svg" alt="edit" />,
@@ -27,8 +49,7 @@ const TableScoring = ({ data, setData, columns }) => {
           localization={{
             body: {
               addTooltip: "Add Entry",
-              emptyDataSourceMessage:
-                "Please add Participants and Judges",
+              emptyDataSourceMessage: "Please add Participants and Judges",
               editRow: {
                 deleteText: "Delete this entry?",
               },
@@ -47,24 +68,7 @@ const TableScoring = ({ data, setData, columns }) => {
             },
           }}
           editable={{
-            onBulkUpdate: (changes) =>
-              new Promise((resolve, reject) => {
-                const change = Object.values(changes);
-                const updatedData = [...data];
-                let index;
-                change.map((e) => {
-                  index = e.oldData.tableData.id;
-                  updatedData[index] = e.newData;
-                  return null;
-                });
-                setTimeout(() => {
-                  // USE SENDDATA TO CONVERT BACK TO WHOLE DATA TO SEND TO DB
-                  // console.log(JSON.stringify(sendData( updatedData, compCol)));
-                  console.log(updatedData);
-                  setData(updatedData);
-                  resolve();
-                }, 1000);
-              }),
+            onBulkUpdate: (changes) => handleBulkUpdate(changes),
           }}
         />
       </ThemeProvider>

@@ -22,7 +22,7 @@ const TableCompetition = ({ action }) => {
   }
 
   const handleSave = () => {
-    action.update.competition.from.registerForm(formData);
+    action.update.competition().from.registerForm(formData);
   };
 
   // DBLOGIC
@@ -65,7 +65,7 @@ const TableCompetition = ({ action }) => {
                   onClick={() => handleSave()}
                   style={{ marginTop: 20 }}
                   color="primary"
-                  type="submit"
+                  // type="submit"
                   // Apply below for the COMPETITION OBJECT
                   // Here setPartData needs to be invoked for form submission
                   // Here setJudgeData needs to be invoked for form submission

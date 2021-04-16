@@ -2,7 +2,7 @@ import scoringSystems from "./scoringSystems";
 
 export default function dataInterfaces(state, db) {
   const scoring = scoringSystems(state);
-  return {
+  const _ = {
     read: {
       state,
       scoring: {
@@ -46,9 +46,7 @@ export default function dataInterfaces(state, db) {
         },
         where: {
           ids(ids) {
-            return state.judges.filter((judge) =>
-              ids.includes(judge.id)
-            );
+            return state.judges.filter((judge) => ids.includes(judge.id));
           },
         },
         for: {
@@ -66,8 +64,15 @@ export default function dataInterfaces(state, db) {
           },
         },
       },
-      
+
       competitions: {
+        where: {
+          id(id) {
+            return state.competitions.find(
+              (competition) => competition.id === id
+            );
+          },
+        },
         for: {
           scoresTable(competition_id) {
             const result = {
@@ -190,13 +195,26 @@ export default function dataInterfaces(state, db) {
       },
     },
     update: {
-      competition: {
-        from: {
-          registerForm(competition) {
-            return db.update.competition(competition);
+      competition(id) {
+        return {
+          from: {
+            registerForm(competition) {
+              return db.update.competition(competition);
+            },
+            scoresTable(tableData) {
+              const competition = { ..._.read.competitions.where.id(id) };
+              competition.scores = competition.scores.map((score) => {
+                const row = tableData.rows.find(
+                  (row) => row.id === score.participant_id
+                );
+                score.score = parseInt(row[score.judge_id.toString()]);
+                return score;
+              });
+
+              return db.update.competition(competition);
+            },
           },
-          scoresTable(tableData) {},
-        },
+        };
       },
     },
     destroy: {
@@ -211,4 +229,5 @@ export default function dataInterfaces(state, db) {
       },
     },
   };
+  return _;
 }

@@ -70,28 +70,14 @@ function App() {
               <Route exact path="/competitions/:id/">
                 <TableStepper />
                 {!action.read.state.competitions.length ? null : (
-                  <TableCompetition
-                    // partData={action.read.state.participants}
-                    // setPartData={setPartData}
-                    // judgeData={action.read.state.judges}
-                    // compData={(competition_id) =>
-                    //   action.read.competitions.for.registerForm(competition_id)
-                    // }
-                    // setJudgeData={setJudgeData}
-                    action={action}
-                  />
+                  <TableCompetition action={action} />
                 )}
               </Route>
               {/* DBLOGIC */}
               <Route path="/competitions/:id/scoring">
                 <TableStepper />
                 {!action.read.state.competitions.length ? null : (
-                  <TableScoring
-                    data={(competition_id) =>
-                      action.read.competitions.for.scoresTable(competition_id)
-                    }
-                    setData={setComp}
-                  />
+                  <TableScoring action={action} />
                 )}
               </Route>
               <Route path="/competitions/:id/results">
