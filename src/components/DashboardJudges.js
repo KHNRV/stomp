@@ -9,6 +9,7 @@ export default function DashboardJudges({
   eventName,
   judgeData,
   setJudgeData,
+  action
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -60,16 +61,8 @@ export default function DashboardJudges({
             },
           ]}
           editable={{
-            onRowDelete: (oldData) =>
-              new Promise((resolve, reject) => {
-                setTimeout(() => {
-                  const dataDelete = [...judgeData];
-                  const index = oldData.tableData.id;
-                  dataDelete.splice(index, 1);
-                  setJudgeData([...dataDelete]);
-                  resolve();
-                }, 1000);
-              }),
+            onRowDelete: (judge) => action.destroy.judge(judge),
+             
           }}
         />
       </ThemeProvider>

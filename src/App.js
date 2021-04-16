@@ -63,6 +63,7 @@ function App() {
                   eventName={action.read.state.event_name}
                   judgeData={action.read.judges()}
                   setJudgeData={setJudgeData}
+                  action={action}
                 />
               </Route>
               <Route exact path="/competitions/:id/">
