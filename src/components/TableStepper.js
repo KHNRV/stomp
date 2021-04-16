@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -46,9 +46,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TableStepper = () => {
-  const location = useLocation().pathname.split("/").slice(-1)[0];
   const classes = useStyles();
-  const [activeTab, setActiveTab] = React.useState(
+  const location = useLocation().pathname.split("/").slice(-1)[0];
+  const [activeTab, setActiveTab] = useState(
     isNaN(parseInt(location)) ? location : "competition"
   );
   const { id } = useParams();
