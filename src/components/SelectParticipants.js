@@ -13,20 +13,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SelectParticipants({ partData }) {
+export default function SelectParticipants({ partData, compData }) {
   const classes = useStyles();
-
-  const participants = [];
-  partData.forEach((participant) => {
-    participants.push(participant.first_name);
-  });
 
   return (
     <div className={classes.root}>
       <Autocomplete
         multiple
         id="participants"
-        options={participants}
+        options={partData}
+        defaultValue={partData.filter((participant)=> compData.participant_ids.includes(participant.id))}
+        getOptionLabel={(option) => `${option.bib} - ${option.first_name} ${option.last_name}`}
+        autoComplete={true}
+        autoHighlight={true}
+        filterSelectedOptions={true}
         renderInput={(params) => (
           <TextField
             {...params}

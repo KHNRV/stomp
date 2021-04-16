@@ -13,20 +13,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SelectJudges({ judgeData }) {
+export default function SelectJudges({ judgeData, compData }) {
   const classes = useStyles();
-
-  const judges = [];
-  judgeData.forEach((judge) => {
-    judges.push(judge.first_name);
-  });
 
   return (
     <div className={classes.root}>
       <Autocomplete
         multiple
         id="judges"
-        options={judges}
+        options={judgeData}
+        getOptionLabel={(option) => `${option.first_name} ${option.last_name}`}
+        defaultValue={judgeData.filter((judge)=> compData.judge_ids.includes(judge.id))}
+        autoComplete={true}
+        autoHighlight={true}
+        filterSelectedOptions={true}
         renderInput={(params) => (
           <TextField
             {...params}

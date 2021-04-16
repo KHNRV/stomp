@@ -4,13 +4,17 @@ import SelectJudges from "./SelectJudges";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 import { Paper, Typography, Box, Button, Grid } from "@material-ui/core";
+import { useParams } from "react-router";
 
 const TableCompetition = ({
   partData,
   setPartData,
   judgeData,
   setJudgeData,
+  compData,
 }) => {
+  let { id } = useParams();
+
   // DBLOGIC
   return (
     <ThemeProvider theme={theme}>
@@ -38,8 +42,8 @@ const TableCompetition = ({
                 style={{ minHeight: "15vh", padding: 20 }}
               >
                 <Grid container direction="row" justify="center">
-                  <SelectParticipants partData={partData} />
-                  <SelectJudges judgeData={judgeData} />
+                  <SelectParticipants partData={partData} compData={compData(parseInt(id))} />
+                  <SelectJudges judgeData={judgeData} compData={compData(parseInt(id))}/>
                 </Grid>
                 <Button
                   style={{ marginTop: 20 }}

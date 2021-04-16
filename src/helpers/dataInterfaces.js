@@ -26,90 +26,109 @@ export default function dataInterfaces() {
           rows: [...state.judges],
         };
       },
-      competitions(state) {
-        const result = {
-          columns: [
-            { title: "id", field: "id", hidden: true },
-            {
-              title: "Competitions",
-              field: "name",
-            },
-            {
-              title: "Judges",
-              field: "judges",
-              type: "numeric",
-              align: "center",
-            },
-            {
-              title: "Participants",
-              field: "participants",
-              type: "numeric",
-              align: "center",
-            },
-          ],
-          rows: [],
-        };
+      competitions: {
+        for: {
+          scoresTable(state, competition_id) {
+            const result = {
+              columns: [
+                { title: "id", field: "id", hidden: true },
+                { title: "Bib #", field: "bib", editable: "never" },
+                { title: "First Name", field: "first_name", editable: "never" },
+                { title: "Last Name", field: "last_name", editable: "never" },
+              ],
+              rows: [],
+            };
 
-        for (const { id, name, judges, participants } of state.competitions) {
-          result.rows.push({
-            id,
-            name,
-            judges: judges.length,
-            participants: participants.length,
-          });
-        }
+            const competition = state.competitions.find(
+              (competition) => competition.id === competition_id
+            );
 
-        return result;
+            for (const id of competition.judges) {
+              const judge = state.judges.find((judge) => judge.id === id);
+              result.columns.push({
+                title: `${judge.first_name} ${judge.last_name}`,
+                field: `${judge.id}`,
+                lookup: { 0: "no", 1: "maybe", 2: "yes" }, //TODO: Implement
+              });
+            }
+
+            for (const id of competition.participants) {
+              const participant = state.participants.find(
+                (participant) => participant.id === id
+              );
+
+              const scores = {};
+
+              for (const score of competition.scores.filter(
+                (score) => score.participant_id === id
+              )) {
+                scores[score.judge_id] = score.score;
+              }
+
+              result.rows.push({
+                id: participant.id,
+                bib: participant.bib,
+                first_name: participant.first_name,
+                last_name: participant.last_name,
+                ...scores,
+              });
+            }
+
+            return result;
+          },
+          competitionsTable(state) {
+            const result = {
+              columns: [
+                { title: "id", field: "id", hidden: true },
+                {
+                  title: "Competitions",
+                  field: "name",
+                },
+                {
+                  title: "Judges",
+                  field: "judges",
+                  type: "numeric",
+                  align: "center",
+                },
+                {
+                  title: "Participants",
+                  field: "participants",
+                  type: "numeric",
+                  align: "center",
+                },
+              ],
+              rows: [],
+            };
+
+            for (const {
+              id,
+              name,
+              judges,
+              participants,
+            } of state.competitions) {
+              result.rows.push({
+                id,
+                name,
+                judges: judges.length,
+                participants: participants.length,
+              });
+            }
+
+            return result;
+          },
+          registerForm(state, competition_id) {
+            const competition = state.competitions.find(
+              (competition) => competition.id === competition_id
+            );
+
+            return {
+              participant_ids: competition.participants,
+              judge_ids: competition.judges,
+            };
+          },
+          resultsTable(state) {},
+        },
       },
-      scoring(state, competition_id) {
-        const result = {
-          columns: [
-            { title: "id", field: "id", hidden: true },
-            { title: "Bib #", field: "bib", editable: "never" },
-            { title: "First Name", field: "first_name", editable: "never" },
-            { title: "Last Name", field: "last_name", editable: "never" },
-          ],
-          rows: [],
-        };
-
-        const competition = state.competitions.find(
-          (competition) => competition.id === competition_id
-        );
-
-        for (const id of competition.judges) {
-          const judge = state.judges.find((judge) => judge.id === id);
-          result.columns.push({
-            title: `${judge.first_name} ${judge.last_name}`,
-            field: `${judge.id}`,
-            lookup: { 0: "no", 1: "maybe", 2: "yes" }, //TODO: Implement
-          });
-        }
-
-        for (const id of competition.participants) {
-          const participant = state.participants.find(
-            (participant) => participant.id === id
-          );
-
-          const scores = {};
-
-          for (const score of competition.scores.filter(
-            (score) => score.participant_id === id
-          )) {
-            scores[score.judge_id] = score.score;
-          }
-
-          result.rows.push({
-            id: participant.id,
-            bib: participant.bib,
-            first_name: participant.first_name,
-            last_name: participant.last_name,
-            ...scores,
-          });
-        }
-
-        return result;
-      },
-      results(state) {},
     },
     write: {
       participant(formData) {},

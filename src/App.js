@@ -47,7 +47,7 @@ function App() {
                 <Dashboard />
                 <DashboardCompetitions
                   eventName={state.event_name}
-                  compData={read.competitions(state)}
+                  compData={read.competitions.for.competitionsTable(state)}
                 />
               </Route>
               <Route exact path="/participants">
@@ -68,13 +68,17 @@ function App() {
               </Route>
               <Route exact path="/competitions/:id/">
                 <TableStepper />
-                <TableCompetition
-                  // compData={(competition_id) => read.competition(state, competition_id)}
-                  partData={state.participants}
-                  setPartData={setPartData}
-                  judgeData={state.judges}
-                  setJudgeData={setJudgeData}
-                />
+                {!state.competitions.length ? null : (
+                  <TableCompetition
+                    partData={state.participants}
+                    setPartData={setPartData}
+                    judgeData={state.judges}
+                    compData={(competition_id) =>
+                      read.competitions.for.registerForm(state, competition_id)
+                    }
+                    setJudgeData={setJudgeData}
+                  />
+                )}
               </Route>
               {/* DBLOGIC */}
               <Route path="/competitions/:id/scoring">
@@ -82,7 +86,7 @@ function App() {
                 {!state.competitions.length ? null : (
                   <TableScoring
                     data={(competition_id) =>
-                      read.scoring(state, competition_id)
+                      read.competitions.for.scoresTable(state, competition_id)
                     }
                     setData={setComp}
                   />
