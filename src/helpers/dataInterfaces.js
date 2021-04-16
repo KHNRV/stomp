@@ -13,31 +13,60 @@ export default function dataInterfaces(state, db) {
           }));
         },
       },
-      participants() {
-        return {
-          columns: [
-            { title: "id", field: "id", hidden: true },
-            { title: "Bib #", field: "bib" },
-            { title: "First Name", field: "first_name" },
-            { title: "Last Name", field: "last_name" },
-            { title: "Email", field: "email" },
-            { title: "Phone", field: "phone" },
-          ],
-          rows: [...state.participants],
-        };
+      participants: {
+        all() {
+          return state.participants;
+        },
+        where: {
+          ids(ids) {
+            return state.participants.filter((participant) =>
+              ids.includes(participant.id)
+            );
+          },
+        },
+        for: {
+          dashboard() {
+            return {
+              columns: [
+                { title: "id", field: "id", hidden: true },
+                { title: "Bib #", field: "bib" },
+                { title: "First Name", field: "first_name" },
+                { title: "Last Name", field: "last_name" },
+                { title: "Email", field: "email" },
+                { title: "Phone", field: "phone" },
+              ],
+              rows: [...state.participants],
+            };
+          },
+        },
       },
-      judges() {
-        return {
-          columns: [
-            { title: "id", field: "id", hidden: true },
-            { title: "First Name", field: "first_name" },
-            { title: "Last Name", field: "last_name" },
-            { title: "Email", field: "email" },
-            { title: "Phone", field: "phone" },
-          ],
-          rows: [...state.judges],
-        };
+      judges: {
+        all() {
+          return state.judges;
+        },
+        where: {
+          ids(ids) {
+            return state.judges.filter((judge) =>
+              ids.includes(judge.id)
+            );
+          },
+        },
+        for: {
+          dashboard() {
+            return {
+              columns: [
+                { title: "id", field: "id", hidden: true },
+                { title: "First Name", field: "first_name" },
+                { title: "Last Name", field: "last_name" },
+                { title: "Email", field: "email" },
+                { title: "Phone", field: "phone" },
+              ],
+              rows: [...state.judges],
+            };
+          },
+        },
       },
+      
       competitions: {
         for: {
           scoresTable(competition_id) {
@@ -140,6 +169,13 @@ export default function dataInterfaces(state, db) {
           },
           resultsTable() {},
         },
+        where: {
+          id(id) {
+            return state.competitions.find(
+              (competition) => competition.id === id
+            );
+          },
+        },
       },
     },
     create: {
@@ -156,7 +192,9 @@ export default function dataInterfaces(state, db) {
     update: {
       competition: {
         from: {
-          registerForm(formData) {},
+          registerForm(competition) {
+            return db.update.competition(competition);
+          },
           scoresTable(tableData) {},
         },
       },

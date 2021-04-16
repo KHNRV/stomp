@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SelectParticipants({ partData, compData }) {
+export default function SelectParticipants({ action, form }) {
   const classes = useStyles();
 
   return (
@@ -21,9 +21,13 @@ export default function SelectParticipants({ partData, compData }) {
       <Autocomplete
         multiple
         id="participants"
-        options={partData}
-        defaultValue={partData.filter((participant)=> compData.participant_ids.includes(participant.id))}
-        getOptionLabel={(option) => `${option.bib} - ${option.first_name} ${option.last_name}`}
+        options={action.read.participants.all()}
+        defaultValue={action.read.participants.where.ids(
+          form.state.participants
+        )}
+        getOptionLabel={(option) =>
+          `${option.bib} - ${option.first_name} ${option.last_name}`
+        }
         autoComplete={true}
         autoHighlight={true}
         filterSelectedOptions={true}
@@ -35,6 +39,12 @@ export default function SelectParticipants({ partData, compData }) {
             placeholder="Participants"
           />
         )}
+        onChange={(event, value) =>
+          form.handleChange(
+            "participants",
+            value.map((participant) => participant.id)
+          )
+        }
       />
     </div>
   );

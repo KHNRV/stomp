@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SelectJudges({ judgeData, compData }) {
+export default function SelectJudges({ action, form }) {
   const classes = useStyles();
 
   return (
@@ -21,9 +21,9 @@ export default function SelectJudges({ judgeData, compData }) {
       <Autocomplete
         multiple
         id="judges"
-        options={judgeData}
+        options={action.read.judges.all()}
+        defaultValue={action.read.judges.where.ids(form.state.judges)}
         getOptionLabel={(option) => `${option.first_name} ${option.last_name}`}
-        defaultValue={judgeData.filter((judge)=> compData.judge_ids.includes(judge.id))}
         autoComplete={true}
         autoHighlight={true}
         filterSelectedOptions={true}
@@ -35,6 +35,12 @@ export default function SelectJudges({ judgeData, compData }) {
             placeholder="Judges"
           />
         )}
+        onChange={(event, value) =>
+          form.handleChange(
+            "judges",
+            value.map((judge) => judge.id)
+          )
+        }
       />
     </div>
   );

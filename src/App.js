@@ -53,7 +53,7 @@ function App() {
                 <Dashboard />
                 <DashboardParticipants
                   eventName={action.read.state.event_name}
-                  partData={action.read.participants()}
+                  partData={action.read.participants.for.dashboard()}
                   setPartData={setPartData}
                   action={action}
                 />
@@ -62,7 +62,7 @@ function App() {
                 <Dashboard />
                 <DashboardJudges
                   eventName={action.read.state.event_name}
-                  judgeData={action.read.judges()}
+                  judgeData={action.read.judges.for.dashboard()}
                   setJudgeData={setJudgeData}
                   action={action}
                 />
@@ -71,13 +71,14 @@ function App() {
                 <TableStepper />
                 {!action.read.state.competitions.length ? null : (
                   <TableCompetition
-                    partData={action.read.state.participants}
-                    setPartData={setPartData}
-                    judgeData={action.read.state.judges}
-                    compData={(competition_id) =>
-                      action.read.competitions.for.registerForm(competition_id)
-                    }
-                    setJudgeData={setJudgeData}
+                    // partData={action.read.state.participants}
+                    // setPartData={setPartData}
+                    // judgeData={action.read.state.judges}
+                    // compData={(competition_id) =>
+                    //   action.read.competitions.for.registerForm(competition_id)
+                    // }
+                    // setJudgeData={setJudgeData}
+                    action={action}
                   />
                 )}
               </Route>

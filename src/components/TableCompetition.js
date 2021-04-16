@@ -5,15 +5,25 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 import { Paper, Typography, Box, Button, Grid } from "@material-ui/core";
 import { useParams } from "react-router";
+import { useState } from "react";
 
-const TableCompetition = ({
-  partData,
-  setPartData,
-  judgeData,
-  setJudgeData,
-  compData,
-}) => {
+const TableCompetition = ({ action }) => {
   let { id } = useParams();
+  const [formData, setFormData] = useState(
+    action.read.competitions.where.id(parseInt(id))
+  );
+
+  function handleChange(key, value) {
+    setFormData((prev) => {
+      const update = { ...prev };
+      update[key] = value;
+      return update;
+    });
+  }
+
+  const handleSave = () => {
+    action.update.competition.from.registerForm(formData);
+  };
 
   // DBLOGIC
   return (
@@ -42,10 +52,17 @@ const TableCompetition = ({
                 style={{ minHeight: "15vh", padding: 20 }}
               >
                 <Grid container direction="row" justify="center">
-                  <SelectParticipants partData={partData} compData={compData(parseInt(id))} />
-                  <SelectJudges judgeData={judgeData} compData={compData(parseInt(id))}/>
+                  <SelectParticipants
+                    action={action}
+                    form={{ state: formData, handleChange }}
+                  />
+                  <SelectJudges
+                    action={action}
+                    form={{ state: formData, handleChange }}
+                  />
                 </Grid>
                 <Button
+                  onClick={() => handleSave()}
                   style={{ marginTop: 20 }}
                   color="primary"
                   type="submit"
