@@ -3,15 +3,19 @@ import MaterialTable from "@material-table/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 import sendData from "../helpers/sendData";
+import { useParams } from "react-router";
 
 const TableScoring = ({ data, setData, columns }) => {
+
+  const { id } = useParams();
+
   return (
     <div className="data-table">
       <ThemeProvider theme={theme}>
         <MaterialTable
           title="Solo Jazz Newcomer"
-          columns={columns}
-          data={data}
+          columns={data(parseInt(id)).columns}
+          data={data(parseInt(id)).rows}
           style={{ padding: "1.5em 0em 0em 0em", backgroundColor: "#F7F7F7" }}
           icons={{
             Edit: () => <img height="28" src="/buttons/edit.svg" alt="edit" />,

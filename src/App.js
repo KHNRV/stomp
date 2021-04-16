@@ -27,6 +27,7 @@ let [compData, compCol] = getData(impData, 0);
 
 function App() {
   const { state, db } = useApplicationData();
+
   const { read, write } = dataInterfaces();
 
   const [partData, setPartData] = useState(impData.participants);
@@ -78,7 +79,14 @@ function App() {
               {/* DBLOGIC */}
               <Route path="/competitions/:id/scoring">
                 <TableStepper />
-                <TableScoring data={comp} setData={setComp} columns={columns} />
+                {!state.competitions.length ? null : (
+                  <TableScoring
+                    data={(competition_id) =>
+                      read.scoring(state, competition_id)
+                    }
+                    setData={setComp}
+                  />
+                )}
               </Route>
               <Route path="/competitions/:id/results">
                 <TableStepper />
