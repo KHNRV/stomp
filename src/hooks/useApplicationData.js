@@ -32,7 +32,7 @@ export default function useApplicationData() {
   }, []);
 
   const db = {
-    participants: {
+    participant: {
       create(participant) {
         return axios
           .post(`/api/events/${state.event_code}/participants`, participant)
@@ -50,7 +50,7 @@ export default function useApplicationData() {
             setState((prev) => ({ ...prev, participants: res.data }))
           );
       },
-      delete(participant) {
+      destroy(participant) {
         return axios
           .delete(
             `/api/events/${state.event_code}/participants/${participant.id}`
@@ -60,7 +60,7 @@ export default function useApplicationData() {
           );
       },
     },
-    judges: {
+    judge: {
       create(judge) {
         return axios
           .post(`/api/events/${state.event_code}/judges`, judge)
@@ -71,13 +71,13 @@ export default function useApplicationData() {
           .put(`/api/events/${state.event_code}/judges/${judge.id}`, judge)
           .then((res) => setState((prev) => ({ ...prev, judges: res.data })));
       },
-      delete(judge) {
+      destroy(judge) {
         return axios
           .delete(`/api/events/${state.event_code}/judges/${judge.id}`)
           .then((res) => setState((prev) => ({ ...prev, judges: res.data })));
       },
     },
-    competitions: {
+    competition: {
       create(competition) {
         return axios
           .post(`/api/events/${state.event_code}/competitions`, competition)
@@ -95,7 +95,7 @@ export default function useApplicationData() {
             setState((prev) => ({ ...prev, competitions: res.data }))
           );
       },
-      delete(competition) {
+      destroy(competition) {
         return axios
           .delete(
             `/api/events/${state.event_code}/competitions/${competition.id}`
