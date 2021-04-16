@@ -18,7 +18,7 @@ const DashboardCompetitions = ({ eventName, compData, action }) => {
 
   return (
     <div className="data-table">
-      <DashboardCompetitionsNew open={modalIsOpen} setOpen={setModalIsOpen} />
+      <DashboardCompetitionsNew open={modalIsOpen} setOpen={setModalIsOpen} action={action} />
       <ThemeProvider theme={theme}>
         <MaterialTable
           title={eventName}
