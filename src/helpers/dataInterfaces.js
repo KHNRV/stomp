@@ -155,14 +155,16 @@ export default function dataInterfaces(state, db) {
               name,
               judges,
               participants,
-              scoring_system_id
+              scoring_system_id,
             } of state.competitions) {
               result.rows.push({
                 id,
                 name,
                 judges: judges.length,
                 participants: participants.length,
-                scoring_system: _score.name.for.competition({scoring_system_id})
+                scoring_system: _score.name.for.competition({
+                  scoring_system_id,
+                }),
               });
             }
 
@@ -181,9 +183,6 @@ export default function dataInterfaces(state, db) {
           resultsTable(competition_id) {
             const competition = _.read.competitions.where.id(competition_id);
             const results = _score.competition(competition);
-
-            console.log(results);
-
             const table = {
               columns: [
                 { title: "ID", field: "id", hidden: true },
@@ -217,13 +216,21 @@ export default function dataInterfaces(state, db) {
                 ({ participant_id }) => participant_id === id
               );
 
+              const score = {}
+
+              console.log(result.score);
+
+              for (const [key, value] of Object.entries(result.score)) {
+                score[key] = value.majorities
+              }
+
               table.rows.push({
                 id: participant.id,
                 rank: result.rank,
                 bib: participant.bib,
                 first_name: participant.first_name,
                 last_name: participant.last_name,
-                ...result.score,
+                ...score,
               });
             }
 
