@@ -8,7 +8,7 @@ export default function scoringSystems(state) {
         competition(competition) {
           return _.store[competition.scoring_system_id].name;
         },
-      }
+      },
     },
     options: {
       for: {
@@ -31,7 +31,11 @@ export default function scoringSystems(state) {
           competition.participants.forEach((participant_id) => {
             results[participant_id] = {
               participant_id,
-              score: { yes: 0, no: 0, maybe: 0 },
+              score: {
+                yes: { majorities: 0 },
+                no: { majorities: 0 },
+                maybe: { majorities: 0 },
+              },
             };
           });
 
@@ -40,15 +44,15 @@ export default function scoringSystems(state) {
 
             switch (score.score) {
               case 0:
-                result.score.no++;
+                result.score.no.majorities++;
                 break;
 
               case 1:
-                result.score.maybe++;
+                result.score.maybe.majorities++;
                 break;
 
               case 2:
-                result.score.yes++;
+                result.score.yes.majorities++;
                 break;
             }
           }
@@ -56,9 +60,9 @@ export default function scoringSystems(state) {
           return Object.values(results)
             .sort((prev, curr) => {
               return (
-                curr.score.yes - prev.score.yes ||
-                curr.score.maybe - prev.score.maybe ||
-                prev.score.maybe - curr.score.maybe
+                curr.score.yes.majorities - prev.score.yes.majorities ||
+                curr.score.maybe.majorities - prev.score.maybe.majorities ||
+                prev.score.no.majorities - curr.score.no.majorities
               );
             })
             .map((result, index) => {
@@ -80,7 +84,72 @@ export default function scoringSystems(state) {
 
           return options;
         },
-        execute(competition) {},
+        execute(competition) {
+          const results = this.helpers.generateResults(competition);
+          return this.helpers.rankResults(results, competition);
+        },
+        helpers: {
+          generateResults(competition) {
+            const results = competition.participants.map((participant_id) => ({
+              participant_id,
+              score: {},
+            }));
+
+            results.forEach((result) => {
+              const participantScores = competition.scores
+                .filter(
+                  (score) => score.participant_id === result.participant_id
+                )
+                .map((score) => score.score);
+
+              results.forEach((r, index) => {
+                const run = index + 1;
+                const majorities = participantScores.filter(
+                  (score) => score <= run
+                ).length;
+                let score = participantScores.filter((score) => score <= run);
+
+                if (score.length) {
+                  score = score.reduce((prev, curr) => prev + curr);
+                } else {
+                  score = 0;
+                }
+
+                result.score[`1-${run}`] = { majorities, score };
+              });
+            });
+
+            return results;
+          },
+          rankResults(results, competition) {
+            const majority = Math.ceil(competition.judges.length / 2);
+
+            const rankedResults = [];
+
+            competition.participants.forEach((result, index) => {
+              const run = index + 1;
+              results = results.sort((prev, curr) => {
+                return (
+                  curr.score[`1-${run}`].majorities -
+                    prev.score[`1-${run}`].majorities ||
+                  prev.score[`1-${run}`].score - curr.score[`1-${run}`].score
+                );
+              });
+
+              const selectedResults = results.filter(
+                (result) => result.score[`1-${run}`].majorities >= majority
+              );
+
+              rankedResults.push(...results.splice(0, selectedResults.length));
+            });
+
+            return rankedResults.map((result, index) => {
+              const rank = index + 1;
+              result.rank = rank;
+              return result;
+            });
+          },
+        },
       },
     },
   };
