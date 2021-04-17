@@ -31,67 +31,76 @@ function App() {
   const columns = compCol;
 
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <div className="main-components">
-          <Router>
-            <Nav></Nav>
-            <Switch>
-              <Route exact path="/competitions">
-                <Dashboard />
-                {!action.read.state.competitions.length ? null : (
-                <DashboardCompetitions action={action} />
-                )}
+    <>
+      <div className="App">
+        <ThemeProvider theme={theme}>
+          <div className="main-components">
+            <Router>
+              <Nav></Nav>
+              <Switch>
+                <Route exact path="/competitions">
+                  <Dashboard />
+                  {!action.read.state.competitions.length ? null : (
+                    <DashboardCompetitions action={action} />
+                  )}
+                </Route>
+                <Route exact path="/participants">
+                  <Dashboard />
+                  <DashboardParticipants action={action} />
+                </Route>
+                <Route exact path="/judges">
+                  <Dashboard />
+                  <DashboardJudges action={action} />
+                </Route>
+                <Route exact path="/competitions/:id/">
+                  <TableStepper />
+                  {!action.read.state.competitions.length ? null : (
+                    <TableCompetition action={action} />
+                  )}
+                </Route>
+                <Route path="/competitions/:id/scoring">
+                  <TableStepper />
+                  {!action.read.state.competitions.length ? null : (
+                    <TableScoring action={action} />
+                  )}
+                </Route>
+                <Route path="/competitions/:id/results">
+                  <TableStepper />
+                  {!action.read.state.competitions.length ? null : (
+                    <TableResults
+                      data={comp}
+                      columns={columns}
+                      action={action}
+                    />
+                  )}
+                </Route>
+                <Route exact path="/login">
+                  <Login />
+                </Route>
+                <Route exact path="/signup">
+                  <Signup />
+                </Route>
+                <Route path="/">
+                  <Dashboard />
 
-              </Route>
-              <Route exact path="/participants">
-                <Dashboard />
-                <DashboardParticipants action={action} />
-              </Route>
-              <Route exact path="/judges">
-                <Dashboard />
-                <DashboardJudges action={action} />
-              </Route>
-              <Route exact path="/competitions/:id/">
-                <TableStepper />
-                {!action.read.state.competitions.length ? null : (
-                  <TableCompetition action={action} />
-                )}
-              </Route>
-              <Route path="/competitions/:id/scoring">
-                <TableStepper />
-                {!action.read.state.competitions.length ? null : (
-                  <TableScoring action={action} />
-                )}
-              </Route>
-              <Route path="/competitions/:id/results">
-                <TableStepper />
-                {!action.read.state.competitions.length ? null : (
-                  <TableResults data={comp} columns={columns} action={action} />
-                )}
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
-              <Route path="/">
-                <Dashboard />
-
-                <h1>My Events</h1>
-                <p>Here comes Dashboard with stats</p>
-                <ul>
-                  <li>No of participants</li>
-                  <li>No of competitons</li>
-                  <li>No of etc..</li>
-                </ul>
-              </Route>
-            </Switch>
-          </Router>
-        </div>
-      </ThemeProvider>
-    </div>
+                  <h1>My Events</h1>
+                  <p>Here comes Dashboard with stats</p>
+                  <ul>
+                    <li>No of participants</li>
+                    <li>No of competitons</li>
+                    <li>No of etc..</li>
+                  </ul>
+                  <img src="/logo.png" alt="" className="logo" />
+                  <div className="wave">
+                    <img src="/docs/wave.svg" alt="" />
+                  </div>
+                </Route>
+              </Switch>
+            </Router>
+          </div>
+        </ThemeProvider>
+      </div>
+    </>
   );
 }
 

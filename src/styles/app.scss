@@ -1,11 +1,15 @@
 $dark: #1f1f1f;
-$white: #F7F7F7;
+$white: #f7f7f7;
 
 // Media queries
 $breakpoint: 768px;
 
 body {
   background-color: $white;
+  // height: 100vh;
+}
+.App {
+  // height: 81vh;
 }
 
 .main-components {
@@ -18,6 +22,20 @@ body {
   text-align: center;
 }
 
+.logo{
+  position: fixed;
+  bottom:1em;
+  right: 1em;
+  height: 2em;
+  width: auto;
+  z-index: 9999;
+}
+
+.wave {
+  position: fixed;
+  bottom: -10px;
+  width: 100%;
+}
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
@@ -33,9 +51,6 @@ body {
   border-radius: 20px;
   border: transparent;
 }
-
-
-
 
 @import "./competitions-list";
 @import "./data-table";
