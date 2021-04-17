@@ -39,7 +39,10 @@ function App() {
             <Switch>
               <Route exact path="/competitions">
                 <Dashboard />
+                {!action.read.state.competitions.length ? null : (
                 <DashboardCompetitions action={action} />
+                )}
+
               </Route>
               <Route exact path="/participants">
                 <Dashboard />
@@ -63,7 +66,9 @@ function App() {
               </Route>
               <Route path="/competitions/:id/results">
                 <TableStepper />
-                <TableResults data={comp} columns={columns} action={action} />
+                {!action.read.state.competitions.length ? null : (
+                  <TableResults data={comp} columns={columns} action={action} />
+                )}
               </Route>
               <Route exact path="/login">
                 <Login />
@@ -72,7 +77,7 @@ function App() {
                 <Signup />
               </Route>
               <Route path="/">
-              <Dashboard />
+                <Dashboard />
 
                 <h1>My Events</h1>
                 <p>Here comes Dashboard with stats</p>

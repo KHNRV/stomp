@@ -1,13 +1,13 @@
 import scoringSystems from "./scoringSystems";
 
 export default function dataInterfaces(state, db) {
-  const scoring = scoringSystems(state);
+  const _score = scoringSystems(state);
   const _ = {
     read: {
       state,
       scoring: {
         list() {
-          return Object.values(scoring).map(({ id, name }) => ({
+          return Object.values(_score.store).map(({ id, name }) => ({
             id,
             name,
           }));
@@ -94,7 +94,7 @@ export default function dataInterfaces(state, db) {
               result.columns.push({
                 title: `${judge.first_name} ${judge.last_name}`,
                 field: `${judge.id}`,
-                lookup: { 0: "no", 1: "maybe", 2: "yes" }, //TODO: Implement
+                lookup: _score.options.for.competition(competition), //TODO: Implement
               });
             }
 
@@ -172,7 +172,64 @@ export default function dataInterfaces(state, db) {
               judge_ids: competition.judges,
             };
           },
-          resultsTable() {},
+          resultsTable(competition_id) {
+            const competition = _.read.competitions.where.id(competition_id);
+            const results = _score.competition(competition);
+
+            console.log(results);
+
+            const table = {
+              columns: [
+                { title: "ID", field: "id", hidden: true },
+                { title: "BIB #", field: "bib", editable: "never" },
+                { title: "FIRST NAME", field: "first_name", editable: "never" },
+                { title: "LAST NAME", field: "last_name", editable: "never" },
+              ],
+              rows: [],
+            };
+
+            if (!results.length) {
+              return table;
+            }
+
+            table.columns.push(
+              ...Object.keys(results[0].score).map((key) => {
+                return {
+                  title: key.toUpperCase(),
+                  field: key,
+                  editable: "never",
+                };
+              })
+            );
+
+            for (const id of competition.participants) {
+              const participant = state.participants.find(
+                (participant) => participant.id === id
+              );
+
+              const result = results.find(
+                ({ participant_id }) => participant_id === id
+              );
+
+              table.rows.push({
+                id: participant.id,
+                rank: result.rank,
+                bib: participant.bib,
+                first_name: participant.first_name,
+                last_name: participant.last_name,
+                ...result.score,
+              });
+            }
+
+            table.columns.push({
+              title: "RANK",
+              field: "rank",
+              editable: "never",
+              defaultSort: "asc",
+            });
+
+            return table;
+          },
         },
         where: {
           id(id) {

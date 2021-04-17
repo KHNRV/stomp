@@ -4,8 +4,12 @@ import { ExportCsv, ExportPdf } from "@material-table/exporters";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const TableResults = ({ data, columns, eventName, action }) => {
+const TableResults = ({ eventName, action }) => {
   let { id } = useParams();
+
+  const { columns, rows } = action.read.competitions.for.resultsTable(
+    parseInt(id)
+  );
 
   return (
     <div className="data-table">
@@ -13,7 +17,7 @@ const TableResults = ({ data, columns, eventName, action }) => {
         <MaterialTable
           title={action.read.competitions.where.id(parseInt(id)).name}
           columns={columns}
-          data={data}
+          data={rows}
           icons={{
             Search: () => (
               <img height="20" src="/buttons/search.svg" alt="search" />
@@ -36,7 +40,9 @@ const TableResults = ({ data, columns, eventName, action }) => {
                   ExportPdf(
                     cols,
                     datas,
-                    `${eventName} - ${"Solo Jazz Newcomer"} Results`
+                    `${action.read.state.event_name} | ${
+                      action.read.competitions.where.id(parseInt(id)).name
+                    } Results`
                   ),
               },
               {
@@ -47,6 +53,8 @@ const TableResults = ({ data, columns, eventName, action }) => {
             headerStyle: {
               backgroundColor: "#EDEDED",
               color: "#001427",
+              fontWeight: "700",
+              fontFamily: "'Yantramanav', sans-serif",
             },
             toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
             padding: "default",
