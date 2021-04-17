@@ -131,6 +131,10 @@ export default function dataInterfaces(state, db) {
                   field: "name",
                 },
                 {
+                  title: "Scoring System",
+                  field: "scoring_system",
+                },
+                {
                   title: "Judges",
                   field: "judges",
                   type: "numeric",
@@ -151,12 +155,14 @@ export default function dataInterfaces(state, db) {
               name,
               judges,
               participants,
+              scoring_system_id
             } of state.competitions) {
               result.rows.push({
                 id,
                 name,
                 judges: judges.length,
                 participants: participants.length,
+                scoring_system: _score.name.for.competition({scoring_system_id})
               });
             }
 

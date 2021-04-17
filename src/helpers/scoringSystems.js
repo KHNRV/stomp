@@ -3,6 +3,13 @@ export default function scoringSystems(state) {
     competition(competition) {
       return _.store[competition.scoring_system_id].execute(competition);
     },
+    name: {
+      for: {
+        competition(competition) {
+          return _.store[competition.scoring_system_id].name;
+        },
+      }
+    },
     options: {
       for: {
         competition(competition) {
@@ -13,7 +20,7 @@ export default function scoringSystems(state) {
     store: {
       1: {
         id: 1,
-        name: "Relative Placement - Yes / No / Maybe",
+        name: "Yes / No / Maybe",
         options() {
           return { 0: "no", 1: "maybe", 2: "yes" };
         },
@@ -63,7 +70,7 @@ export default function scoringSystems(state) {
       },
       2: {
         id: 2,
-        name: "Relative Placement - Ranking",
+        name: "Ranking",
         options(competition) {
           const options = {};
 
