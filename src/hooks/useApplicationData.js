@@ -29,7 +29,7 @@ export default function useApplicationData() {
         competitions: all[3].data,
       }));
     });
-  }, []);
+  }, [state.event_code]);
 
   const db = {
     create: {

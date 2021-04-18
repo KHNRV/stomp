@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   button: {},
 }));
 
-export default function Nav({action}) {
+export default function Nav({ action }) {
   const classes = useStyles();
 
   return (
@@ -39,15 +39,7 @@ export default function Nav({action}) {
         </Box>
         <Grid container justify={"flex-end"}>
           <Toolbar>
-              <Menu action={action}/>
-              <div className="user-notlogged">
-                <Button component={Link} to="/login" color="inherit">
-                  Login
-                </Button>
-                <Button component={Link} to="/signup" color="inherit">
-                  Sign up
-                </Button>
-              </div>
+            <Menu action={action} />
           </Toolbar>
         </Grid>
       </AppBar>

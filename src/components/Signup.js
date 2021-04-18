@@ -60,7 +60,7 @@ export default function SignUp() {
       }, 150);
     }
     setStatus(null);
-  }, [setStatus, signupPassword, signupPasswordRepeat, eventName]);
+  }, [setStatus, signupPassword, signupPasswordRepeat, eventName, history]);
 
   return (
     <Container component="main" maxWidth="xs">

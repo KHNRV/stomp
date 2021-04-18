@@ -82,10 +82,9 @@ export default function Login() {
         console.log(loginEmail.current.value); //Email
         console.log(loginPassword.current.value); //Password
         history.push("/");
-
       }, 150);
     }
-  }, [loginEmail, loginPassword, setStatus]);
+  }, [loginEmail, loginPassword, setStatus, history]);
 
   return (
     <Grid container component="main" className={classes.root}>
