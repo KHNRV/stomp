@@ -77,8 +77,12 @@ export default function Login() {
         setStatus("invalidPassword");
       }, 10);
     } else {
+      // DB LOGIC
       setTimeout(() => {
+        console.log(loginEmail.current.value); //Email
+        console.log(loginPassword.current.value); //Password
         history.push("/");
+
       }, 150);
     }
   }, [loginEmail, loginPassword, setStatus]);
