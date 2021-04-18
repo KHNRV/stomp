@@ -39,17 +39,14 @@ function App() {
               <Nav></Nav>
               <Switch>
                 <Route exact path="/competitions">
-                  <Dashboard />
                   {!action.read.state.competitions.length ? null : (
                     <DashboardCompetitions action={action} />
                   )}
                 </Route>
                 <Route exact path="/participants">
-                  <Dashboard />
                   <DashboardParticipants action={action} />
                 </Route>
                 <Route exact path="/judges">
-                  <Dashboard />
                   <DashboardJudges action={action} />
                 </Route>
                 <Route exact path="/competitions/:id/">
@@ -81,8 +78,6 @@ function App() {
                   <Signup />
                 </Route>
                 <Route path="/">
-                  <Dashboard />
-
                   <h1>My Events</h1>
                   <p>Here comes Dashboard with stats</p>
                   <ul>

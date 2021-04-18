@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { AppBar, Box, Button, Grid, Toolbar } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/core/styles";
 
+import Menu from "./Menu";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -38,21 +40,7 @@ export default function Nav() {
         <Grid container justify={"flex-end"}>
           <Toolbar>
             {true ? ( //FOR now set true false for logged in
-              <Button
-                component={Link}
-                to="/"
-                color="inherit"
-                className={classes.button}
-                endIcon={
-                  <img
-                    height="30px"
-                    src="/buttons/dashboard.svg"
-                    alt="dashboard"
-                  />
-                }
-              >
-                Dashboard
-              </Button>
+              <Menu />
             ) : (
               <div className="user-notlogged">
                 <Button component={Link} to="/login" color="inherit">
