@@ -13,7 +13,7 @@ export default function Alert({ alert, setAlert }) {
   return (
     <div>
       <Snackbar
-        autoHideDuration={2000}
+        autoHideDuration={3000}
         open={alert.open}
         onClose={handleClose}
         TransitionComponent={alert.Transition}
