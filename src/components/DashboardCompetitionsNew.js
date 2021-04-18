@@ -36,7 +36,6 @@ export default function DashboardCompetitionsNew({ open, setOpen, action }) {
   const handleFormData = (prev, value, key) => {
     const update = { ...prev };
     update[key] = value;
-    console.log(value);
     return update;
   };
 

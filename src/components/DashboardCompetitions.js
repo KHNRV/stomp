@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import MaterialTable from "@material-table/core";
+import { SnackbarContainer, snackbarService } from "uno-material-ui";
 import DashboardCompetitionsNew from "./DashboardCompetitionsNew";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const DashboardCompetitions = ({ eventName, compData, action }) => {
+const DashboardCompetitions = ({ action }) => {
+  const showSuccessMessage = (competition) => {
+    snackbarService.showSnackbar(`Deleted ${competition.name}!`, "info");
+  };
+  const showErrorMessage = (competition) => {
+    snackbarService.showSnackbar(
+      `Cannot delete: ${competition.name}!`,
+      "error"
+    );
+  };
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const history = useHistory();
 
@@ -22,7 +33,7 @@ const DashboardCompetitions = ({ eventName, compData, action }) => {
       />
       <ThemeProvider theme={theme}>
         <MaterialTable
-          title='Competitions'
+          title="Competitions"
           columns={action.read.competitions.for.competitionsTable().columns}
           data={action.read.competitions.for.competitionsTable().rows}
           icons={{
@@ -69,9 +80,13 @@ const DashboardCompetitions = ({ eventName, compData, action }) => {
           onRowClick={(event, competition) => handleClick(competition.id)}
           editable={{
             onRowDelete: (competition) =>
-              action.destroy.competition(competition),
+              action.destroy
+                .competition(competition)
+                .then(showSuccessMessage(competition))
+                .catch(showErrorMessage(competition)),
           }}
         />
+        <SnackbarContainer />
       </ThemeProvider>
     </div>
   );

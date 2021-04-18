@@ -1,30 +1,26 @@
 import React, { useState } from "react";
 import MaterialTable from "@material-table/core";
+import { SnackbarContainer, snackbarService } from "uno-material-ui";
 import DashboardParticipantsNew from "./DashboardParticipantsNew";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { Slide, Fade } from "@material-ui/core";
 
 import theme from "../theme";
-import Alert from "./Alert";
-
-function SlideTransition(props) {
-  return <Slide {...props} direction="up" />;
-}
 
 export default function DashboardParticipants({ action }) {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  // Alert for Participant already in competition
-  const [alert, setAlert] = useState({
-    open: false,
-    Transition: Fade,
-  });
-
-  const handleAlert = (Transition) => () => {
-    setAlert({
-      open: true,
-      Transition,
-    });
+  const showSuccessMessage = (participant) => {
+    snackbarService.showSnackbar(
+      `${participant.first_name} is removed from your event!`,
+      "info"
+    );
   };
+  const showErrorMessage = (participant) => {
+    snackbarService.showSnackbar(
+      `Cannot delete: ${participant.first_name} is already in a competition!`,
+      "error"
+    );
+  };
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <div className="data-table">
@@ -35,8 +31,7 @@ export default function DashboardParticipants({ action }) {
           action={action}
         />
         <MaterialTable
-          title='Participants'
-          
+          title="Participants"
           columns={action.read.participants.for.dashboard().columns}
           data={action.read.participants.for.dashboard().rows}
           icons={{
@@ -89,10 +84,11 @@ export default function DashboardParticipants({ action }) {
             onRowDelete: (participant) =>
               action.destroy
                 .participant(participant)
-                .catch(handleAlert(SlideTransition)),
+                .then(showSuccessMessage(participant))
+                .catch(showErrorMessage(participant)),
           }}
         />
-        <Alert alert={alert} setAlert={setAlert} />
+        <SnackbarContainer />
       </ThemeProvider>
     </div>
   );

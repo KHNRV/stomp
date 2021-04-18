@@ -34,7 +34,6 @@ export default function DashboardParticipantsNew({ open, setOpen, action }) {
   const handleFormData = (prev, event) => {
     const update = { ...prev };
     update[event.target.name] = event.target.value;
-    console.log(update);
     return update;
   };
 

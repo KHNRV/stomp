@@ -1,30 +1,25 @@
 import React, { useState } from "react";
 import MaterialTable from "@material-table/core";
-import { Slide, Fade } from "@material-ui/core";
+import { SnackbarContainer, snackbarService } from "uno-material-ui";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
-
-import Alert from "./Alert";
 import DashboardJudgesNew from "./DashboardJudgesNew";
 
-function SlideTransition(props) {
-  return <Slide {...props} direction="up" />;
-}
-
 export default function DashboardJudges({ action }) {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  // Alert for Judge already in competition
-  const [alert, setAlert] = useState({
-    open: false,
-    Transition: Fade,
-  });
-
-  const handleAlert = (Transition) => () => {
-    setAlert({
-      open: true,
-      Transition,
-    });
+  const showSuccessMessage = (judge) => {
+    snackbarService.showSnackbar(
+      `${judge.first_name} is removed from your event!`,
+      "info"
+    );
   };
+  const showErrorMessage = (judge) => {
+    snackbarService.showSnackbar(
+      `Cannot delete: ${judge.first_name} is already judging in a competition!`,
+      "error"
+    );
+  };
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <div className="data-table">
@@ -35,7 +30,7 @@ export default function DashboardJudges({ action }) {
           action={action}
         />
         <MaterialTable
-          title='Judges'
+          title="Judges"
           columns={action.read.judges.for.dashboard().columns}
           data={action.read.judges.for.dashboard().rows}
           icons={{
@@ -81,10 +76,13 @@ export default function DashboardJudges({ action }) {
           ]}
           editable={{
             onRowDelete: (judge) =>
-              action.destroy.judge(judge).catch(handleAlert(SlideTransition)),
+              action.destroy
+                .judge(judge)
+                .then(showSuccessMessage(judge))
+                .catch(showErrorMessage(judge)),
           }}
         />
-        <Alert alert={alert} setAlert={setAlert} />
+        <SnackbarContainer />
       </ThemeProvider>
     </div>
   );
