@@ -2,10 +2,29 @@ import React, { useState } from "react";
 import MaterialTable from "@material-table/core";
 import DashboardParticipantsNew from "./DashboardParticipantsNew";
 import { ThemeProvider } from "@material-ui/core/styles";
+import { Slide, Fade } from "@material-ui/core";
+
 import theme from "../theme";
+import Alert from "./Alert";
+
+function SlideTransition(props) {
+  return <Slide {...props} direction="up" />;
+}
 
 export default function DashboardParticipants({ action }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  // Alert for Participant already in competition
+  const [alert, setAlert] = useState({
+    open: false,
+    Transition: Fade,
+  });
+
+  const handleAlert = (Transition) => () => {
+    setAlert({
+      open: true,
+      Transition,
+    });
+  };
 
   return (
     <div className="data-table">
@@ -65,9 +84,12 @@ export default function DashboardParticipants({ action }) {
           ]}
           editable={{
             onRowDelete: (participant) =>
-              action.destroy.participant(participant),
+              action.destroy
+                .participant(participant)
+                .catch(handleAlert(SlideTransition)),
           }}
         />
+        <Alert alert={alert} setAlert={setAlert} />
       </ThemeProvider>
     </div>
   );
