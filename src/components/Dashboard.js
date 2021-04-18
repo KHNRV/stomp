@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AppBar, Box, Tabs, Tab, Typography, Paper } from "@material-ui/core";
+import {
+  AppBar,
+  Box,
+  Button,
+  Divider,
+  Grid,
+  Tabs,
+  Tab,
+  Typography,
+  Paper,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 
@@ -30,7 +40,7 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: "theme.palette.background.paper",
@@ -39,7 +49,7 @@ const useStyles = makeStyles({
   event: {
     backgroundColor: "rgba(12, 12, 12, 1)",
     padding: "0.5em 2em 0.5em 2em",
-    height: "6em",
+    height: "4.6em",
     borderRadius: 0,
     display: "flex",
     justifyContent: "center",
@@ -64,21 +74,20 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "flex-start",
   },
+  logout: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    paddingTop: "10em"
+  },
 
   indicator: {
     left: "0px",
   },
   flexContainerVertical: {
-    marginTop: "2em",
+    marginTop: "1em",
   },
-  logout: {
-    flexDirection: "row",
-    alignItems: "center",
-    position: "absolute",
-    bottom: "5em",
-    width: "100%"
-  },
-});
+}));
 
 const Dashboard = ({ action }) => {
   const classes = useStyles();
@@ -139,14 +148,17 @@ const Dashboard = ({ action }) => {
                 wrapper: classes.wrapper,
               }}
             />
+            <Divider/>
+            <Tab
+              icon={<img src="/buttons/logout.svg" alt="judges" />}
+              label="Logout"
+              component={Link}
+              to="/login"
+              classes={{
+                wrapper: classes.wrapper,
+              }}
+            />
           </Tabs>
-          <Tab
-            icon={<img height="40" src="/buttons/logout.svg" alt="logout" />}
-            label="Logout"
-            component={Link}
-            to="/login"
-            className={classes.logout}
-          />
         </AppBar>
       </Box>
     </div>

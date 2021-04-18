@@ -36,32 +36,44 @@ function App() {
         <ThemeProvider theme={theme}>
           <div className="main-components">
             <Router>
-              <Nav action={action} />
+              {/* <Nav action={action} /> */}
               <Switch>
                 <Route exact path="/competitions">
+                  <Nav action={action} />
+
                   {!action.read.state.competitions.length ? null : (
                     <DashboardCompetitions action={action} />
                   )}
                 </Route>
                 <Route exact path="/participants">
+                  <Nav action={action} />
+
                   <DashboardParticipants action={action} />
                 </Route>
                 <Route exact path="/judges">
+                  <Nav action={action} />
+
                   <DashboardJudges action={action} />
                 </Route>
                 <Route exact path="/competitions/:id/">
+                  <Nav action={action} />
+
                   <TableStepper />
                   {!action.read.state.competitions.length ? null : (
                     <TableCompetition action={action} />
                   )}
                 </Route>
                 <Route path="/competitions/:id/scoring">
+                  <Nav action={action} />
+
                   <TableStepper />
                   {!action.read.state.competitions.length ? null : (
                     <TableScoring action={action} />
                   )}
                 </Route>
                 <Route path="/competitions/:id/results">
+                  <Nav action={action} />
+
                   <TableStepper />
                   {!action.read.state.competitions.length ? null : (
                     <TableResults
@@ -78,6 +90,8 @@ function App() {
                   <Signup />
                 </Route>
                 <Route path="/">
+                  <Nav action={action} />
+
                   <h1>My Events</h1>
                   <p>Here comes Dashboard with stats</p>
                   <ul>
