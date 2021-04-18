@@ -69,7 +69,7 @@ const useStyles = makeStyles({
     left: "0px",
   },
   flexContainerVertical: {
-    // padding: "1em",
+    marginTop: "2em",
   },
 });
 
@@ -133,6 +133,16 @@ const Dashboard = ({ action }) => {
               }}
             />
           </Tabs>
+          <Tab
+              value={"judges"}
+              icon={<img src="/buttons/judges.svg" alt="judges" />}
+              label="Judges"
+              component={Link}
+              to="/judges"
+              classes={{
+                wrapper: classes.wrapper,
+              }}
+            />
         </AppBar>
       </Box>
     </div>
