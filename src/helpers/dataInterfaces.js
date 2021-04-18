@@ -215,11 +215,7 @@ export default function dataInterfaces(state, db) {
               const result = results.find(
                 ({ participant_id }) => participant_id === id
               );
-
               const score = {};
-
-              console.log(result.score);
-
               for (const [key, value] of Object.entries(result.score)) {
                 score[key] = value.majorities;
               }
