@@ -1,10 +1,23 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
-import { Paper, Typography, Box, Button, Grid } from "@material-ui/core";
+import Success from "./Success";
+import {
+  Paper,
+  Typography,
+  Box,
+  Button,
+  Grid,
+  Slide,
+  Fade,
+} from "@material-ui/core";
 import SelectParticipants from "./SelectParticipants";
 import SelectJudges from "./SelectJudges";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
+
+function SlideTransition(props) {
+  return <Slide {...props} direction="up" />;
+}
 
 const TableCompetition = ({ action }) => {
   let { id } = useParams();
@@ -19,9 +32,25 @@ const TableCompetition = ({ action }) => {
       return update;
     });
   }
+  // Save successfully
+  const [success, setSuccess] = useState({
+    open: false,
+    Transition: Fade,
+  });
+
+  const handleSuccess = (Transition) => () => {
+    setSuccess({
+      open: true,
+      Transition,
+    });
+  };
 
   const handleSave = () => {
-    action.update.competition().from.registerForm(formData);
+    action.update
+      .competition()
+      .from.registerForm(formData)
+      .then(handleSuccess(SlideTransition))
+      .catch();
   };
   return (
     <ThemeProvider theme={theme}>
@@ -69,6 +98,8 @@ const TableCompetition = ({ action }) => {
           </form>
         </Paper>
       </div>
+      <Success success={success} setSuccess={setSuccess} />
+
     </ThemeProvider>
   );
 };
