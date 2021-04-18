@@ -4,7 +4,7 @@ import { ExportCsv, ExportPdf } from "@material-table/exporters";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-const TableResults = ({ eventName, action }) => {
+const TableResults = ({ action }) => {
   let { id } = useParams();
 
   const { columns, rows } = action.read.competitions.for.resultsTable(

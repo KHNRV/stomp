@@ -39,9 +39,7 @@ export default function Nav({action}) {
         </Box>
         <Grid container justify={"flex-end"}>
           <Toolbar>
-            {true ? ( //FOR now set true false for logged in
               <Menu action={action}/>
-            ) : (
               <div className="user-notlogged">
                 <Button component={Link} to="/login" color="inherit">
                   Login
@@ -50,7 +48,6 @@ export default function Nav({action}) {
                   Sign up
                 </Button>
               </div>
-            )}
           </Toolbar>
         </Grid>
       </AppBar>
