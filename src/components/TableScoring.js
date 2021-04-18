@@ -63,6 +63,8 @@ const TableScoring = ({ action }) => {
             headerStyle: {
               backgroundColor: "#EDEDED",
               color: "#001427",
+              fontWeight: "700",
+              fontFamily: "'Lato', sans-serif",
             },
           }}
           editable={{

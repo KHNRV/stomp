@@ -18,18 +18,11 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: [
       "'Poppins', sans-serif",
-      "'Denk One', sans-serif",
-      "'Yantramanav', sans-serif",
     ],
     fontSize: 15,
   },
   appBar: {
     maxWidth: "500px",
-    tabs:{
-      indicator: {
-        top: "0px"
-      }
-    }
   },
 
 });

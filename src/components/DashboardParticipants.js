@@ -69,6 +69,8 @@ export default function DashboardParticipants({ action }) {
             headerStyle: {
               backgroundColor: "#EDEDED",
               color: "#001427",
+              fontWeight: "700",
+              fontFamily: "'Lato', sans-serif",
             },
             toolbarButtonAlignment: "right",
             padding: "default",

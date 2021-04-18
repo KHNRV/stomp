@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 export default function Menu({action}) {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    bottom: false,
+    right: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -42,13 +42,13 @@ export default function Menu({action}) {
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
-        [classes.fullList]: anchor === "bottom",
+        [classes.fullList]: anchor === "right",
       })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <Dashboard />
+      <Dashboard action={action}/>
     </div>
   );
 
@@ -56,24 +56,24 @@ export default function Menu({action}) {
     <ThemeProvider theme={theme}>
       <div className="nav-items">
         <Button
-          key="bottom"
+        disableRipple
+          key="right"
           color="inherit"
           className={classes.button}
           endIcon={
             <img height="30px" src="/buttons/dashboard.svg" alt="dashboard" />
           }
-          onClick={toggleDrawer("bottom", true)}
+          onClick={toggleDrawer("right", true)}
         >
-          Dashboard
+          Menu
         </Button>
         <SwipeableDrawer
-          anchor={"bottom"}
-          open={state["bottom"]}
-          onClose={toggleDrawer("bottom", false)}
-          onOpen={toggleDrawer("bottom", true)}
+          anchor={"right"}
+          open={state["right"]}
+          onClose={toggleDrawer("right", false)}
+          onOpen={toggleDrawer("right", true)}
         >
-          {list("bottom")}
-          <h1> {action.read.state.event_name}</h1>
+          {list("right")}
         </SwipeableDrawer>
       </div>
     </ThemeProvider>

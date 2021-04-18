@@ -186,9 +186,9 @@ export default function dataInterfaces(state, db) {
             const table = {
               columns: [
                 { title: "ID", field: "id", hidden: true },
-                { title: "BIB #", field: "bib", editable: "never" },
-                { title: "FIRST NAME", field: "first_name", editable: "never" },
-                { title: "LAST NAME", field: "last_name", editable: "never" },
+                { title: "Bib #", field: "bib", editable: "never" },
+                { title: "First Name", field: "first_name", editable: "never" },
+                { title: "Last Name", field: "last_name", editable: "never" },
               ],
               rows: [],
             };
@@ -216,12 +216,12 @@ export default function dataInterfaces(state, db) {
                 ({ participant_id }) => participant_id === id
               );
 
-              const score = {}
+              const score = {};
 
               console.log(result.score);
 
               for (const [key, value] of Object.entries(result.score)) {
-                score[key] = value.majorities
+                score[key] = value.majorities;
               }
 
               table.rows.push({
@@ -239,6 +239,11 @@ export default function dataInterfaces(state, db) {
               field: "rank",
               editable: "never",
               defaultSort: "asc",
+              align: 'center',
+              cellStyle: {
+                backgroundColor: "#ededed",
+                fontWeight: 'bolder',
+              },
             });
 
             return table;

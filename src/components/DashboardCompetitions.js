@@ -50,6 +50,8 @@ const DashboardCompetitions = ({ eventName, compData, action }) => {
             headerStyle: {
               backgroundColor: "#EDEDED",
               color: "#001427",
+              fontWeight: "700",
+              fontFamily: "'Lato', sans-serif",
             },
             toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
             padding: "default",

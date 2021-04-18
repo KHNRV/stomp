@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AppBar, Box, Tabs, Tab, Typography } from "@material-ui/core";
+import { AppBar, Box, Tabs, Tab, Typography, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 
@@ -36,21 +36,44 @@ const useStyles = makeStyles({
     backgroundColor: "theme.palette.background.paper",
     alignItems: "center",
   },
+  event: {
+    backgroundColor: "rgba(12, 12, 12, 1)",
+    padding: "0.5em 2em 0.5em 2em",
+    height: "4.6em",
+    borderRadius: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#F7F7F7",
+  },
+  event_name: {
+    fontFamily:"'Lato', sans-serif",
+    fontSize: 25,
+  },
   title: {
     flexGrow: 1,
   },
   appBar: {
-    
-    maxWidth: "auto",
+    height: "100vh",
+    maxWidth: "100vw",
+    width: "auto",
     position: "-webkit-sticky",
+  },
+  wrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
   },
 
   indicator: {
-    top: "0px",
+    left: "0px",
+  },
+  flexContainerVertical: {
+    // padding: "1em",
   },
 });
 
-const Dashboard = () => {
+const Dashboard = ({ action }) => {
   const classes = useStyles();
   const location = useLocation().pathname.slice(1);
   const [activeTab, setActiveTab] = useState(location);
@@ -62,8 +85,13 @@ const Dashboard = () => {
     <div className={classes.root}>
       <Box display="flex" justifyContent="center">
         <AppBar className={classes.appBar} position="sticky" color="default">
+          <Paper className={classes.event}>
+            <Typography noWrap className={classes.event_name}>
+              {action.read.state.event_name}
+            </Typography>
+          </Paper>
           <Tabs
-            // orientation="vertical"
+            orientation="vertical"
             value={activeTab}
             onChange={handleChange}
             indicatorColor="primary"
@@ -71,6 +99,7 @@ const Dashboard = () => {
             variant="fullWidth"
             classes={{
               indicator: classes.indicator,
+              flexContainerVertical: classes.flexContainerVertical,
             }}
           >
             <Tab
@@ -79,6 +108,9 @@ const Dashboard = () => {
               label="Competitions"
               component={Link}
               to="/competitions"
+              classes={{
+                wrapper: classes.wrapper,
+              }}
             />
             <Tab
               value={"participants"}
@@ -86,6 +118,9 @@ const Dashboard = () => {
               label="Participants"
               component={Link}
               to="/participants"
+              classes={{
+                wrapper: classes.wrapper,
+              }}
             />
             <Tab
               value={"judges"}
@@ -93,6 +128,9 @@ const Dashboard = () => {
               label="Judges"
               component={Link}
               to="/judges"
+              classes={{
+                wrapper: classes.wrapper,
+              }}
             />
           </Tabs>
         </AppBar>

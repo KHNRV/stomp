@@ -54,7 +54,7 @@ const TableResults = ({ eventName, action }) => {
               backgroundColor: "#EDEDED",
               color: "#001427",
               fontWeight: "700",
-              fontFamily: "'Yantramanav', sans-serif",
+              fontFamily: "'Lato', sans-serif",
             },
             toolbarButtonAlignment: "right", // here is the option to change toolbar buttons' alignment
             padding: "default",
