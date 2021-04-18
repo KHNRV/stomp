@@ -1,25 +1,25 @@
 import React, { useState } from "react";
+import { SnackbarContainer } from "uno-material-ui";
+import { snackbarService } from "uno-material-ui";
+
 import { useParams } from "react-router";
-import Success from "./Success";
-import {
-  Paper,
-  Typography,
-  Box,
-  Button,
-  Grid,
-  Slide,
-  Fade,
-} from "@material-ui/core";
+import { Paper, Typography, Box, Button, Grid } from "@material-ui/core";
 import SelectParticipants from "./SelectParticipants";
 import SelectJudges from "./SelectJudges";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../theme";
 
-function SlideTransition(props) {
-  return <Slide {...props} direction="up" />;
-}
-
 const TableCompetition = ({ action }) => {
+  const showSuccessMessage = () => {
+    snackbarService.showSnackbar(
+      "Your changes have been successfully saved!",
+      "info"
+    );
+  };
+  const showErrorMessage = () => {
+    snackbarService.showSnackbar("Save Unsuccessful!", "error");
+  };
+
   let { id } = useParams();
   const [formData, setFormData] = useState(
     action.read.competitions.where.id(parseInt(id))
@@ -32,26 +32,21 @@ const TableCompetition = ({ action }) => {
       return update;
     });
   }
-  // Save successfully
-  const [success, setSuccess] = useState({
-    open: false,
-    Transition: Fade,
-  });
-
-  const handleSuccess = (Transition) => () => {
-    setSuccess({
-      open: true,
-      Transition,
-    });
-  };
 
   const handleSave = () => {
     action.update
       .competition()
       .from.registerForm(formData)
-      .then(handleSuccess(SlideTransition))
-      .catch();
+      .then(showSuccessMessage)
+      .catch(showErrorMessage);
   };
+
+  const scoringStyleName = `${
+    action.read.scoring.list()[
+      action.read.competitions.where.id(parseInt(id)).scoring_system_id - 1
+    ].name
+  } Scoring System`;
+
   return (
     <ThemeProvider theme={theme}>
       <div className="data-table">
@@ -66,7 +61,14 @@ const TableCompetition = ({ action }) => {
                   style={{ textAlign: "left", padding: 15 }}
                   variant="h6"
                 >
-                  Who is in the Competition?
+                  Who is in the
+                  {action.read.competitions.where.id(parseInt(id)).name}?
+                </Typography>
+                <Typography
+                  style={{ textAlign: "left", padding: "0px 0px 0px 15px" }}
+                  variant="subtitle2"
+                >
+                  {scoringStyleName}
                 </Typography>
               </Box>
               <Grid
@@ -98,8 +100,7 @@ const TableCompetition = ({ action }) => {
           </form>
         </Paper>
       </div>
-      <Success success={success} setSuccess={setSuccess} />
-
+      <SnackbarContainer />
     </ThemeProvider>
   );
 };
