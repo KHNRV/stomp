@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     backgroundColor: theme.palette.primary.main,
   },
+  logo: {
+    margin: theme.spacing(1),
+  },
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
@@ -86,9 +89,9 @@ export default function Login() {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-        <Box  mr={2}>
-          <img height="100" src="/logo-dark.png" alt="" />
-        </Box>
+          <Box className={classes.logo} mr={2}>
+            <img height="100" src="/logo-dark.png" alt="" />
+          </Box>
           <Avatar className={classes.avatar}>
             <img height="30" src="/buttons/lock.svg" alt="login" />
           </Avatar>
