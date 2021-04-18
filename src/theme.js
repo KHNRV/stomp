@@ -16,15 +16,12 @@ const theme = createMuiTheme({
     borderRadius: 5,
   },
   typography: {
-    fontFamily: [
-      "'Poppins', sans-serif",
-    ],
+    fontFamily: ["'Poppins', sans-serif"],
     fontSize: 15,
   },
   appBar: {
     maxWidth: "500px",
   },
-
 });
 
 export default theme;
