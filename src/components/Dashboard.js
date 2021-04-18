@@ -39,7 +39,7 @@ const useStyles = makeStyles({
   event: {
     backgroundColor: "rgba(12, 12, 12, 1)",
     padding: "0.5em 2em 0.5em 2em",
-    height: "4.6em",
+    height: "6em",
     borderRadius: 0,
     display: "flex",
     justifyContent: "center",
@@ -47,7 +47,7 @@ const useStyles = makeStyles({
     color: "#F7F7F7",
   },
   event_name: {
-    fontFamily:"'Lato', sans-serif",
+    fontFamily: "'Lato', sans-serif",
     fontSize: 25,
   },
   title: {
@@ -70,6 +70,13 @@ const useStyles = makeStyles({
   },
   flexContainerVertical: {
     marginTop: "2em",
+  },
+  logout: {
+    flexDirection: "row",
+    alignItems: "center",
+    position: "absolute",
+    bottom: "5em",
+    width: "100%"
   },
 });
 
@@ -134,15 +141,12 @@ const Dashboard = ({ action }) => {
             />
           </Tabs>
           <Tab
-              value={"judges"}
-              icon={<img src="/buttons/judges.svg" alt="judges" />}
-              label="Judges"
-              component={Link}
-              to="/judges"
-              classes={{
-                wrapper: classes.wrapper,
-              }}
-            />
+            icon={<img height="40" src="/buttons/logout.svg" alt="logout" />}
+            label="Logout"
+            component={Link}
+            to="/login"
+            className={classes.logout}
+          />
         </AppBar>
       </Box>
     </div>
