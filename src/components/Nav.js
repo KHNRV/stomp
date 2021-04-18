@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   button: {},
 }));
 
-export default function Nav() {
+export default function Nav({action}) {
   const classes = useStyles();
 
   return (
@@ -40,7 +40,7 @@ export default function Nav() {
         <Grid container justify={"flex-end"}>
           <Toolbar>
             {true ? ( //FOR now set true false for logged in
-              <Menu />
+              <Menu action={action}/>
             ) : (
               <div className="user-notlogged">
                 <Button component={Link} to="/login" color="inherit">

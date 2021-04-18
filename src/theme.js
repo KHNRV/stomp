@@ -25,7 +25,13 @@ const theme = createMuiTheme({
   },
   appBar: {
     maxWidth: "500px",
+    tabs:{
+      indicator: {
+        top: "0px"
+      }
+    }
   },
+
 });
 
 export default theme;

@@ -30,7 +30,7 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     flexGrow: 1,
     backgroundColor: "theme.palette.background.paper",
@@ -40,10 +40,15 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appBar: {
-    maxWidth: "1500px",
+    
+    maxWidth: "auto",
     position: "-webkit-sticky",
   },
-}));
+
+  indicator: {
+    top: "0px",
+  },
+});
 
 const Dashboard = () => {
   const classes = useStyles();
@@ -58,11 +63,15 @@ const Dashboard = () => {
       <Box display="flex" justifyContent="center">
         <AppBar className={classes.appBar} position="sticky" color="default">
           <Tabs
+            // orientation="vertical"
             value={activeTab}
             onChange={handleChange}
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth"
+            classes={{
+              indicator: classes.indicator,
+            }}
           >
             <Tab
               value={"competitions"}

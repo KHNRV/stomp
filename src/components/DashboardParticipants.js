@@ -35,7 +35,8 @@ export default function DashboardParticipants({ action }) {
           action={action}
         />
         <MaterialTable
-          title={action.read.state.event_name}
+          title='Participants'
+          
           columns={action.read.participants.for.dashboard().columns}
           data={action.read.participants.for.dashboard().rows}
           icons={{

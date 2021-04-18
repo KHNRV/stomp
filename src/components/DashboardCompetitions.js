@@ -22,7 +22,7 @@ const DashboardCompetitions = ({ eventName, compData, action }) => {
       />
       <ThemeProvider theme={theme}>
         <MaterialTable
-          title={action.read.state.event_name}
+          title='Competitions'
           columns={action.read.competitions.for.competitionsTable().columns}
           data={action.read.competitions.for.competitionsTable().rows}
           icons={{

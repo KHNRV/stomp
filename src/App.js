@@ -36,7 +36,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <div className="main-components">
             <Router>
-              <Nav></Nav>
+              <Nav action={action} />
               <Switch>
                 <Route exact path="/competitions">
                   {!action.read.state.competitions.length ? null : (

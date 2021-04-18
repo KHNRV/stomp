@@ -35,7 +35,7 @@ export default function DashboardJudges({ action }) {
           action={action}
         />
         <MaterialTable
-          title={action.read.state.event_name}
+          title='Judges'
           columns={action.read.judges.for.dashboard().columns}
           data={action.read.judges.for.dashboard().rows}
           icons={{
