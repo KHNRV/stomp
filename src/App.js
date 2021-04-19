@@ -52,8 +52,9 @@ function App() {
                 </Route>
                 <Route exact path="/judges">
                   <Nav action={action} />
-
-                  <DashboardJudges action={action} />
+                  {!isLoggedIn ? null : (
+                    <DashboardJudges action={action} />
+                    )}
                 </Route>
                 <Route exact path="/competitions/:id">
                   <Nav action={action} />
