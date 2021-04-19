@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     height: "100vh",
-    maxWidth: "100vw",
+    maxWidth: "60vw",
     width: "auto",
     position: "-webkit-sticky",
   },
