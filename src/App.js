@@ -46,8 +46,9 @@ function App() {
                 </Route>
                 <Route exact path="/participants">
                   <Nav action={action} />
-
-                  <DashboardParticipants action={action} />
+                  {!isLoggedIn ? null : (
+                    <DashboardParticipants action={action} />
+                    )}
                 </Route>
                 <Route exact path="/judges">
                   <Nav action={action} />
