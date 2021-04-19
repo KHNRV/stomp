@@ -76,14 +76,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingTop: "10em"
+    paddingTop: "10em",
   },
 
   indicator: {
     left: "0px",
   },
   flexContainerVertical: {
-    marginTop: "1em",
+    marginTop: "none",
   },
 }));
 
@@ -118,37 +118,53 @@ const Dashboard = ({ action }) => {
           >
             <Tab
               value={"competitions"}
-              icon={<img src="/buttons/competitions.svg" alt="competitions" />}
+              icon={
+                <img
+                  height="30px"
+                  src="/buttons/competitions.svg"
+                  alt="competitions"
+                />
+              }
               label="Competitions"
               component={Link}
-              to="/competitions"
+              to={`${action.read.state.event_code}/competitions`}
               classes={{
                 wrapper: classes.wrapper,
               }}
             />
             <Tab
               value={"participants"}
-              icon={<img src="/buttons/participants.svg" alt="participants" />}
+              icon={
+                <img
+                  height="30px"
+                  src="/buttons/participants.svg"
+                  alt="participants"
+                />
+              }
               label="Participants"
               component={Link}
-              to="/participants"
+              to={`${action.read.state.event_code}/participants`}
               classes={{
                 wrapper: classes.wrapper,
               }}
             />
             <Tab
               value={"judges"}
-              icon={<img src="/buttons/judges.svg" alt="judges" />}
+              icon={
+                <img height="30px" src="/buttons/judges.svg" alt="judges" />
+              }
               label="Judges"
               component={Link}
-              to="/judges"
+              to={`${action.read.state.event_code}/judges`}
               classes={{
                 wrapper: classes.wrapper,
               }}
             />
-            <Divider/>
+            <Divider />
             <Tab
-              icon={<img src="/buttons/logout.svg" alt="judges" />}
+              icon={
+                <img height="30px" src="/buttons/logout.svg" alt="judges" />
+              }
               label="Logout"
               component={Link}
               to="/login"
