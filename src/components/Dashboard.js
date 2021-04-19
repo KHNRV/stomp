@@ -127,7 +127,7 @@ const Dashboard = ({ action }) => {
               }
               label="Competitions"
               component={Link}
-              to={`${action.read.state.event_code}/competitions`}
+              to="/competitions"
               classes={{
                 wrapper: classes.wrapper,
               }}
@@ -143,7 +143,7 @@ const Dashboard = ({ action }) => {
               }
               label="Participants"
               component={Link}
-              to={`${action.read.state.event_code}/participants`}
+              to="/participants"
               classes={{
                 wrapper: classes.wrapper,
               }}
@@ -155,7 +155,7 @@ const Dashboard = ({ action }) => {
               }
               label="Judges"
               component={Link}
-              to={`${action.read.state.event_code}/judges`}
+              to="/judges"
               classes={{
                 wrapper: classes.wrapper,
               }}
