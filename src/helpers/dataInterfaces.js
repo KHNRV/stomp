@@ -1,8 +1,18 @@
 import scoringSystems from "./scoringSystems";
 
-export default function dataInterfaces(state, db) {
+export default function dataInterfaces(state, setState, db) {
   const _score = scoringSystems(state);
   const _ = {
+    authenticate: {
+      login() {},
+      signup() {},
+      logout() {
+        // setState({});
+      },
+      isLoggedIn() {
+        return state.event_name ? true : false;
+      },
+    },
     read: {
       state,
       scoring: {
@@ -235,10 +245,10 @@ export default function dataInterfaces(state, db) {
               field: "rank",
               editable: "never",
               defaultSort: "asc",
-              align: 'center',
+              align: "center",
               cellStyle: {
                 backgroundColor: "#ededed",
-                fontWeight: 'bolder',
+                fontWeight: "bolder",
               },
             });
 

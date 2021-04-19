@@ -93,6 +93,11 @@ const Dashboard = ({ action }) => {
   const [activeTab, setActiveTab] = useState(location);
 
   const handleChange = (event, newActiveTab) => {
+    
+    if (newActiveTab === "logout") {
+      action.authenticate.logout()
+    }
+    console.log(action.read.state);
     setActiveTab(newActiveTab);
   };
   return (
@@ -162,6 +167,7 @@ const Dashboard = ({ action }) => {
             />
             <Divider />
             <Tab
+              value={"logout"}
               icon={
                 <img height="30px" src="/buttons/logout.svg" alt="judges" />
               }

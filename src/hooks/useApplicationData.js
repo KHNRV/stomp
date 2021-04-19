@@ -5,9 +5,6 @@ import dataInterfaces from "../helpers/dataInterfaces";
 export default function useApplicationData() {
   const [state, setState] = useState({
     event_code: "csc2020",
-    participants: [],
-    judges: [],
-    competitions: [],
   });
 
   useEffect(() => {
@@ -87,9 +84,16 @@ export default function useApplicationData() {
           .delete(
             `/api/events/${state.event_code}/participants/${participant.id}`
           )
-          .then((res) =>
-            setState((prev) => ({ ...prev, participants: res.data }))
-          );
+          .then((res) => {
+            if (res.status === 200) {
+              setState((prev) => ({ ...prev, participants: res.data }));
+            } else {
+              // throw new Error({
+              //   status: "Error",
+              //   message: "This participant could not be deleted",
+              // });
+            }
+          });
       },
       judge(judge) {
         return axios
@@ -108,5 +112,5 @@ export default function useApplicationData() {
     },
   };
 
-  return dataInterfaces(state, db);
+  return dataInterfaces(state, setState, db);
 }

@@ -84,8 +84,11 @@ export default function DashboardParticipants({ action }) {
             onRowDelete: (participant) =>
               action.destroy
                 .participant(participant)
-                .then(showSuccessMessage(participant))
-                .catch(showErrorMessage(participant)),
+                .then(() => showSuccessMessage(participant))
+                .catch((err) => {
+                  console.log(err);
+                  showErrorMessage(participant);
+                }),
           }}
         />
         <SnackbarContainer />

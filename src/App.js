@@ -25,9 +25,9 @@ import useApplicationData from "./hooks/useApplicationData";
 
 function App() {
   /* Here comes in the isLoggedIn Logic */
-  const isLoggedIn = true;
-
   const action = useApplicationData();
+
+  const isLoggedIn = action.authenticate.isLoggedIn();
   return (
     <>
       <div className="App">
@@ -36,10 +36,11 @@ function App() {
             <Router>
               {/* <Nav action={action} /> */}
               <Switch>
+              
                 <Route exact path="/competitions">
                   <Nav action={action} />
 
-                  {!action.read.state.competitions.length ? null : (
+                  {!isLoggedIn ? null : (
                     <DashboardCompetitions action={action} />
                   )}
                 </Route>
@@ -57,7 +58,7 @@ function App() {
                   <Nav action={action} />
 
                   <TableStepper />
-                  {!action.read.state.competitions.length ? null : (
+                  {!isLoggedIn ? null : (
                     <TableCompetition action={action} />
                   )}
                 </Route>
@@ -65,7 +66,7 @@ function App() {
                   <Nav action={action} />
 
                   <TableStepper />
-                  {!action.read.state.competitions.length ? null : (
+                  {!isLoggedIn ? null : (
                     <TableScoring action={action} />
                   )}
                 </Route>
@@ -73,7 +74,7 @@ function App() {
                   <Nav action={action} />
 
                   <TableStepper />
-                  {!action.read.state.competitions.length ? null : (
+                  {!isLoggedIn ? null : (
                     <TableResults action={action} />
                   )}
                 </Route>
