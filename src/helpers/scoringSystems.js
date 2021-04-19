@@ -60,8 +60,8 @@ export default function scoringSystems(state) {
           return Object.values(results)
             .sort((prev, curr) => {
               return (
+                (curr.score.maybe.majorities + curr.score.yes.majorities) - (prev.score.maybe.majorities + prev.score.yes.majorities) ||
                 curr.score.yes.majorities - prev.score.yes.majorities ||
-                curr.score.maybe.majorities - prev.score.maybe.majorities ||
                 prev.score.no.majorities - curr.score.no.majorities
               );
             })
