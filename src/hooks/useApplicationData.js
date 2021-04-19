@@ -4,7 +4,7 @@ import dataInterfaces from "../helpers/dataInterfaces";
 
 export default function useApplicationData() {
   const [state, setState] = useState({
-    event_code: "csc2020",
+    event_code: "ilhc2019",
   });
 
   useEffect(() => {
