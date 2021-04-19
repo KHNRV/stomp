@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SnackbarContainer } from "uno-material-ui";
 import { snackbarService } from "uno-material-ui";
 
-import { useParams } from "react-router";
+import { Redirect, useParams } from "react-router";
 import { Paper, Typography, Box, Button, Grid } from "@material-ui/core";
 import SelectParticipants from "./SelectParticipants";
 import SelectJudges from "./SelectJudges";
@@ -21,6 +21,7 @@ const TableCompetition = ({ action }) => {
   };
 
   let { id } = useParams();
+
   const [formData, setFormData] = useState(
     action.read.competitions.where.id(parseInt(id))
   );

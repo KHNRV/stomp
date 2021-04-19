@@ -1,6 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
+import Status from "./components/Status";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Nav from "./components/Nav";
@@ -18,6 +24,9 @@ import "./styles/app.scss";
 import useApplicationData from "./hooks/useApplicationData";
 
 function App() {
+  /* Here comes in the isLoggedIn Logic */
+  const isLoggedIn = true;
+
   const action = useApplicationData();
   return (
     <>
@@ -44,7 +53,7 @@ function App() {
 
                   <DashboardJudges action={action} />
                 </Route>
-                <Route exact path="/competitions/:id/">
+                <Route exact path="/competitions/:id">
                   <Nav action={action} />
 
                   <TableStepper />
@@ -75,8 +84,11 @@ function App() {
                   <Signup />
                 </Route>
                 <Route path="/">
-                {/* Here comes in the isLoggedIn Logic */}
-                {true ? <Redirect to="/competitions" /> : <Redirect to="/login" />} 
+                  {isLoggedIn ? (
+                    <Redirect to="/competitions" />
+                  ) : (
+                    <Status isLoggedIn={isLoggedIn} />
+                  )}
                 </Route>
               </Switch>
             </Router>
