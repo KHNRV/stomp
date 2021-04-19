@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -52,7 +52,7 @@ function App() {
                     <TableCompetition action={action} />
                   )}
                 </Route>
-                <Route path="/competitions/:id/scoring">
+                <Route exact path="/competitions/:id/scoring">
                   <Nav action={action} />
 
                   <TableStepper />
@@ -60,7 +60,7 @@ function App() {
                     <TableScoring action={action} />
                   )}
                 </Route>
-                <Route path="/competitions/:id/results">
+                <Route exact path="/competitions/:id/results">
                   <Nav action={action} />
 
                   <TableStepper />
@@ -75,19 +75,8 @@ function App() {
                   <Signup />
                 </Route>
                 <Route path="/">
-                  <Nav action={action} />
-
-                  <h1>My Events</h1>
-                  <p>Here comes Dashboard with stats</p>
-                  <ul>
-                    <li>No of participants</li>
-                    <li>No of competitons</li>
-                    <li>No of etc..</li>
-                  </ul>
-                  <img src="/logo.png" alt="" className="logo" />
-                  <div className="wave">
-                    <img src="/docs/wave.svg" alt="" />
-                  </div>
+                {/* Here comes in the isLoggedIn Logic */}
+                {true ? <Redirect to="/competitions" /> : <Redirect to="/login" />} 
                 </Route>
               </Switch>
             </Router>
