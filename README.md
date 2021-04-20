@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+<img src="./public/docs/logo-banner.png" />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Authors
 
-## Available Scripts
+[Kevin Nicolas](https://github.com/KHNRV) & [Yamac Ozdil](https://github.com/yozdil)
 
-In the project directory, you can run:
+Stomp is a dance event management app some explanation
 
-### `npm start`
+_Some quotes over here_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How it works
+<img src="./public/docs/magic.png" />
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+That's it really. No more manual score calculation Stomp does that for you!
+## Demo
 
-### `npm test`
+Check out the demo project for a quick example of how Stomp works.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Install dependencies with `npm install`.
+2. Please also fork and clone the [stomp-api](https://github.com/KHNRV/stomp-api) next to the project (in a seperate folder). Follow the instructions on README file for stomp-api setup.
+3. Have two terminals open and do the following:
+```sh
+TERMINAL 1: Running Webpack Development Server
+cd stomp
+npm start
+```
+```sh
+TERMINAL 2: Runnning the DB
+cd stomp-api
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Dependencies
+- React
+- Axios
+- Material UI
+- Uno Material UI
+- Material Table
+- Material Table / Core
+- Material Table Exporters
+- Node Sass
