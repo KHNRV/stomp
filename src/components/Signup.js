@@ -55,7 +55,7 @@ export default function SignUp() {
       // DB LOGIC
       setTimeout(() => {
         console.log(eventName.current.value); //Event Name -> This should be trimmed from all whitespace, so that router can use it!
-        console.log(signupEmail.current.value); //Email
+        console.log(event_code.current.value); //Email
         console.log(signupPassword.current.value); //Password
         history.push("/");
       }, 150);

@@ -63,12 +63,12 @@ export default function Login() {
   const history = useHistory();
   const [status, setStatus] = useState(null);
 
-  const loginEmail = useRef();
+  const loginEventCode = useRef();
   const loginPassword = useRef();
 
   const login = useCallback(() => {
     setStatus(null);
-    if (loginEmail.current.value !== "ilhc2019") {
+    if (loginEventCode.current.value !== "ilhc2019") {
       setTimeout(() => {
         setStatus("invalidEventCode");
       }, 10);
@@ -79,12 +79,12 @@ export default function Login() {
     } else {
       // DB LOGIC
       setTimeout(() => {
-        console.log(loginEmail.current.value); //Email
+        console.log(loginEventCode.current.value); //Email
         console.log(loginPassword.current.value); //Password
         history.push("/");
       }, 150);
     }
-  }, [loginEmail, loginPassword, setStatus, history]);
+  }, [loginEventCode, loginPassword, setStatus, history]);
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -110,7 +110,7 @@ export default function Login() {
           >
             <TextField
               variant="outlined"
-              inputRef={loginEmail}
+              inputRef={loginEventCode}
               error={status === "invalidEventCode"}
               margin="normal"
               required
