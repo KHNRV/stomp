@@ -41,6 +41,7 @@ export default function SignUp() {
   const history = useHistory();
   const [status, setStatus] = useState(null);
 
+  const event_code = useRef();
   const eventName = useRef();
   const signupEmail = useRef();
   const signupPassword = useRef();
@@ -92,6 +93,18 @@ export default function SignUp() {
                 fullWidth
                 id="eventName"
                 label="Event Name"
+                inputRef={event_code}
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="event_code"
+                variant="outlined"
+                required
+                fullWidth
+                id="event_code"
+                label="Event Code"
                 inputRef={eventName}
                 autoFocus
               />

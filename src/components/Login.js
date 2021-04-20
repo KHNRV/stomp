@@ -68,9 +68,9 @@ export default function Login() {
 
   const login = useCallback(() => {
     setStatus(null);
-    if (loginEmail.current.value !== "test@stomp.com") {
+    if (loginEmail.current.value !== "ilhc2019") {
       setTimeout(() => {
-        setStatus("invalidEmail");
+        setStatus("invalidEventCode");
       }, 10);
     } else if (loginPassword.current.value !== "123") {
       setTimeout(() => {
@@ -111,23 +111,21 @@ export default function Login() {
             <TextField
               variant="outlined"
               inputRef={loginEmail}
-              error={status === "invalidEmail"}
+              error={status === "invalidEventCode"}
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              type="email"
-              autoComplete="email"
+              id="event_code"
+              label="Event Code"
+              name="event_code"
               autoFocus
               onChange={() => {
-                if (status === "invalidEmail") {
+                if (status === "invalidEventCode") {
                   setStatus(null);
                 }
               }}
               helperText={
-                status === "invalidEmail" &&
+                status === "invalidEventCode" &&
                 "This email address isn't associated with an account."
               }
               FormHelperTextProps={{ error: true }}
@@ -177,7 +175,7 @@ export default function Login() {
             {/* This is for Login Help */}
             <div className={classes.main}>
               <Typography variant="body2">
-                Email is: <b>test@stomp.com</b>
+                Email is: <b>ilhc2019</b>
                 <br />
                 Password is: <b>123</b>
               </Typography>
