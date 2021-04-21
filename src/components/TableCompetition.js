@@ -62,8 +62,7 @@ const TableCompetition = ({ action }) => {
                   style={{ textAlign: "left", padding: 15 }}
                   variant="h6"
                 >
-                  Who is in the
-                  {action.read.competitions.where.id(parseInt(id)).name}?
+                  {`Who is in the ${action.read.competitions.where.id(parseInt(id)).name}?`}                   
                 </Typography>
                 <Typography
                   style={{ textAlign: "left", padding: "0px 0px 0px 15px" }}
