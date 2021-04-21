@@ -4,14 +4,14 @@
 
 [Kevin Nicolas](https://github.com/KHNRV) & [Yamac Ozdil](https://github.com/yozdil)
 
-Stomp is a dance event management app built on PERN stack.
+## About
 
-_Some quotes over here_
+Stomp is a dance competition management app built on PERN stack. It helps coordinators with the tedious calculation of scores and all you need is in one place, accessible from anywhere.
 
 ## How it works
 <img src="./public/docs/magic.png" />
 
-That's it really. No more manual score calculation Stomp does the thinking for you!
+That's it really. No more manual score calculation Stomp does the thinking for you! Focus on what is important, your event.
 
 ## Demo
 
