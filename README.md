@@ -5,12 +5,15 @@
 [Kevin Nicolas](https://github.com/KHNRV) & [Yamac Ozdil](https://github.com/yozdil)
 
 ## About
+<div style="text-align:center">
+
+[![Life of Jen](./public/docs/why-stomp.gif)](https://youtu.be/V_5NzH634S4)
+
+</div>
+
 
 Stomp is a dance competition management app built on PERN stack. It helps coordinators with the tedious calculation of scores and all you need is in one place, accessible from anywhere.
 
-<video style="display: block; margin: 0 auto;" width="960" height="720" controls>
-  <source src="./public/docs/stomp.mov" type="video/mp4">
-</video>
 
 
 ## How it works
