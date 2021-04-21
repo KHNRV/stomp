@@ -8,6 +8,10 @@
 
 Stomp is a dance competition management app built on PERN stack. It helps coordinators with the tedious calculation of scores and all you need is in one place, accessible from anywhere.
 
+<figure class="video_container">
+  <iframe src="./public/docs/stomp.mov" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
 ## How it works
 <img src="./public/docs/magic.png" />
 
