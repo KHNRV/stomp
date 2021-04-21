@@ -88,7 +88,12 @@ export default function dataInterfaces(state, setState, db) {
             const result = {
               columns: [
                 { title: "id", field: "id", hidden: true },
-                { title: "Bib #", field: "bib", editable: "never" },
+                {
+                  title: "Bib #",
+                  field: "bib",
+                  editable: "never",
+                  defaultSort: "asc",
+                },
                 { title: "First Name", field: "first_name", editable: "never" },
                 { title: "Last Name", field: "last_name", editable: "never" },
               ],
@@ -196,7 +201,11 @@ export default function dataInterfaces(state, setState, db) {
             const table = {
               columns: [
                 { title: "ID", field: "id", hidden: true },
-                { title: "Bib #", field: "bib", editable: "never" },
+                {
+                  title: "Bib #",
+                  field: "bib",
+                  editable: "never",
+                },
                 { title: "First Name", field: "first_name", editable: "never" },
                 { title: "Last Name", field: "last_name", editable: "never" },
               ],
